@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Check, CreditCard, Lock, ShieldCheck } from 'lucide-react';
+import { Check, CreditCard, Lock, MessageCircle, ShieldCheck } from 'lucide-react';
 import SamplePage from '@/components/SamplePage';
 import { isLocale, locales, siteConfig, type Locale } from '@/config/site';
 import { ui } from '@/lib/i18n/ui';
@@ -100,13 +100,21 @@ export default async function Home({ params }: Props) {
         <div>
           <h1 className="max-w-[16ch] text-[clamp(2.15rem,5vw,3.9rem)] leading-[1.05] font-display font-extrabold tracking-display">{t.hero.title}</h1>
           <p className="mt-4 max-w-[56ch] text-base leading-relaxed text-ink/70 sm:mt-5 sm:text-lg">{t.hero.subtitle}</p>
-          <p className="mt-3 text-sm font-medium text-ink/70">
-            {t.hero.also[0]}
-            <a href={`/${locale}/${guideByKey(locale, 'instagram').slug}`} className="font-semibold text-leaf underline-offset-2 hover:underline">Instagram</a>
-            {t.hero.also[1]}
-            <a href={`/${locale}/${guideByKey(locale, 'messenger').slug}`} className="font-semibold text-leaf underline-offset-2 hover:underline">Messenger</a>
-            {t.hero.also[2]}
-          </p>
+          <div className="mt-4 flex flex-col gap-2 sm:mt-5 sm:flex-row sm:items-center">
+            <span className="text-sm font-semibold text-ink/80 sm:text-base">{t.hero.also[0].trim()}</span>
+            <span className="flex gap-2">
+            {(['instagram', 'messenger'] as const).map((k) => (
+              <a
+                key={k}
+                href={`/${locale}/${guideByKey(locale, k).slug}`}
+                className="inline-flex items-center gap-1.5 rounded-full border-2 border-leaf bg-leaf-light px-3 py-1 text-[15px] font-bold sm:px-4 sm:py-1.5 sm:text-base text-leaf-dark transition-colors hover:bg-leaf hover:text-white"
+              >
+                <MessageCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden />
+                {k === 'instagram' ? 'Instagram' : 'Messenger'}
+              </a>
+            ))}
+            </span>
+          </div>
           <div className="mt-6 sm:mt-9">
             <ConverterTool locale={locale} />
           </div>
