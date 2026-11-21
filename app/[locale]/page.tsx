@@ -5,6 +5,8 @@ import { isLocale, locales, siteConfig, type Locale } from '@/config/site';
 import { ui } from '@/lib/i18n/ui';
 import { intlLocale } from '@/lib/i18n/pdf';
 import ConverterTool from '@/components/ConverterTool';
+import Link from 'next/link';
+import { guideChrome, guidesFor } from '@/lib/guides';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -129,6 +131,20 @@ export default async function Home({ params }: Props) {
             </div>
           ))}
         </div>
+      </section>
+
+      <section id="guides" className="mx-auto max-w-5xl scroll-mt-20 px-5 py-12">
+        <h2 className="text-2xl font-bold sm:text-3xl">{guideChrome(locale).guidesTitle}</h2>
+        <p className="mt-2 text-ink/70">{guideChrome(locale).guidesIntro}</p>
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+          {guidesFor(locale).map((g) => (
+            <li key={g.key}>
+              <Link href={`/${locale}/${g.slug}`} className="block rounded-xl border border-sand bg-white px-4 py-3 font-medium hover:border-leaf">
+                {g.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section id="faq" className="mx-auto max-w-3xl scroll-mt-20 px-5 py-12">

@@ -88,3 +88,24 @@ export async function loadChatFile(file: { name: string; bytes: Uint8Array }): P
     sourceSize: bytes.length,
   };
 }
+
+const isZipBytes = (b: Uint8Array) => b[0] === 0x50 && b[1] === 0x4b;
+
+/**
+ * Several files at once: Android often shares the chat .txt and each photo as
+ * separate files instead of a .zip. The chat file is found among them and the
+ * other files become its media. The fingerprint covers the chat file itself.
+ */
+export async function loadChatFiles(files: { name: string; bytes: Uint8Array }[]): Promise<LoadedChat> {
+  if (files.length === 1) return loadChatFile(files[0]);
+  const zip = files.find((f) => isZipBytes(f.bytes));
+  const chat =
+    zip ||
+    files.find((f) => /^_chat\.txt$/i.test(baseName(f.name))) ||
+    files.find((f) => /whatsapp/i.test(f.name) && /\.txt$/i.test(f.name)) ||
+    files.find((f) => /\.txt$/i.test(f.name));
+  if (!chat) throw new LoadError('no-chat-file');
+  const loaded = await loadChatFile(chat);
+  for (const f of files) if (f !== chat) loaded.media[baseName(f.name)] = f.bytes;
+  return loaded;
+}

@@ -107,14 +107,17 @@ export default function ConverterTool({ locale }: { locale: Locale }) {
     if (inputRef.current) inputRef.current.value = '';
   };
 
-  const handleFile = useCallback(async (file: File) => {
+  const handleFiles = useCallback(async (list: FileList | File[]) => {
+    const files = Array.from(list);
+    if (files.length === 0) return;
     setError(null);
-    if (file.size > MAX_BYTES) return setError('too-big');
+    if (files.reduce((sum, f) => sum + f.size, 0) > MAX_BYTES) return setError('too-big');
     setPhase('loading');
     try {
-      const { loadChatFile } = await import('@/lib/whatsapp/load');
-      const bytes = new Uint8Array(await file.arrayBuffer());
-      const loaded = await loadChatFile({ name: file.name, bytes });
+      const { loadChatFiles } = await import('@/lib/whatsapp/load');
+      const loaded = await loadChatFiles(
+        await Promise.all(files.map(async (f) => ({ name: f.name, bytes: new Uint8Array(await f.arrayBuffer()) })))
+      );
       setChat(loaded);
       setMe('');
       setFrom(dayKey(loaded.messages[0].time));
@@ -221,8 +224,7 @@ export default function ConverterTool({ locale }: { locale: Locale }) {
           onDrop={(e) => {
             e.preventDefault();
             setDragging(false);
-            const f = e.dataTransfer.files?.[0];
-            if (f) handleFile(f);
+            if (e.dataTransfer.files?.length) handleFiles(e.dataTransfer.files);
           }}
           className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed px-6 py-12 text-center transition ${
             dragging ? 'border-leaf bg-leaf-light' : 'border-sand hover:border-leaf'
@@ -244,11 +246,11 @@ export default function ConverterTool({ locale }: { locale: Locale }) {
           <input
             ref={inputRef}
             type="file"
-            accept=".zip,.txt,application/zip,text/plain"
+            accept=".zip,.txt,application/zip,text/plain,image/*,audio/*,video/*"
+            multiple
             className="sr-only"
             onChange={(e) => {
-              const f = e.target.files?.[0];
-              if (f) handleFile(f);
+              if (e.target.files?.length) handleFiles(e.target.files);
             }}
           />
         </label>

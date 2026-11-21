@@ -69,7 +69,7 @@ const es: UiStrings = {
   },
   tool: {
     drop: 'Suelta aquí la exportación de tu chat',
-    dropHint: 'Archivo .zip (con fotos) o .txt exportado desde WhatsApp',
+    dropHint: 'El .zip exportado desde WhatsApp, o el .txt junto con sus fotos',
     choose: 'Elegir archivo',
     loading: 'Leyendo la conversación…',
     errors: {
@@ -165,7 +165,7 @@ const pt: UiStrings = {
   },
   tool: {
     drop: 'Solte aqui a exportação da sua conversa',
-    dropHint: 'Arquivo .zip (com fotos) ou .txt exportado do WhatsApp',
+    dropHint: 'O .zip exportado do WhatsApp, ou o .txt junto com as fotos',
     choose: 'Escolher arquivo',
     loading: 'Lendo a conversa…',
     errors: {
@@ -261,7 +261,7 @@ const it: UiStrings = {
   },
   tool: {
     drop: 'Trascina qui l’esportazione della chat',
-    dropHint: 'File .zip (con foto) o .txt esportato da WhatsApp',
+    dropHint: 'Lo .zip esportato da WhatsApp, oppure il .txt insieme alle foto',
     choose: 'Scegli file',
     loading: 'Lettura della chat…',
     errors: {
@@ -357,7 +357,7 @@ const fr: UiStrings = {
   },
   tool: {
     drop: "Déposez ici l'export de votre conversation",
-    dropHint: 'Fichier .zip (avec photos) ou .txt exporté depuis WhatsApp',
+    dropHint: 'Le .zip exporté depuis WhatsApp, ou le .txt avec ses photos',
     choose: 'Choisir un fichier',
     loading: 'Lecture de la conversation…',
     errors: {
@@ -453,7 +453,7 @@ const en: UiStrings = {
   },
   tool: {
     drop: 'Drop your chat export here',
-    dropHint: '.zip file (with photos) or .txt exported from WhatsApp',
+    dropHint: 'The .zip exported from WhatsApp, or the .txt together with its photos',
     choose: 'Choose file',
     loading: 'Reading the chat…',
     errors: {

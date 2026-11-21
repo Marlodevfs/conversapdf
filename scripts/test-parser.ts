@@ -5,7 +5,7 @@
 import assert from 'node:assert/strict';
 import { zipSync, strToU8 } from 'fflate';
 import { parseChat } from '../lib/whatsapp/parse';
-import { loadChatFile, titleFromFileName } from '../lib/whatsapp/load';
+import { loadChatFile, loadChatFiles, titleFromFileName } from '../lib/whatsapp/load';
 
 const fmt = (t: number) => new Date(t).toISOString().slice(0, 19).replace('T', ' ');
 let passed = 0;
@@ -160,6 +160,16 @@ async function main() {
     assert.equal(c.messages.length, 7);
     assert.ok(c.media['00000007-PHOTO-2024-03-13-18-20-11.jpg']);
     assert.match(c.sha256, /^[0-9a-f]{64}$/);
+  });
+
+  await test('Android separate files: .txt plus photos selected together', async () => {
+    const c = await loadChatFiles([
+      { name: 'IMG-20240315-WA0003.jpg', bytes: new Uint8Array([0xff, 0xd8, 0xff, 0xd9]) },
+      { name: 'Conversa do WhatsApp com Maria.txt', bytes: strToU8(androidPortuguese) },
+    ]);
+    assert.equal(c.title, 'Maria');
+    assert.ok(c.media['IMG-20240315-WA0003.jpg']);
+    assert.equal(c.messages[3].attachment, 'IMG-20240315-WA0003.jpg');
   });
 
   await test('Titles from Android file names', () => {
