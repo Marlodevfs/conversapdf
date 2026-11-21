@@ -39,7 +39,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body>
-        <header className="sticky top-0 z-20 border-b border-sand/80 bg-paper/85 backdrop-blur-md">
+        <header className="sticky top-0 z-40 border-b border-sand/80 bg-paper/85 backdrop-blur-md">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
             <Link href={`/${locale}`} aria-label="ConversaPDF">
               <Logo className="text-xl" />
@@ -54,7 +54,7 @@ export default async function LocaleLayout({
             </div>
           </div>
         </header>
-        <main>{children}</main>
+        <main className="relative z-0">{children}</main>
         <SiteFooter locale={locale} t={t} />
         {siteConfig.goatcounter && (
           <Script
