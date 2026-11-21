@@ -34,7 +34,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: `${page.title} | ConversaPDF`,
       description: first.length > 155 ? `${first.slice(0, 152).replace(/\s+\S*$/, '')}…` : first,
-      alternates: { canonical: `${siteConfig.url}/${locale}/${slug}` },
+      alternates: {
+        canonical: `${siteConfig.url}/${locale}/${slug}`,
+        languages: Object.fromEntries(locales.map((l) => [l, `${siteConfig.url}/${l}/${slug}`])),
+      },
     };
   }
   if (slug === analyzer(locale).slug) {

@@ -5,11 +5,27 @@ import { ui, type UiStrings } from '@/lib/i18n/ui';
 import { guideChrome, guidesFor } from '@/lib/guides';
 import { analyzer } from '@/lib/analyzer/i18n';
 
+const contact: Record<Locale, string> = {
+  es: '¿Una pregunta? Escríbenos:',
+  pt: 'Alguma dúvida? Escreva para:',
+  it: 'Una domanda? Scrivici:',
+  fr: 'Une question ? Écrivez-nous :',
+  en: 'Questions? Email us:',
+};
+
 export default function SiteFooter({ locale, t }: { locale: Locale; t: UiStrings }) {
   return (
     <footer className="mt-16 bg-leaf-dark text-white">
       <div className="mx-auto max-w-6xl px-5 py-14 text-sm text-white/70">
-        <Logo inverse className="mb-10 text-xl text-white" />
+        <div className="mb-10 flex flex-col gap-4 border-b border-white/15 pb-10 sm:flex-row sm:items-end sm:justify-between">
+          <Logo inverse className="text-xl text-white" />
+          <p className="text-base">
+            <span className="text-white/70">{contact[locale]} </span>
+            <a href={`mailto:${siteConfig.contact.email}`} className="font-semibold text-white underline decoration-marker decoration-2 underline-offset-4">
+              {siteConfig.contact.email}
+            </a>
+          </p>
+        </div>
         <nav aria-label={guideChrome(locale).guidesTitle} className="mb-6">
           <p className="mb-3 font-semibold text-white">{guideChrome(locale).guidesTitle}</p>
           <ul className="grid gap-x-5 gap-y-1 sm:grid-cols-2">
@@ -28,7 +44,6 @@ export default function SiteFooter({ locale, t }: { locale: Locale; t: UiStrings
           <Link href={`/${locale}/privacy`} className="hover:text-white">{t.footer.privacy}</Link>
           <Link href={`/${locale}/terms`} className="hover:text-white">{t.footer.terms}</Link>
           <Link href={`/${locale}/refund`} className="hover:text-white">{t.footer.refund}</Link>
-          <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-white">{siteConfig.contact.email}</a>
         </nav>
         <nav aria-label={t.footer.languages} className="mb-4 flex flex-wrap gap-x-4 gap-y-2">
           {locales.map((l) => (

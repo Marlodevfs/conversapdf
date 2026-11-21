@@ -7,6 +7,7 @@ import { isLocale, locales, siteConfig } from '@/config/site';
 import { ui } from '@/lib/i18n/ui';
 import Logo from '@/components/Logo';
 import SiteFooter from '@/components/SiteFooter';
+import LanguageMenu from '@/components/LanguageMenu';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -43,11 +44,14 @@ export default async function LocaleLayout({
             <Link href={`/${locale}`} aria-label="ConversaPDF">
               <Logo className="text-xl" />
             </Link>
-            <nav className="hidden gap-7 text-[15px] font-medium text-ink/75 sm:flex">
-              <a href={`/${locale}#how`} className="hover:text-ink">{t.nav.how}</a>
-              <a href={`/${locale}#pricing`} className="hover:text-ink">{t.nav.pricing}</a>
-              <a href={`/${locale}#faq`} className="hover:text-ink">{t.nav.faq}</a>
-            </nav>
+            <div className="flex items-center gap-7">
+              <nav className="hidden gap-7 text-[15px] font-medium text-ink/75 md:flex">
+                <a href={`/${locale}#how`} className="hover:text-ink">{t.nav.how}</a>
+                <a href={`/${locale}#pricing`} className="hover:text-ink">{t.nav.pricing}</a>
+                <a href={`/${locale}#faq`} className="hover:text-ink">{t.nav.faq}</a>
+              </nav>
+              <LanguageMenu current={locale} label={t.footer.languages} langs={locales.map((l) => ({ code: l, name: ui(l).langName }))} />
+            </div>
           </div>
         </header>
         <main>{children}</main>
