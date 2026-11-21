@@ -12,7 +12,7 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export const viewport: Viewport = { themeColor: '#1d6b4f', width: 'device-width', initialScale: 1 };
+export const viewport: Viewport = { themeColor: '#155741', width: 'device-width', initialScale: 1 };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -33,15 +33,15 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body>
-        <header className="sticky top-0 z-20 border-b border-sand bg-paper/90 backdrop-blur">
-          <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-3">
+        <header className="sticky top-0 z-20 border-b border-sand/80 bg-paper/85 backdrop-blur-md">
+          <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
             <Link href={`/${locale}`} aria-label="ConversaPDF">
-              <Logo className="text-lg" />
+              <Logo className="text-xl" />
             </Link>
-            <nav className="hidden gap-6 text-sm sm:flex">
-              <a href={`/${locale}#how`} className="hover:text-leaf">{t.nav.how}</a>
-              <a href={`/${locale}#pricing`} className="hover:text-leaf">{t.nav.pricing}</a>
-              <a href={`/${locale}#faq`} className="hover:text-leaf">{t.nav.faq}</a>
+            <nav className="hidden gap-7 text-[15px] font-medium text-ink/75 sm:flex">
+              <a href={`/${locale}#how`} className="hover:text-ink">{t.nav.how}</a>
+              <a href={`/${locale}#pricing`} className="hover:text-ink">{t.nav.pricing}</a>
+              <a href={`/${locale}#faq`} className="hover:text-ink">{t.nav.faq}</a>
             </nav>
           </div>
         </header>

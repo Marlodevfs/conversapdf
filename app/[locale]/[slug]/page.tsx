@@ -65,7 +65,7 @@ function LegalArticle({ locale, slug }: { locale: Locale; slug: LegalSlug }) {
   const page = legalPage(locale, slug);
   return (
     <article className="mx-auto max-w-3xl px-5 py-12">
-      <h1 className="mb-8 text-3xl font-bold">{page.title}</h1>
+      <h1 className="mb-8 text-4xl font-extrabold tracking-display">{page.title}</h1>
       {page.sections.map((s) => (
         <section key={s.h} className="mb-6">
           <h2 className="mb-2 text-lg font-semibold">{s.h}</h2>
@@ -123,12 +123,12 @@ function GuideArticle({ locale, guide: g }: { locale: Locale; guide: Guide }) {
           <span className="mx-2">›</span>
           <span>{c.guidesTitle}</span>
         </nav>
-        <h1 className="text-3xl font-bold leading-tight sm:text-4xl">{g.h1}</h1>
-        <p className="mt-4 text-lg text-ink/75">{g.intro}</p>
+        <h1 className="text-[clamp(2rem,4.6vw,3.2rem)] font-extrabold leading-[1.05] tracking-display">{g.h1}</h1>
+        <p className="mt-5 text-lg leading-relaxed text-ink/75">{g.intro}</p>
 
         {g.sections.map((s) => (
           <section key={s.h} className="mt-8">
-            <h2 className="mb-3 text-xl font-bold">{s.h}</h2>
+            <h2 className="mb-3 text-2xl font-bold tracking-tight">{s.h}</h2>
             {s.p?.map((p) => (
               <p key={p} className="mb-3 text-ink/80">{p}</p>
             ))}
@@ -146,7 +146,7 @@ function GuideArticle({ locale, guide: g }: { locale: Locale; guide: Guide }) {
         ))}
       </article>
 
-      <section className="mx-auto max-w-5xl px-5 py-8">
+      <section className="mx-auto max-w-6xl px-5 py-8">
         <h2 className="mb-2 text-2xl font-bold">{c.toolTitle}</h2>
         <p className="mb-5 flex items-center gap-2 text-sm font-medium text-leaf-dark">
           <ShieldCheck className="h-4 w-4" aria-hidden /> {t.hero.privacy}
@@ -171,7 +171,7 @@ function GuideArticle({ locale, guide: g }: { locale: Locale; guide: Guide }) {
         <ul className="grid gap-2 sm:grid-cols-2">
           {related.map((r) => (
             <li key={r.key}>
-              <Link href={`/${locale}/${r.slug}`} className="block rounded-xl border border-sand bg-white px-4 py-3 hover:border-leaf">
+              <Link href={`/${locale}/${r.slug}`} className="block rounded-xl border border-sand bg-white px-4 py-3 font-medium hover:border-leaf">
                 {r.label}
               </Link>
             </li>

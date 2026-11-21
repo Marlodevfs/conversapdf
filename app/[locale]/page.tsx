@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Check, ShieldCheck } from 'lucide-react';
+import { Check, Lock } from 'lucide-react';
+import SamplePage from '@/components/SamplePage';
 import { isLocale, locales, siteConfig, type Locale } from '@/config/site';
 import { ui } from '@/lib/i18n/ui';
 import { intlLocale } from '@/lib/i18n/pdf';
@@ -69,77 +70,92 @@ export default async function Home({ params }: Props) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <section className="mx-auto max-w-5xl px-5 pb-10 pt-12 sm:pt-16">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-leaf">{t.hero.kicker}</p>
-        <h1 className="max-w-3xl text-3xl font-bold leading-tight sm:text-5xl">{t.hero.title}</h1>
-        <p className="mt-4 max-w-2xl text-lg text-ink/75">{t.hero.subtitle}</p>
-        <p className="mt-3 flex items-center gap-2 text-sm font-medium text-leaf-dark">
-          <ShieldCheck className="h-4 w-4" aria-hidden /> {t.hero.privacy}
-        </p>
-        <div className="mt-8">
-          <ConverterTool locale={locale} />
+      <section className="mx-auto grid max-w-6xl gap-12 px-5 pb-16 pt-10 sm:pt-14 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,.8fr)] lg:gap-16">
+        <div>
+          <h1 className="max-w-[17ch] text-[clamp(2.35rem,5.2vw,4.25rem)] font-extrabold leading-[1.02] tracking-display">{t.hero.title}</h1>
+          <p className="mt-5 max-w-[56ch] text-lg leading-relaxed text-ink/70">{t.hero.subtitle}</p>
+          <div className="mt-9">
+            <ConverterTool locale={locale} />
+          </div>
+        </div>
+        <div className="lg:pt-24">
+          <SamplePage locale={locale} />
         </div>
       </section>
 
-      <section id="how" className="mx-auto max-w-5xl scroll-mt-20 px-5 py-12">
-        <h2 className="text-2xl font-bold sm:text-3xl">{t.howTitle}</h2>
-        <p className="mt-2 max-w-2xl text-ink/75">{t.howIntro}</p>
-        <div className="mt-6 grid gap-5 sm:grid-cols-2">
-          {[t.iphone, t.android].map((device) => (
-            <div key={device.title} className="rounded-2xl border border-sand bg-white p-6">
-              <h3 className="mb-3 text-lg font-semibold">{device.title}</h3>
-              <ol className="list-decimal space-y-2 pl-5 text-ink/80">
-                {device.steps.map((s) => (
-                  <li key={s}>{s}</li>
-                ))}
-              </ol>
-            </div>
-          ))}
+      <section id="how" className="scroll-mt-20 border-y border-sand bg-white">
+        <div className="mx-auto max-w-6xl px-5 py-16">
+          <h2 className="text-3xl font-extrabold tracking-display sm:text-4xl">{t.howTitle}</h2>
+          <p className="mt-3 max-w-[60ch] text-ink/70">{t.howIntro}</p>
+          <div className="mt-10 grid gap-12 md:grid-cols-2">
+            {[t.iphone, t.android].map((device) => (
+              <div key={device.title}>
+                <h3 className="border-b-2 border-ink pb-3 text-xl font-bold">{device.title}</h3>
+                <ol className="mt-2">
+                  {device.steps.map((s, i) => (
+                    <li key={s} className="flex gap-4 border-b border-sand py-3.5">
+                      <span className="w-5 shrink-0 text-lg font-extrabold tabular-nums text-leaf">{i + 1}</span>
+                      <span className="text-ink/85">{s}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 max-w-[60ch] text-ink/70">{t.howTip}</p>
         </div>
-        <p className="mt-5 text-ink/75">{t.howTip}</p>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 py-12">
-        <h2 className="text-2xl font-bold sm:text-3xl">{t.usesTitle}</h2>
-        <div className="mt-6 grid gap-5 sm:grid-cols-3">
+      <section className="mx-auto max-w-6xl px-5 py-16">
+        <h2 className="text-3xl font-extrabold tracking-display sm:text-4xl">{t.usesTitle}</h2>
+        <div className="mt-10 grid gap-10 md:grid-cols-3">
           {t.uses.map((u) => (
-            <div key={u.title} className="rounded-2xl bg-white p-6 shadow-sm">
-              <h3 className="mb-2 font-semibold">{u.title}</h3>
-              <p className="text-sm text-ink/75">{u.text}</p>
+            <div key={u.title}>
+              <h3 className="text-lg font-bold">{u.title}</h3>
+              <p className="mt-2 leading-relaxed text-ink/70">{u.text}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section id="pricing" className="mx-auto max-w-5xl scroll-mt-20 px-5 py-12">
-        <h2 className="text-2xl font-bold sm:text-3xl">{t.pricingTitle}</h2>
-        <p className="mt-2 text-ink/75">{t.pricingIntro}</p>
-        <div className="mt-6 grid gap-5 sm:grid-cols-3">
-          {(['text', 'photos', 'proof'] as const).map((e) => (
-            <div key={e} className={`rounded-2xl border bg-white p-6 ${e === 'photos' ? 'border-leaf shadow-md' : 'border-sand'}`}>
-              <h3 className="text-lg font-semibold">{t.plans[e].name}</h3>
-              <p className="mt-1 text-3xl font-bold">{price.format(siteConfig.prices[e])}</p>
-              <p className="text-xs text-ink/60">{t.oneTime}</p>
-              <p className="mt-3 text-sm text-ink/75">{t.plans[e].desc}</p>
-              <ul className="mt-4 space-y-2 text-sm">
-                {t.plans[e].features.map((f) => (
-                  <li key={f} className="flex gap-2">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-leaf" aria-hidden /> {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+      <section id="pricing" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-16">
+        <h2 className="text-3xl font-extrabold tracking-display sm:text-4xl">{t.pricingTitle}</h2>
+        <p className="mt-3 max-w-[60ch] text-ink/70">{t.pricingIntro}</p>
+        <div className="mt-10 grid items-stretch gap-4 md:grid-cols-3">
+          {(['text', 'photos', 'proof'] as const).map((e) => {
+            const featured = e === 'photos';
+            return (
+              <div
+                key={e}
+                className={`flex flex-col rounded-2xl p-7 ${featured ? 'bg-leaf-dark text-white' : 'border border-sand bg-white'}`}
+              >
+                <h3 className="text-lg font-bold">{t.plans[e].name}</h3>
+                <p className="mt-4 text-5xl font-extrabold tabular-nums tracking-display">{price.format(siteConfig.prices[e])}</p>
+                <p className={`mt-1 text-sm ${featured ? 'text-white/65' : 'text-ink/55'}`}>{t.oneTime}</p>
+                <p className={`mt-5 ${featured ? 'text-white/85' : 'text-ink/75'}`}>{t.plans[e].desc}</p>
+                <ul className="mt-5 space-y-2.5 text-sm">
+                  {t.plans[e].features.map((f) => (
+                    <li key={f} className="flex gap-2.5">
+                      <Check className={`mt-0.5 h-4 w-4 shrink-0 ${featured ? 'text-marker' : 'text-leaf'}`} aria-hidden /> {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
+        <p className="mt-6 flex items-center gap-2 text-sm text-ink/60">
+          <Lock className="h-4 w-4" aria-hidden /> {t.hero.privacy}
+        </p>
       </section>
 
-      <section id="guides" className="mx-auto max-w-5xl scroll-mt-20 px-5 py-12">
-        <h2 className="text-2xl font-bold sm:text-3xl">{guideChrome(locale).guidesTitle}</h2>
-        <p className="mt-2 text-ink/70">{guideChrome(locale).guidesIntro}</p>
-        <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+      <section id="guides" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-16">
+        <h2 className="text-3xl font-extrabold tracking-display sm:text-4xl">{guideChrome(locale).guidesTitle}</h2>
+        <p className="mt-3 max-w-[60ch] text-ink/70">{guideChrome(locale).guidesIntro}</p>
+        <ul className="mt-8 grid border-t border-sand md:grid-cols-2 md:gap-x-12">
           {guidesFor(locale).map((g) => (
-            <li key={g.key}>
-              <Link href={`/${locale}/${g.slug}`} className="block rounded-xl border border-sand bg-white px-4 py-3 font-medium hover:border-leaf">
+            <li key={g.key} className="border-b border-sand">
+              <Link href={`/${locale}/${g.slug}`} className="block py-4 font-medium decoration-leaf decoration-2 underline-offset-4 hover:underline">
                 {g.label}
               </Link>
             </li>
@@ -147,13 +163,16 @@ export default async function Home({ params }: Props) {
         </ul>
       </section>
 
-      <section id="faq" className="mx-auto max-w-3xl scroll-mt-20 px-5 py-12">
-        <h2 className="text-2xl font-bold sm:text-3xl">{t.faqTitle}</h2>
-        <div className="mt-6 divide-y divide-sand rounded-2xl border border-sand bg-white">
+      <section id="faq" className="mx-auto max-w-3xl scroll-mt-20 px-5 py-16">
+        <h2 className="text-3xl font-extrabold tracking-display sm:text-4xl">{t.faqTitle}</h2>
+        <div className="mt-8 border-t border-sand">
           {t.faqs.map((f) => (
-            <details key={f.q} className="group p-5">
-              <summary className="cursor-pointer list-none font-semibold">{f.q}</summary>
-              <p className="mt-2 text-ink/75">{f.a}</p>
+            <details key={f.q} className="group border-b border-sand">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-lg font-semibold [&::-webkit-details-marker]:hidden">
+                {f.q}
+                <span aria-hidden className="mt-1 text-xl leading-none text-leaf transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <p className="-mt-1 max-w-[65ch] pb-6 leading-relaxed text-ink/75">{f.a}</p>
             </details>
           ))}
         </div>

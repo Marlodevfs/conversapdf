@@ -1,15 +1,22 @@
-export default function Logo({ className = '' }: { className?: string }) {
+/** Mark: a chat bubble that is also a page, with a highlighter-yellow dog-ear. */
+export function LogoMark({ className = 'h-8 w-8', inverse = false }: { className?: string; inverse?: boolean }) {
+  const body = inverse ? '#ffffff' : '#155741';
+  const line = inverse ? '#0c3b2c' : '#ffffff';
   return (
-    <span className={`inline-flex items-center gap-2 font-bold ${className}`}>
-      <svg viewBox="0 0 64 64" className="h-7 w-7" aria-hidden>
-        <rect x="10" y="6" width="44" height="52" rx="6" fill="#1d6b4f" />
-        <path d="M20 20h24a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H30l-7 6v-6h-3a4 4 0 0 1-4-4V24a4 4 0 0 1 4-4z" fill="#fbf8f2" />
-        <rect x="22" y="26" width="18" height="3" rx="1.5" fill="#1d6b4f" />
-        <rect x="22" y="31" width="12" height="3" rx="1.5" fill="#1d6b4f" />
-      </svg>
-      <span>
-        Conversa<span className="text-leaf">PDF</span>
-      </span>
+    <svg viewBox="0 0 64 64" className={className} aria-hidden>
+      <path d="M14 6H44L58 20V42a8 8 0 0 1-8 8H26L12 59l2-9a8 8 0 0 1-8-8V14a8 8 0 0 1 8-8z" fill={body} />
+      <path d="M44 6v10a4 4 0 0 0 4 4h10z" fill="#f5e14a" />
+      <rect x="14" y="23" width="26" height="4.5" rx="2.25" fill={line} />
+      <rect x="14" y="32" width="17" height="4.5" rx="2.25" fill={line} opacity={0.7} />
+    </svg>
+  );
+}
+
+export default function Logo({ className = '', inverse = false }: { className?: string; inverse?: boolean }) {
+  return (
+    <span className={`inline-flex items-center gap-2.5 font-extrabold tracking-[-0.03em] ${className}`}>
+      <LogoMark inverse={inverse} />
+      <span>ConversaPDF</span>
     </span>
   );
 }

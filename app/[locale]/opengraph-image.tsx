@@ -15,13 +15,13 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
   const t = ui(isLocale(locale) ? locale : 'en');
   return new ImageResponse(
     (
-      <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 80, background: '#f7f3ea', color: '#1f2a24' }}>
+      <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 80, background: '#f0f3ee', color: '#14201a' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 20, fontSize: 44, fontWeight: 700 }}>
-          <div style={{ width: 72, height: 72, borderRadius: 18, background: '#1f8a5b', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 26 }}>PDF</div>
+          <svg width="76" height="76" viewBox="0 0 64 64"><path d="M14 6H44L58 20V42a8 8 0 0 1-8 8H26L12 59l2-9a8 8 0 0 1-8-8V14a8 8 0 0 1 8-8z" fill="#155741" /><path d="M44 6v10a4 4 0 0 0 4 4h10z" fill="#f5e14a" /><rect x="14" y="23" width="26" height="4.5" rx="2.25" fill="#fff" /><rect x="14" y="32" width="17" height="4.5" rx="2.25" fill="#fff" opacity="0.7" /></svg>
           ConversaPDF
         </div>
         <div style={{ marginTop: 50, fontSize: 64, fontWeight: 700, lineHeight: 1.15 }}>{t.hero.title}</div>
-        <div style={{ marginTop: 30, fontSize: 32, color: '#1f8a5b' }}>conversapdf.com</div>
+        <div style={{ marginTop: 30, fontSize: 32, color: '#155741' }}>conversapdf.com</div>
       </div>
     ),
     size

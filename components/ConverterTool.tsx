@@ -207,7 +207,7 @@ export default function ConverterTool({ locale }: { locale: Locale }) {
   const messageCount = chat ? chat.messages.filter((m) => m.author).length : 0;
 
   return (
-    <div id="tool" className="rounded-2xl border border-sand bg-white p-5 shadow-sm sm:p-8">
+    <div id="tool" className="scroll-mt-24 rounded-[20px] border border-sand bg-white p-4 shadow-[0_1px_0_rgba(20,32,26,.04),0_24px_48px_-32px_rgba(20,32,26,.4)] sm:p-6">
       {error && (
         <p role="alert" className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-800">
           {t.tool.errors[error]}
@@ -226,8 +226,8 @@ export default function ConverterTool({ locale }: { locale: Locale }) {
             setDragging(false);
             if (e.dataTransfer.files?.length) handleFiles(e.dataTransfer.files);
           }}
-          className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed px-6 py-12 text-center transition ${
-            dragging ? 'border-leaf bg-leaf-light' : 'border-sand hover:border-leaf'
+          className={`flex cursor-pointer flex-col items-center justify-center rounded-[14px] border-2 border-dashed px-6 py-14 text-center transition-colors focus-within:border-leaf ${
+            dragging ? 'border-leaf bg-leaf-light' : 'border-sand bg-paper/50 hover:border-leaf'
           }`}
         >
           {phase === 'loading' ? (
@@ -237,10 +237,10 @@ export default function ConverterTool({ locale }: { locale: Locale }) {
             </>
           ) : (
             <>
-              <Upload className="mb-3 h-8 w-8 text-leaf" aria-hidden />
-              <span className="text-lg font-semibold">{t.tool.drop}</span>
+              <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-leaf-light"><Upload className="h-6 w-6 text-leaf" aria-hidden /></span>
+              <span className="text-xl font-bold tracking-tight">{t.tool.drop}</span>
               <span className="mt-1 text-sm text-ink/60">{t.tool.dropHint}</span>
-              <span className="mt-5 rounded-full bg-leaf px-5 py-2.5 text-sm font-semibold text-white">{t.tool.choose}</span>
+              <span className="mt-6 rounded-full bg-leaf px-6 py-3 font-semibold text-white shadow-[0_8px_20px_-10px_rgba(21,87,65,.8)]">{t.tool.choose}</span>
             </>
           )}
           <input
@@ -263,19 +263,19 @@ export default function ConverterTool({ locale }: { locale: Locale }) {
             <h3 className="text-lg font-semibold text-ink">{t.tool.summary}</h3>
           </div>
           <dl className="mb-6 grid grid-cols-2 gap-3 text-sm sm:grid-cols-4">
-            <div className="rounded-lg bg-paper p-3">
+            <div className="rounded-[10px] bg-paper p-3">
               <dt className="text-ink/60">{t.tool.participants}</dt>
               <dd className="font-semibold">{chat.authors.length}</dd>
             </div>
-            <div className="rounded-lg bg-paper p-3">
+            <div className="rounded-[10px] bg-paper p-3">
               <dt className="text-ink/60">{t.tool.messages}</dt>
               <dd className="font-semibold">{messageCount.toLocaleString(intlLocale[locale])}</dd>
             </div>
-            <div className="rounded-lg bg-paper p-3">
+            <div className="rounded-[10px] bg-paper p-3">
               <dt className="text-ink/60">{t.tool.photos}</dt>
               <dd className="font-semibold">{photoCount}</dd>
             </div>
-            <div className="rounded-lg bg-paper p-3">
+            <div className="rounded-[10px] bg-paper p-3">
               <dt className="text-ink/60">{t.tool.period}</dt>
               <dd className="font-semibold">
                 {dateFmt.format(chat.messages[0].time)} – {dateFmt.format(chat.messages[chat.messages.length - 1].time)}
@@ -356,17 +356,17 @@ export default function ConverterTool({ locale }: { locale: Locale }) {
             </div>
           )}
 
-          <h4 className="mb-3 font-semibold">{t.tool.choosePlan}</h4>
+          <h4 className="mb-3 text-lg font-bold">{t.tool.choosePlan}</h4>
           {!PAYMENTS_ENABLED && <p className="mb-3 text-sm text-ink/70">{t.tool.paymentsOff}</p>}
           <div className="grid gap-3 sm:grid-cols-3">
             {EDITIONS.map((e) => {
               const plan = t.plans[e];
               const owned = unlocked != null && RANK[unlocked] >= RANK[e];
               return (
-                <div key={e} className={`flex flex-col rounded-xl border p-4 ${e === 'photos' ? 'border-leaf' : 'border-sand'}`}>
+                <div key={e} className={`flex flex-col rounded-xl p-4 ${e === 'photos' ? 'border-2 border-leaf' : 'border border-sand'}`}>
                   <div className="flex items-baseline justify-between">
                     <span className="font-semibold">{plan.name}</span>
-                    <span className="font-bold">{price.format(siteConfig.prices[e])}</span>
+                    <span className="text-lg font-extrabold tabular-nums">{price.format(siteConfig.prices[e])}</span>
                   </div>
                   <p className="mt-1 flex-1 text-xs text-ink/70">{plan.desc}</p>
                   <button
