@@ -21,7 +21,7 @@ export const siteConfig = {
     publisherName: 'ConversaPDF',
     publisherStatus: '',
     publisherAddress: '',
-    host: { name: 'Vercel Inc.', address: '440 N Barranca Ave #4133, Covina, CA 91723, USA' },
+    host: { name: 'Cloudflare, Inc.', address: '101 Townsend St, San Francisco, CA 94107, USA' },
   },
   /** Prices shown on the site. Must match the Polar prices. */
   prices: { text: 4.99, photos: 8.99, proof: 14.99, currency: 'EUR' },
