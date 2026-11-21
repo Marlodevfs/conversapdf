@@ -338,4 +338,105 @@ export const guidesEn: Guide[] = [
       { q: 'Does it work with chats from years ago?', a: 'Yes, as long as they’re still in your WhatsApp so you can export them.' },
     ],
   },
+  {
+    "key": "instagram",
+    "slug": "instagram-dm-to-pdf",
+    "label": "Instagram DMs to PDF",
+    "metaTitle": "Instagram DMs to PDF: export and print a conversation",
+    "metaDescription": "Export your Instagram direct messages and turn a conversation into a readable PDF with dates, times and photos. Everything runs in your browser.",
+    "h1": "Instagram DMs to PDF: export and print a conversation",
+    "intro": "Instagram has no \"export chat\" button. You have to download your information, which gives you files nobody can read. ConversaPDF turns them into a clean PDF that looks like the conversation on your phone.",
+    "sections": [
+      {
+        "h": "1. Request your messages",
+        "steps": [
+          "In Instagram, open your profile, then the ☰ menu and Accounts Center.",
+          "Go to \"Your information and permissions\", then \"Export your information\" and \"Create export\".",
+          "Pick \"Export to device\", your account, then \"Customize information\": tick only \"Messages\".",
+          "Format: JSON (this matters). Choose the date range and start the export.",
+          "Instagram lets you know when the file is ready, usually within minutes to a few hours. Download the .zip."
+        ]
+      },
+      {
+        "h": "2. Turn it into a PDF",
+        "steps": [
+          "Drop the .zip as it is into the tool below, without unzipping it.",
+          "Pick the conversation from the list: the export holds all your chats.",
+          "Say who you are so your messages sit on the right, check the free preview and download the PDF."
+        ]
+      },
+      {
+        "h": "End-to-end encrypted chats",
+        "p": [
+          "End-to-end encrypted chats are not in the regular export. On a computer, Instagram lets you download them separately from \"Your activity\" › \"Download end-to-end encrypted data\", if secure storage is on. That file works in the tool too."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Are my messages uploaded to a server?",
+        "a": "No. The file is read in your browser and nothing is sent to ConversaPDF, not even the conversation you pick."
+      },
+      {
+        "q": "Why JSON?",
+        "a": "It is the format the tool reads reliably, with accents, emojis and photos. The HTML export is not supported."
+      },
+      {
+        "q": "Will the other person be notified?",
+        "a": "No. The export only concerns your account and sends no notification."
+      }
+    ]
+  },
+  {
+    "key": "messenger",
+    "slug": "messenger-chat-to-pdf",
+    "label": "Messenger chat to PDF",
+    "metaTitle": "Messenger chat to PDF: export and print your messages",
+    "metaDescription": "Export a Facebook Messenger conversation and turn it into a clear PDF with dates, times and photos. Private conversion, right in your browser.",
+    "h1": "Messenger chat to PDF: export and print your messages",
+    "intro": "When you export Facebook Messenger, your messages end up in technical files. ConversaPDF turns them into a readable, paginated document, for a case, a dispute or simply to keep a conversation that matters.",
+    "sections": [
+      {
+        "h": "1. Encrypted chats (most private conversations)",
+        "p": [
+          "Since 2024, private Messenger conversations are end-to-end encrypted. They are downloaded separately, from a computer:"
+        ],
+        "steps": [
+          "Open messenger.com and click your profile picture.",
+          "Go to \"Privacy & safety\", then \"End-to-end encrypted chats\" and \"Message storage\".",
+          "Choose to download your secure storage data, then save the file."
+        ]
+      },
+      {
+        "h": "2. Other conversations: Facebook export",
+        "steps": [
+          "In Facebook, open Accounts Center › \"Your information and permissions\" › \"Export your information\".",
+          "Create an export to your device and tick only \"Messages\".",
+          "Format: JSON. Start the export, then download the .zip when Facebook lets you know."
+        ]
+      },
+      {
+        "h": "3. Turn it into a PDF",
+        "steps": [
+          "Drop the file or the .zip as it is into the tool below.",
+          "If the export holds several conversations, pick the one you need.",
+          "Say who you are, check the free preview and download the PDF."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "My conversation is not in the Facebook export",
+        "a": "It is most likely end-to-end encrypted. Download it from messenger.com, under \"Message storage\", as explained above."
+      },
+      {
+        "q": "Are my messages uploaded to a server?",
+        "a": "No. Everything is read and converted in your browser. ConversaPDF never sees your messages."
+      },
+      {
+        "q": "Are photos included?",
+        "a": "Yes, when they are in the export. Pick the \"With photos\" edition to see them in place in the conversation."
+      }
+    ]
+  },
 ];

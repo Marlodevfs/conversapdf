@@ -1,6 +1,6 @@
 import type { Faq } from '@/lib/i18n/ui';
 
-export const guideKeys = ['iphone', 'android', 'photos', 'evidence', 'group', 'print', 'txt', 'save'] as const;
+export const guideKeys = ['iphone', 'android', 'photos', 'evidence', 'group', 'print', 'txt', 'save', 'instagram', 'messenger'] as const;
 export type GuideKey = (typeof guideKeys)[number];
 
 export interface GuideSection {

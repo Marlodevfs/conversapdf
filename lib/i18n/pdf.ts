@@ -2,7 +2,8 @@ import type { Locale } from '@/config/site';
 
 export interface PdfStrings {
   page: (n: number, total: number) => string;
-  conversation: string;
+  /** Takes the app name: WhatsApp, Instagram, Messenger. */
+  conversation: (app: string) => string;
   participants: string;
   period: string;
   messages: string;
@@ -10,7 +11,7 @@ export interface PdfStrings {
   fileFingerprint: string;
   generatedOn: string;
   proofTitle: string;
-  proofNote: string;
+  proofNote: (app: string) => string;
   attachment: string;
   photoMissing: string;
   mediaOmitted: string;
@@ -23,7 +24,7 @@ export interface PdfStrings {
 const strings: Record<Locale, PdfStrings> = {
   es: {
     page: (n, t) => `Página ${n} de ${t}`,
-    conversation: 'Conversación de WhatsApp',
+    conversation: (a) => `Conversación de ${a}`,
     participants: 'Participantes',
     period: 'Periodo',
     messages: 'Mensajes',
@@ -32,18 +33,19 @@ const strings: Record<Locale, PdfStrings> = {
     generatedOn: 'Documento generado el',
     proofTitle: 'Registro de conversación',
     proofNote:
-      'Este documento reproduce fielmente el archivo exportado desde WhatsApp. La huella SHA-256 permite comprobar que el archivo de origen no ha sido modificado: si se vuelve a calcular sobre el mismo archivo, el resultado es idéntico. Este documento no es una certificación ni un asesoramiento jurídico; su valor como prueba lo decide el tribunal.',
+      (a) =>
+      `Este documento reproduce fielmente el archivo exportado desde ${a}. La huella SHA-256 permite comprobar que el archivo de origen no ha sido modificado: si se vuelve a calcular sobre el mismo archivo, el resultado es idéntico. Este documento no es una certificación ni un asesoramiento jurídico; su valor como prueba lo decide el tribunal.`,
     attachment: 'Archivo adjunto',
     photoMissing: 'Foto no incluida en la exportación',
     mediaOmitted: 'Archivo no incluido en la exportación',
     deleted: 'Mensaje eliminado',
     previewWatermark: 'VISTA PREVIA',
     previewEnd: 'Fin de la vista previa. Descarga el PDF completo en conversapdf.com',
-    notAffiliated: 'ConversaPDF no está afiliado a WhatsApp ni a Meta.',
+    notAffiliated: 'ConversaPDF no está afiliado a WhatsApp, Instagram, Messenger ni Meta.',
   },
   pt: {
     page: (n, t) => `Página ${n} de ${t}`,
-    conversation: 'Conversa do WhatsApp',
+    conversation: (a) => `Conversa do ${a}`,
     participants: 'Participantes',
     period: 'Período',
     messages: 'Mensagens',
@@ -52,18 +54,19 @@ const strings: Record<Locale, PdfStrings> = {
     generatedOn: 'Documento gerado em',
     proofTitle: 'Registro de conversa',
     proofNote:
-      'Este documento reproduz fielmente o arquivo exportado do WhatsApp. A impressão digital SHA-256 permite verificar que o arquivo de origem não foi alterado: se calculada novamente sobre o mesmo arquivo, o resultado é idêntico. Este documento não é uma certificação nem aconselhamento jurídico; o seu valor como prova é decidido pelo tribunal.',
+      (a) =>
+      `Este documento reproduz fielmente o arquivo exportado do ${a}. A impressão digital SHA-256 permite verificar que o arquivo de origem não foi alterado: se calculada novamente sobre o mesmo arquivo, o resultado é idêntico. Este documento não é uma certificação nem aconselhamento jurídico; o seu valor como prova é decidido pelo tribunal.`,
     attachment: 'Anexo',
     photoMissing: 'Foto não incluída na exportação',
     mediaOmitted: 'Arquivo não incluído na exportação',
     deleted: 'Mensagem apagada',
     previewWatermark: 'PRÉ-VISUALIZAÇÃO',
     previewEnd: 'Fim da pré-visualização. Baixe o PDF completo em conversapdf.com',
-    notAffiliated: 'O ConversaPDF não é afiliado ao WhatsApp nem à Meta.',
+    notAffiliated: 'O ConversaPDF não é afiliado ao WhatsApp, Instagram, Messenger nem à Meta.',
   },
   it: {
     page: (n, t) => `Pagina ${n} di ${t}`,
-    conversation: 'Chat di WhatsApp',
+    conversation: (a) => `Chat di ${a}`,
     participants: 'Partecipanti',
     period: 'Periodo',
     messages: 'Messaggi',
@@ -72,18 +75,19 @@ const strings: Record<Locale, PdfStrings> = {
     generatedOn: 'Documento generato il',
     proofTitle: 'Registro della conversazione',
     proofNote:
-      "Questo documento riproduce fedelmente il file esportato da WhatsApp. L'impronta SHA-256 permette di verificare che il file di origine non sia stato modificato: ricalcolata sullo stesso file, dà lo stesso risultato. Questo documento non è una certificazione né una consulenza legale; il suo valore come prova è deciso dal giudice.",
+      (a) =>
+      `Questo documento riproduce fedelmente il file esportato da ${a}. L'impronta SHA-256 permette di verificare che il file di origine non sia stato modificato: ricalcolata sullo stesso file, dà lo stesso risultato. Questo documento non è una certificazione né una consulenza legale; il suo valore come prova è deciso dal giudice.`,
     attachment: 'Allegato',
     photoMissing: "Foto non inclusa nell'esportazione",
     mediaOmitted: "File non incluso nell'esportazione",
     deleted: 'Messaggio eliminato',
     previewWatermark: 'ANTEPRIMA',
     previewEnd: "Fine dell'anteprima. Scarica il PDF completo su conversapdf.com",
-    notAffiliated: 'ConversaPDF non è affiliato a WhatsApp né a Meta.',
+    notAffiliated: 'ConversaPDF non è affiliato a WhatsApp, Instagram, Messenger né a Meta.',
   },
   fr: {
     page: (n, t) => `Page ${n} sur ${t}`,
-    conversation: 'Conversation WhatsApp',
+    conversation: (a) => `Conversation ${a}`,
     participants: 'Participants',
     period: 'Période',
     messages: 'Messages',
@@ -92,18 +96,19 @@ const strings: Record<Locale, PdfStrings> = {
     generatedOn: 'Document généré le',
     proofTitle: 'Relevé de conversation',
     proofNote:
-      "Ce document reproduit fidèlement le fichier exporté depuis WhatsApp. L'empreinte SHA-256 permet de vérifier que le fichier d'origine n'a pas été modifié : recalculée sur le même fichier, elle donne le même résultat. Ce document n'est ni une certification ni un conseil juridique ; sa valeur de preuve est appréciée par le juge.",
+      (a) =>
+      `Ce document reproduit fidèlement le fichier exporté depuis ${a}. L'empreinte SHA-256 permet de vérifier que le fichier d'origine n'a pas été modifié : recalculée sur le même fichier, elle donne le même résultat. Ce document n'est ni une certification ni un conseil juridique ; sa valeur de preuve est appréciée par le juge.`,
     attachment: 'Pièce jointe',
     photoMissing: "Photo non incluse dans l'export",
     mediaOmitted: "Fichier non inclus dans l'export",
     deleted: 'Message supprimé',
     previewWatermark: 'APERÇU',
     previewEnd: "Fin de l'aperçu. Téléchargez le PDF complet sur conversapdf.com",
-    notAffiliated: "ConversaPDF n'est affilié ni à WhatsApp ni à Meta.",
+    notAffiliated: "ConversaPDF n'est affilié ni à WhatsApp, ni à Instagram, ni à Messenger, ni à Meta.",
   },
   en: {
     page: (n, t) => `Page ${n} of ${t}`,
-    conversation: 'WhatsApp conversation',
+    conversation: (a) => `${a} conversation`,
     participants: 'Participants',
     period: 'Period',
     messages: 'Messages',
@@ -112,14 +117,15 @@ const strings: Record<Locale, PdfStrings> = {
     generatedOn: 'Document generated on',
     proofTitle: 'Conversation record',
     proofNote:
-      'This document faithfully reproduces the file exported from WhatsApp. The SHA-256 fingerprint makes it possible to check that the source file was not modified: computed again on the same file, it gives the same result. This document is neither a certification nor legal advice; its weight as evidence is for the court to decide.',
+      (a) =>
+      `This document faithfully reproduces the file exported from ${a}. The SHA-256 fingerprint makes it possible to check that the source file was not modified: computed again on the same file, it gives the same result. This document is neither a certification nor legal advice; its weight as evidence is for the court to decide.`,
     attachment: 'Attachment',
     photoMissing: 'Photo not included in the export',
     mediaOmitted: 'File not included in the export',
     deleted: 'Deleted message',
     previewWatermark: 'PREVIEW',
     previewEnd: 'End of preview. Download the full PDF at conversapdf.com',
-    notAffiliated: 'ConversaPDF is not affiliated with WhatsApp or Meta.',
+    notAffiliated: 'ConversaPDF is not affiliated with WhatsApp, Instagram, Messenger or Meta.',
   },
 };
 
@@ -135,3 +141,6 @@ export const intlLocale: Record<Locale, string> = {
   fr: 'fr-FR',
   en: 'en-GB',
 };
+
+export const appName = (app: string | undefined) =>
+  app === 'instagram' ? 'Instagram' : app === 'messenger' ? 'Messenger' : app === 'meta' ? 'Instagram / Messenger' : 'WhatsApp';

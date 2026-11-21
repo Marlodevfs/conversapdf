@@ -338,4 +338,105 @@ export const guidesIt: Guide[] = [
       { q: 'Funziona con chat di anni fa?', a: 'Sì, purché siano ancora nel tuo WhatsApp per poterle esportare.' },
     ],
   },
+  {
+    "key": "instagram",
+    "slug": "chat-instagram-pdf",
+    "label": "Chat di Instagram in PDF",
+    "metaTitle": "Convertire una chat di Instagram in PDF",
+    "metaDescription": "Esporta i messaggi diretti di Instagram e trasforma una conversazione in un PDF leggibile, con date, orari e foto. Tutto avviene nel tuo browser.",
+    "h1": "Chat di Instagram in PDF: esportare e stampare i tuoi DM",
+    "intro": "Instagram non ha un pulsante «esporta chat». Bisogna scaricare le proprie informazioni, e il risultato sono file illeggibili. ConversaPDF li trasforma in un PDF pulito, come la chat sul telefono.",
+    "sections": [
+      {
+        "h": "1. Richiedi l’esportazione dei messaggi",
+        "steps": [
+          "In Instagram apri il profilo, poi il menu ☰ e il Centro gestione account.",
+          "Vai su «Le tue informazioni e autorizzazioni», poi «Esporta le tue informazioni» e «Crea esportazione».",
+          "Scegli «Esporta sul dispositivo», il tuo account e «Personalizza informazioni»: seleziona solo «Messaggi».",
+          "Formato: JSON (importante). Scegli il periodo e avvia l’esportazione.",
+          "Instagram ti avvisa quando il file è pronto, di solito da pochi minuti a qualche ora. Scarica lo .zip."
+        ]
+      },
+      {
+        "h": "2. Convertilo in PDF",
+        "steps": [
+          "Trascina lo .zip così com’è nello strumento qui sotto, senza estrarlo.",
+          "Scegli la chat dall’elenco: l’esportazione contiene tutte le tue conversazioni.",
+          "Indica chi sei per mettere i tuoi messaggi a destra, controlla l’anteprima gratuita e scarica il PDF."
+        ]
+      },
+      {
+        "h": "Chat crittografate end-to-end",
+        "p": [
+          "Le chat crittografate end-to-end non compaiono nell’esportazione normale. Da computer, Instagram permette di scaricarle a parte da «La tua attività» › «Scarica i dati crittografati end-to-end», se l’archiviazione sicura è attiva. Anche quel file funziona nello strumento."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "I miei messaggi vengono caricati su un server?",
+        "a": "No. Il file viene letto nel browser e nulla viene inviato a ConversaPDF, nemmeno la chat scelta."
+      },
+      {
+        "q": "Perché JSON?",
+        "a": "È il formato che lo strumento legge in modo affidabile, con accenti, emoji e foto. L’esportazione in HTML non è supportata."
+      },
+      {
+        "q": "L’altra persona viene avvisata?",
+        "a": "No. L’esportazione riguarda solo il tuo account e non invia alcuna notifica."
+      }
+    ]
+  },
+  {
+    "key": "messenger",
+    "slug": "chat-messenger-pdf",
+    "label": "Chat di Messenger in PDF",
+    "metaTitle": "Convertire una chat di Messenger in PDF",
+    "metaDescription": "Esporta una conversazione di Facebook Messenger e trasformala in un PDF chiaro, con date, orari e foto. Conversione privata, nel browser.",
+    "h1": "Chat di Messenger in PDF: esportare e stampare i tuoi messaggi",
+    "intro": "Quando esporti Facebook Messenger, i messaggi finiscono in file tecnici. ConversaPDF li trasforma in un documento leggibile e impaginato, per una causa, una contestazione o semplicemente per conservare una conversazione importante.",
+    "sections": [
+      {
+        "h": "1. Chat crittografate (la maggior parte delle conversazioni private)",
+        "p": [
+          "Dal 2024 le conversazioni private di Messenger sono crittografate end-to-end. Si scaricano a parte, da computer:"
+        ],
+        "steps": [
+          "Apri messenger.com e clicca sulla tua foto profilo.",
+          "Vai su «Privacy e sicurezza», poi «Chat crittografate end-to-end» e «Archiviazione dei messaggi».",
+          "Scegli di scaricare i dati dell’archiviazione sicura e salva il file."
+        ]
+      },
+      {
+        "h": "2. Altre conversazioni: esportazione di Facebook",
+        "steps": [
+          "In Facebook apri il Centro gestione account › «Le tue informazioni e autorizzazioni» › «Esporta le tue informazioni».",
+          "Crea un’esportazione sul dispositivo e seleziona solo «Messaggi».",
+          "Formato: JSON. Avvia l’esportazione e scarica lo .zip quando Facebook ti avvisa."
+        ]
+      },
+      {
+        "h": "3. Convertilo in PDF",
+        "steps": [
+          "Trascina il file o lo .zip così com’è nello strumento qui sotto.",
+          "Se l’esportazione contiene più conversazioni, scegli quella che ti serve.",
+          "Indica chi sei, controlla l’anteprima gratuita e scarica il PDF."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "La mia chat non è nell’esportazione di Facebook",
+        "a": "Probabilmente è crittografata end-to-end. Scaricala da messenger.com, in «Archiviazione dei messaggi», come spiegato sopra."
+      },
+      {
+        "q": "I miei messaggi vengono caricati su un server?",
+        "a": "No. Tutto viene letto e convertito nel browser. ConversaPDF non vede mai i tuoi messaggi."
+      },
+      {
+        "q": "Le foto sono incluse?",
+        "a": "Sì, se sono nell’esportazione. Scegli l’edizione «Con foto» per vederle al loro posto nella conversazione."
+      }
+    ]
+  },
 ];

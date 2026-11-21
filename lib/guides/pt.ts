@@ -338,4 +338,105 @@ export const guidesPt: Guide[] = [
       { q: 'Funciona com conversas de anos atrás?', a: 'Sim, desde que elas ainda estejam no seu WhatsApp para serem exportadas.' },
     ],
   },
+  {
+    "key": "instagram",
+    "slug": "conversa-instagram-pdf",
+    "label": "Conversa do Instagram em PDF",
+    "metaTitle": "Converter uma conversa do Instagram em PDF",
+    "metaDescription": "Exporte suas mensagens diretas do Instagram e transforme uma conversa em PDF legível, com datas, horários e fotos. Tudo acontece no seu navegador.",
+    "h1": "Conversa do Instagram em PDF: exportar e imprimir suas DMs",
+    "intro": "O Instagram não tem um botão de «exportar conversa». É preciso baixar suas informações, e o resultado são arquivos ilegíveis. O ConversaPDF transforma isso em um PDF limpo, como a conversa no seu celular.",
+    "sections": [
+      {
+        "h": "1. Peça a exportação das suas mensagens",
+        "steps": [
+          "No Instagram, abra seu perfil, depois o menu ☰ e a Central de Contas.",
+          "Entre em «Suas informações e permissões», depois «Exportar suas informações» e «Criar exportação».",
+          "Escolha «Exportar para o dispositivo», sua conta e «Personalizar informações»: marque só «Mensagens».",
+          "Formato: JSON (importante). Escolha o período e inicie a exportação.",
+          "O Instagram avisa quando o arquivo fica pronto, normalmente entre alguns minutos e algumas horas. Baixe o .zip."
+        ]
+      },
+      {
+        "h": "2. Converta em PDF",
+        "steps": [
+          "Solte o .zip do jeito que veio na ferramenta abaixo, sem descompactar.",
+          "Escolha a conversa na lista: a exportação contém todas as suas conversas.",
+          "Diga quem é você para suas mensagens ficarem à direita, confira a prévia grátis e baixe o PDF."
+        ]
+      },
+      {
+        "h": "Conversas com criptografia de ponta a ponta",
+        "p": [
+          "As conversas com criptografia de ponta a ponta não aparecem na exportação normal. No computador, o Instagram permite baixá-las à parte em «Sua atividade» › «Baixar dados com criptografia de ponta a ponta», se o armazenamento seguro estiver ativado. Esse arquivo também funciona na ferramenta."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Minhas mensagens são enviadas para um servidor?",
+        "a": "Não. O arquivo é lido no seu navegador e nada é enviado ao ConversaPDF, nem mesmo a conversa escolhida."
+      },
+      {
+        "q": "Por que JSON?",
+        "a": "É o formato que a ferramenta lê de forma confiável, com acentos, emojis e fotos. A exportação em HTML não é compatível."
+      },
+      {
+        "q": "A outra pessoa é avisada?",
+        "a": "Não. A exportação diz respeito só à sua conta e não envia nenhuma notificação."
+      }
+    ]
+  },
+  {
+    "key": "messenger",
+    "slug": "conversa-messenger-pdf",
+    "label": "Conversa do Messenger em PDF",
+    "metaTitle": "Converter uma conversa do Messenger em PDF",
+    "metaDescription": "Exporte uma conversa do Facebook Messenger e transforme-a em um PDF claro, com datas, horários e fotos. Conversão privada, no seu navegador.",
+    "h1": "Conversa do Messenger em PDF: exportar e imprimir suas mensagens",
+    "intro": "Ao exportar o Facebook Messenger, suas mensagens ficam em arquivos técnicos. O ConversaPDF transforma isso em um documento legível e paginado, para um processo, um conflito ou só para guardar uma conversa importante.",
+    "sections": [
+      {
+        "h": "1. Conversas criptografadas (a maioria das conversas privadas)",
+        "p": [
+          "Desde 2024, as conversas privadas do Messenger têm criptografia de ponta a ponta. Elas são baixadas à parte, pelo computador:"
+        ],
+        "steps": [
+          "Abra messenger.com e clique na sua foto de perfil.",
+          "Vá em «Privacidade e segurança», depois «Conversas com criptografia de ponta a ponta» e «Armazenamento de mensagens».",
+          "Escolha baixar os dados do armazenamento seguro e salve o arquivo."
+        ]
+      },
+      {
+        "h": "2. Outras conversas: exportação do Facebook",
+        "steps": [
+          "No Facebook, abra a Central de Contas › «Suas informações e permissões» › «Exportar suas informações».",
+          "Crie uma exportação para o dispositivo e marque só «Mensagens».",
+          "Formato: JSON. Inicie a exportação e baixe o .zip quando o Facebook avisar."
+        ]
+      },
+      {
+        "h": "3. Converta em PDF",
+        "steps": [
+          "Solte o arquivo ou o .zip do jeito que veio na ferramenta abaixo.",
+          "Se a exportação tiver várias conversas, escolha a que você precisa.",
+          "Diga quem é você, confira a prévia grátis e baixe o PDF."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Minha conversa não está na exportação do Facebook",
+        "a": "Provavelmente ela tem criptografia de ponta a ponta. Baixe-a pelo messenger.com, em «Armazenamento de mensagens», como explicado acima."
+      },
+      {
+        "q": "Minhas mensagens são enviadas para um servidor?",
+        "a": "Não. Tudo é lido e convertido no seu navegador. O ConversaPDF nunca vê suas mensagens."
+      },
+      {
+        "q": "As fotos são incluídas?",
+        "a": "Sim, se estiverem na exportação. Escolha a edição «Com fotos» para vê-las no lugar certo da conversa."
+      }
+    ]
+  },
 ];

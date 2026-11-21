@@ -7,6 +7,7 @@ import { ui, type UiStrings } from '@/lib/i18n/ui';
 import { intlLocale } from '@/lib/i18n/pdf';
 import { analyzer } from '@/lib/analyzer/i18n';
 import type { LoadedChat } from '@/lib/whatsapp/load';
+import { useThreadPicker } from './ThreadPicker';
 import { computeStats, type ChatStats } from '@/lib/whatsapp/stats';
 import ConverterTool from '@/components/ConverterTool';
 
@@ -46,6 +47,8 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
     return Array.from({ length: 7 }, (_, i) => f.format(Date.UTC(2024, 0, 1 + i))); // 1 Jan 2024 is a Monday
   }, [locale]);
 
+  const { pickThread, picker } = useThreadPicker(locale);
+
   const handleFiles = async (list: FileList | File[]) => {
     const files = Array.from(list);
     if (!files.length) return;
@@ -55,13 +58,15 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
     try {
       const { loadChatFiles } = await import('@/lib/whatsapp/load');
       const loaded = await loadChatFiles(
-        await Promise.all(files.map(async (f) => ({ name: f.name, bytes: new Uint8Array(await f.arrayBuffer()) })))
+        await Promise.all(files.map(async (f) => ({ name: f.name, bytes: new Uint8Array(await f.arrayBuffer()) }))),
+        { pickThread }
       );
       setChat(loaded);
       setStats(computeStats(loaded.messages));
       requestAnimationFrame(() => resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
     } catch (e: any) {
-      setError((e?.code as ErrorCode) || 'generic');
+      if (e?.code !== 'cancelled') setError((e?.code as ErrorCode) || 'generic');
+      if (inputRef.current) inputRef.current.value = '';
     } finally {
       setLoading(false);
     }
@@ -82,6 +87,8 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
             {t.tool.errors[error]}
           </p>
         )}
+        {picker}
+        {!picker && (
         <label
           onDragOver={(e) => {
             e.preventDefault();
@@ -115,12 +122,13 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
           <input
             ref={inputRef}
             type="file"
-            accept=".zip,.txt,application/zip,text/plain,image/*,audio/*,video/*"
+            accept=".zip,.txt,.json,application/zip,text/plain,application/json,image/*,audio/*,video/*"
             multiple
             className="sr-only"
             onChange={(e) => e.target.files?.length && handleFiles(e.target.files)}
           />
         </label>
+        )}
         <p className="mt-5 flex items-center gap-2 text-xs text-ink/70">
           <Lock className="h-3.5 w-3.5" aria-hidden /> {t.hero.privacy}
         </p>

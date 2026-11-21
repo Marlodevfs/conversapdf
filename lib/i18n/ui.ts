@@ -36,6 +36,11 @@ export interface UiStrings {
     another: string;
     paymentsOff: string;
     paidReload: string;
+    threadsTitle: string;
+    threadsHint: (n: number) => string;
+    threadsSearch: string;
+    threadsCount: (n: number) => string;
+    threadsCancel: string;
   };
   plans: Record<'text' | 'photos' | 'proof', { name: string; desc: string; features: string[] }>;
   oneTime: string;
@@ -71,14 +76,14 @@ const es: UiStrings = {
   },
   tool: {
     drop: 'Suelta aquí la exportación de tu chat',
-    dropHint: 'El .zip exportado desde WhatsApp, o el .txt junto con sus fotos',
+    dropHint: 'El .zip de WhatsApp, o la exportación de Instagram o Messenger (JSON)',
     choose: 'Elegir archivo',
     loading: 'Leyendo la conversación…',
     errors: {
       'no-chat-file': 'No encontramos el chat dentro del .zip. Exporta de nuevo la conversación desde WhatsApp.',
       'bad-zip': 'No se puede abrir este .zip. Prueba a exportar de nuevo la conversación.',
       empty: 'El archivo está vacío.',
-      'not-whatsapp': 'Este archivo no parece una exportación de WhatsApp. Usa la opción «Exportar chat».',
+      'not-whatsapp': 'Este archivo no parece una exportación de WhatsApp, Instagram o Messenger. Consulta nuestras guías para exportar bien la conversación.',
       generic: 'Algo ha fallado. Inténtalo de nuevo.',
       payment: 'No hemos podido confirmar el pago. Si se te ha cobrado, escríbenos y lo solucionamos.',
       'too-big': 'El archivo es demasiado grande para tu navegador (más de 1 GB).',
@@ -103,6 +108,11 @@ const es: UiStrings = {
     another: 'Convertir otra conversación',
     paymentsOff: 'Las descargas de pago estarán disponibles muy pronto.',
     paidReload: 'Pago recibido. Vuelve a seleccionar tu conversación para descargar tu PDF.',
+    threadsTitle: '¿Qué conversación quieres convertir?',
+    threadsHint: (n) => `Tu exportación contiene ${n} conversaciones. Elige una.`,
+    threadsSearch: 'Buscar un nombre',
+    threadsCount: (n) => (n === 1 ? '1 mensaje' : `${n.toLocaleString('es')} mensajes`),
+    threadsCancel: 'Cancelar',
   },
   plans: {
     text: { name: 'Texto', desc: 'Toda la conversación, ordenada y paginada.', features: ['Nombres, fechas y horas', 'Números de página', 'Adjuntos indicados por su nombre'] },
@@ -139,6 +149,7 @@ const es: UiStrings = {
   },
   faqTitle: 'Preguntas frecuentes',
   faqs: [
+    { q: '¿Funciona con Instagram o Messenger?', a: 'Sí. Descarga tus mensajes de Instagram o Facebook en formato JSON y suelta el archivo: eliges la conversación y obtienes el mismo PDF. Nuestras guías explican cómo exportarlos.' },
     { q: '¿Mi conversación se sube a un servidor?', a: 'No. El archivo se lee y el PDF se crea directamente en tu navegador. Tu conversación y tus fotos nunca salen de tu dispositivo.' },
     { q: '¿Cómo exporto un chat de WhatsApp en iPhone o Android?', a: 'En iPhone: abre el chat, toca el nombre del contacto y luego «Exportar chat». En Android: ⋮ > Más > «Exportar chat». Elige incluir archivos para conservar las fotos y suelta el archivo aquí.' },
     { q: '¿Las fotos aparecen en el PDF?', a: 'Sí, con las versiones «Con fotos» y «Prueba», siempre que hayas exportado el chat con archivos. Cada foto aparece en su sitio dentro de la conversación.' },
@@ -178,14 +189,14 @@ const pt: UiStrings = {
   },
   tool: {
     drop: 'Solte aqui a exportação da sua conversa',
-    dropHint: 'O .zip exportado do WhatsApp, ou o .txt junto com as fotos',
+    dropHint: 'O .zip do WhatsApp, ou a exportação do Instagram ou Messenger (JSON)',
     choose: 'Escolher arquivo',
     loading: 'Lendo a conversa…',
     errors: {
       'no-chat-file': 'Não encontramos a conversa dentro do .zip. Exporte a conversa novamente pelo WhatsApp.',
       'bad-zip': 'Não foi possível abrir este .zip. Tente exportar a conversa novamente.',
       empty: 'O arquivo está vazio.',
-      'not-whatsapp': 'Este arquivo não parece uma exportação do WhatsApp. Use a opção “Exportar conversa”.',
+      'not-whatsapp': 'Este arquivo não parece uma exportação do WhatsApp, Instagram ou Messenger. Veja nossos guias para exportar a conversa.',
       generic: 'Algo deu errado. Tente novamente.',
       payment: 'Não conseguimos confirmar o pagamento. Se você foi cobrado, fale conosco e resolvemos.',
       'too-big': 'O arquivo é grande demais para o seu navegador (mais de 1 GB).',
@@ -210,6 +221,11 @@ const pt: UiStrings = {
     another: 'Converter outra conversa',
     paymentsOff: 'Os downloads pagos estarão disponíveis em breve.',
     paidReload: 'Pagamento recebido. Selecione sua conversa de novo para baixar o PDF.',
+    threadsTitle: 'Qual conversa você quer converter?',
+    threadsHint: (n) => `Sua exportação contém ${n} conversas. Escolha uma.`,
+    threadsSearch: 'Buscar um nome',
+    threadsCount: (n) => (n === 1 ? '1 mensagem' : `${n.toLocaleString('pt-BR')} mensagens`),
+    threadsCancel: 'Cancelar',
   },
   plans: {
     text: { name: 'Texto', desc: 'A conversa inteira, organizada e paginada.', features: ['Nomes, datas e horas', 'Números de página', 'Anexos indicados pelo nome'] },
@@ -246,6 +262,7 @@ const pt: UiStrings = {
   },
   faqTitle: 'Perguntas frequentes',
   faqs: [
+    { q: 'Funciona com Instagram ou Messenger?', a: 'Sim. Baixe suas mensagens do Instagram ou do Facebook em formato JSON e solte o arquivo: você escolhe a conversa e recebe o mesmo PDF. Nossos guias explicam como exportar.' },
     { q: 'Minha conversa é enviada para um servidor?', a: 'Não. O arquivo é lido e o PDF é criado diretamente no seu navegador. Sua conversa e suas fotos nunca saem do seu aparelho.' },
     { q: 'Como exporto uma conversa do WhatsApp no iPhone ou Android?', a: 'No iPhone: abra a conversa, toque no nome do contato e depois em «Exportar conversa». No Android: ⋮ > Mais > «Exportar conversa». Escolha incluir mídia para manter as fotos e solte o arquivo aqui.' },
     { q: 'As fotos aparecem no PDF?', a: 'Sim, nas versões «Com fotos» e «Prova», desde que a conversa tenha sido exportada com mídia. Cada foto aparece no lugar certo da conversa.' },
@@ -285,14 +302,14 @@ const it: UiStrings = {
   },
   tool: {
     drop: 'Trascina qui l’esportazione della chat',
-    dropHint: 'Lo .zip esportato da WhatsApp, oppure il .txt insieme alle foto',
+    dropHint: 'Lo .zip di WhatsApp, oppure l’esportazione di Instagram o Messenger (JSON)',
     choose: 'Scegli file',
     loading: 'Lettura della chat…',
     errors: {
       'no-chat-file': 'Non troviamo la chat dentro lo .zip. Esporta di nuovo la chat da WhatsApp.',
       'bad-zip': 'Impossibile aprire questo .zip. Prova a esportare di nuovo la chat.',
       empty: 'Il file è vuoto.',
-      'not-whatsapp': 'Questo file non sembra un’esportazione di WhatsApp. Usa l’opzione «Esporta chat».',
+      'not-whatsapp': 'Questo file non sembra un’esportazione di WhatsApp, Instagram o Messenger. Consulta le nostre guide per esportare la chat.',
       generic: 'Qualcosa è andato storto. Riprova.',
       payment: 'Non riusciamo a confermare il pagamento. Se ti è stato addebitato, scrivici e risolviamo.',
       'too-big': 'Il file è troppo grande per il tuo browser (oltre 1 GB).',
@@ -317,6 +334,11 @@ const it: UiStrings = {
     another: 'Converti un’altra chat',
     paymentsOff: 'I download a pagamento saranno disponibili a breve.',
     paidReload: 'Pagamento ricevuto. Seleziona di nuovo la tua chat per scaricare il PDF.',
+    threadsTitle: 'Quale chat vuoi convertire?',
+    threadsHint: (n) => `La tua esportazione contiene ${n} chat. Scegline una.`,
+    threadsSearch: 'Cerca un nome',
+    threadsCount: (n) => (n === 1 ? '1 messaggio' : `${n.toLocaleString('it')} messaggi`),
+    threadsCancel: 'Annulla',
   },
   plans: {
     text: { name: 'Testo', desc: 'Tutta la chat, ordinata e impaginata.', features: ['Nomi, date e orari', 'Numeri di pagina', 'Allegati indicati per nome'] },
@@ -353,6 +375,7 @@ const it: UiStrings = {
   },
   faqTitle: 'Domande frequenti',
   faqs: [
+    { q: 'Funziona con Instagram o Messenger?', a: 'Sì. Scarica i messaggi di Instagram o Facebook in formato JSON e trascina il file: scegli la chat e ottieni lo stesso PDF. Le nostre guide spiegano come esportarli.' },
     { q: 'La mia chat viene caricata su un server?', a: 'No. Il file viene letto e il PDF viene creato direttamente nel tuo browser. La chat e le foto non lasciano mai il tuo dispositivo.' },
     { q: 'Come esporto una chat WhatsApp su iPhone o Android?', a: 'Su iPhone: apri la chat, tocca il nome del contatto e poi «Esporta chat». Su Android: ⋮ > Altro > «Esporta chat». Scegli di includere i media per tenere le foto, poi trascina qui il file.' },
     { q: 'Le foto sono incluse nel PDF?', a: 'Sì, con le versioni «Con foto» e «Prova», purché tu abbia esportato la chat con i media. Ogni foto appare al suo posto nella conversazione.' },
@@ -392,14 +415,14 @@ const fr: UiStrings = {
   },
   tool: {
     drop: "Déposez ici l'export de votre conversation",
-    dropHint: 'Le .zip exporté depuis WhatsApp, ou le .txt avec ses photos',
+    dropHint: "Le .zip de WhatsApp, ou l'export Instagram ou Messenger (JSON)",
     choose: 'Choisir un fichier',
     loading: 'Lecture de la conversation…',
     errors: {
       'no-chat-file': 'Impossible de trouver la conversation dans le .zip. Exportez-la à nouveau depuis WhatsApp.',
       'bad-zip': "Impossible d'ouvrir ce .zip. Essayez d'exporter à nouveau la conversation.",
       empty: 'Le fichier est vide.',
-      'not-whatsapp': "Ce fichier ne ressemble pas à un export WhatsApp. Utilisez l'option « Exporter la discussion ».",
+      'not-whatsapp': "Ce fichier ne ressemble pas à un export WhatsApp, Instagram ou Messenger. Suivez nos guides pour bien exporter la conversation.",
       generic: "Une erreur s'est produite. Réessayez.",
       payment: "Nous n'avons pas pu confirmer le paiement. Si vous avez été débité, écrivez-nous et on règle ça.",
       'too-big': 'Le fichier est trop gros pour votre navigateur (plus de 1 Go).',
@@ -424,6 +447,11 @@ const fr: UiStrings = {
     another: 'Convertir une autre conversation',
     paymentsOff: 'Les téléchargements payants arrivent très bientôt.',
     paidReload: 'Paiement reçu. Sélectionnez à nouveau votre conversation pour télécharger votre PDF.',
+    threadsTitle: 'Quelle conversation voulez-vous convertir ?',
+    threadsHint: (n) => `Votre export contient ${n} conversations. Choisissez-en une.`,
+    threadsSearch: 'Chercher un nom',
+    threadsCount: (n) => (n === 1 ? '1 message' : `${n.toLocaleString('fr')} messages`),
+    threadsCancel: 'Annuler',
   },
   plans: {
     text: { name: 'Texte', desc: 'Toute la conversation, ordonnée et paginée.', features: ['Noms, dates et heures', 'Numéros de page', 'Pièces jointes indiquées par leur nom'] },
@@ -460,6 +488,7 @@ const fr: UiStrings = {
   },
   faqTitle: 'Questions fréquentes',
   faqs: [
+    { q: 'Ça marche avec Instagram ou Messenger ?', a: 'Oui. Téléchargez vos messages Instagram ou Facebook au format JSON et déposez le fichier : vous choisissez la conversation et obtenez le même PDF. Nos guides expliquent comment les exporter.' },
     { q: 'Ma conversation est-elle envoyée sur un serveur ?', a: 'Non. Le fichier est lu et le PDF est créé directement dans votre navigateur. Votre conversation et vos photos ne quittent jamais votre appareil.' },
     { q: 'Comment exporter une conversation WhatsApp sur iPhone ou Android ?', a: 'Sur iPhone : ouvrez la conversation, touchez le nom du contact, puis « Exporter la discussion ». Sur Android : ⋮ > Plus > « Exporter la discussion ». Choisissez avec médias pour garder les photos, puis déposez le fichier ici.' },
     { q: 'Les photos sont-elles incluses dans le PDF ?', a: 'Oui, avec les versions « Avec photos » et « Preuve », à condition d\'avoir exporté la discussion avec les médias. Chaque photo apparaît à sa place dans la conversation.' },
@@ -499,14 +528,14 @@ const en: UiStrings = {
   },
   tool: {
     drop: 'Drop your chat export here',
-    dropHint: 'The .zip exported from WhatsApp, or the .txt together with its photos',
+    dropHint: 'The WhatsApp .zip, or your Instagram or Messenger export (JSON)',
     choose: 'Choose file',
     loading: 'Reading the chat…',
     errors: {
       'no-chat-file': 'We could not find the chat inside the .zip. Export the chat again from WhatsApp.',
       'bad-zip': 'This .zip cannot be opened. Try exporting the chat again.',
       empty: 'The file is empty.',
-      'not-whatsapp': 'This file does not look like a WhatsApp export. Use the “Export chat” option.',
+      'not-whatsapp': 'This file does not look like a WhatsApp, Instagram or Messenger export. See our guides to export the chat.',
       generic: 'Something went wrong. Please try again.',
       payment: 'We could not confirm the payment. If you were charged, write to us and we will sort it out.',
       'too-big': 'The file is too large for your browser (over 1 GB).',
@@ -531,6 +560,11 @@ const en: UiStrings = {
     another: 'Convert another chat',
     paymentsOff: 'Paid downloads are coming very soon.',
     paidReload: 'Payment received. Select your chat again to download your PDF.',
+    threadsTitle: 'Which conversation do you want to convert?',
+    threadsHint: (n) => `Your export holds ${n} conversations. Pick one.`,
+    threadsSearch: 'Search a name',
+    threadsCount: (n) => (n === 1 ? '1 message' : `${n.toLocaleString('en')} messages`),
+    threadsCancel: 'Cancel',
   },
   plans: {
     text: { name: 'Text', desc: 'The whole chat, in order and paginated.', features: ['Names, dates and times', 'Page numbers', 'Attachments listed by name'] },
@@ -567,6 +601,7 @@ const en: UiStrings = {
   },
   faqTitle: 'Frequently asked questions',
   faqs: [
+    { q: 'Does it work with Instagram or Messenger?', a: 'Yes. Download your Instagram or Facebook messages in JSON format and drop the file: you pick the conversation and get the same PDF. Our guides explain how to export them.' },
     { q: 'Is my chat uploaded to a server?', a: 'No. The file is read and the PDF is built directly in your browser. Your chat and photos never leave your device.' },
     { q: 'How do I export a WhatsApp chat on iPhone or Android?', a: 'On iPhone: open the chat, tap the contact name, then “Export Chat”. On Android: ⋮ > More > “Export chat”. Choose to include media to keep the photos, then drop the file here.' },
     { q: 'Are photos included in the PDF?', a: 'Yes, with the “With photos” and “Evidence” editions, as long as you exported the chat with media. Each photo appears in place in the conversation.' },

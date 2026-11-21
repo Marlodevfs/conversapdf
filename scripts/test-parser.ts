@@ -172,6 +172,74 @@ async function main() {
     assert.equal(c.messages[3].attachment, 'IMG-20240315-WA0003.jpg');
   });
 
+
+  // Meta escapes every UTF-8 byte of non-ASCII text on its own ("é" -> "Ã©").
+  const mojibake = (str: string) => Array.from(new TextEncoder().encode(str), (b) => String.fromCharCode(b)).join('');
+  const igThread = (title: string, msgs: any[]) =>
+    JSON.stringify({ participants: [{ name: mojibake('Léa') }, { name: 'Marc' }], title: mojibake(title), messages: msgs, thread_path: 'inbox/x' });
+  const t0 = Date.UTC(2025, 5, 1, 10, 0, 0);
+  const igZip = zipSync({
+    'your_instagram_activity/messages/inbox/lea_123/message_1.json': strToU8(
+      igThread('Léa', [
+        { sender_name: 'Marc', timestamp_ms: t0 + 3000, content: mojibake('À demain 😀') },
+        { sender_name: mojibake('Léa'), timestamp_ms: t0 + 2000, photos: [{ uri: 'your_instagram_activity/messages/inbox/lea_123/photos/111.jpg' }] },
+        { sender_name: mojibake('Léa'), timestamp_ms: t0 + 1000, content: 'Salut', share: { link: 'https://example.com/a' } },
+      ])
+    ),
+    'your_instagram_activity/messages/inbox/lea_123/message_2.json': strToU8(
+      igThread('Léa', [{ sender_name: 'Marc', timestamp_ms: t0, content: 'Premier', is_unsent: false }])
+    ),
+    'your_instagram_activity/messages/inbox/lea_123/photos/111.jpg': new Uint8Array([0xff, 0xd8, 0xff, 0xd9]),
+    'your_instagram_activity/messages/inbox/bob_456/message_1.json': strToU8(
+      igThread('Bob', [{ sender_name: 'Bob', timestamp_ms: t0 - 9e9, content: 'old' }])
+    ),
+    'your_instagram_activity/messages/inbox/bob_456/photos/999.jpg': new Uint8Array([1, 2, 3]),
+    'personal_information/personal_information.json': strToU8('{"profile_user":[]}'),
+  });
+
+  await test('Instagram export: thread choice, mojibake, order, photos', async () => {
+    let offered: any[] = [];
+    const c = await loadChatFile(
+      { name: 'instagram-marc-2025.zip', bytes: igZip },
+      { pickThread: async (threads) => ((offered = threads), threads.find((t) => t.title === 'Léa')!.id) }
+    );
+    assert.deepEqual(offered.map((t) => t.title), ['Léa', 'Bob']); // most recent first
+    assert.equal(c.app, 'instagram');
+    assert.equal(c.title, 'Léa');
+    assert.deepEqual(c.authors, ['Marc', 'Léa']);
+    assert.deepEqual(c.messages.map((m) => m.text), ['Premier', 'Salut\nhttps://example.com/a', '', 'À demain 😀']);
+    assert.equal(c.messages[2].attachment, '111.jpg');
+    assert.ok(c.media['111.jpg']);
+    assert.equal(c.media['999.jpg'], undefined); // other threads' media stay compressed
+    assert.equal(c.sourceName, 'message_1.json (+1)');
+    assert.ok(c.messages[0].time < c.messages[3].time);
+  });
+
+  await test('Messenger encrypted chat download, single JSON file', async () => {
+    const c = await loadChatFiles([
+      {
+        name: 'messages.json',
+        bytes: strToU8(
+          JSON.stringify({
+            participants: ['Ana', 'Tom'],
+            threadName: 'Ana',
+            messages: [
+              { senderName: 'Ana', timestamp: t0, text: 'Coucou ça va ?', media: [], isUnsent: false },
+              { senderName: 'Tom', timestamp: t0 + 5000, text: '', media: [], isUnsent: true },
+            ],
+          })
+        ),
+      },
+    ]);
+    assert.equal(c.app, 'meta');
+    assert.equal(c.messages[0].text, 'Coucou ça va ?');
+    assert.equal(c.messages[1].deleted, true);
+  });
+
+  await test('Instagram export with several threads needs a choice', async () => {
+    await assert.rejects(loadChatFile({ name: 'ig.zip', bytes: igZip }), (e: any) => e.code === 'cancelled');
+  });
+
   await test('Titles from Android file names', () => {
     assert.equal(titleFromFileName('WhatsApp Chat with Ana.txt'), 'Ana');
     assert.equal(titleFromFileName('Chat de WhatsApp con Juan Pérez.txt'), 'Juan Pérez');

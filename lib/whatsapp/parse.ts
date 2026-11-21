@@ -36,7 +36,7 @@ export interface ChatMessage {
 export interface ParsedChat {
   messages: ChatMessage[];
   authors: string[];
-  format: 'ios' | 'android';
+  format: 'ios' | 'android' | 'meta';
   dateOrder: DateOrder;
   hasSeconds: boolean;
   hour12: boolean;

@@ -338,4 +338,105 @@ export const guidesFr: Guide[] = [
       { q: 'Ça marche avec des conversations vieilles de plusieurs années ?', a: 'Oui, tant qu’elles sont encore dans votre WhatsApp pour pouvoir les exporter.' },
     ],
   },
+  {
+    "key": "instagram",
+    "slug": "conversation-instagram-pdf",
+    "label": "Conversation Instagram en PDF",
+    "metaTitle": "Convertir une conversation Instagram en PDF",
+    "metaDescription": "Exportez vos messages privés Instagram et transformez une conversation en PDF lisible, avec dates, heures et photos. Tout se fait dans votre navigateur.",
+    "h1": "Conversation Instagram en PDF : exporter et imprimer vos DM",
+    "intro": "Instagram ne propose pas de bouton « exporter la discussion ». Il faut passer par le téléchargement de vos informations, qui donne un fichier illisible. ConversaPDF le transforme en un PDF propre, comme la conversation sur votre téléphone.",
+    "sections": [
+      {
+        "h": "1. Demander l’export de vos messages",
+        "steps": [
+          "Dans Instagram, ouvrez votre profil, puis le menu ☰ et l’Espace Comptes.",
+          "Allez dans « Vos informations et autorisations », puis « Exporter vos informations » et « Créer une exportation ».",
+          "Choisissez « Exporter vers l’appareil », votre compte, puis « Personnaliser les informations » : cochez seulement « Messages ».",
+          "Format : JSON (important). Choisissez la période, puis lancez l’export.",
+          "Instagram prévient quand le fichier est prêt, en général de quelques minutes à quelques heures. Téléchargez le .zip."
+        ]
+      },
+      {
+        "h": "2. Le convertir en PDF",
+        "steps": [
+          "Déposez le .zip tel quel dans l’outil ci-dessous, sans le décompresser.",
+          "Choisissez la conversation dans la liste : l’export contient toutes vos discussions.",
+          "Indiquez qui vous êtes pour placer vos messages à droite, vérifiez l’aperçu gratuit et téléchargez le PDF."
+        ]
+      },
+      {
+        "h": "Discussions chiffrées de bout en bout",
+        "p": [
+          "Les discussions chiffrées de bout en bout n’apparaissent pas dans l’export classique. Sur un ordinateur, Instagram permet de les télécharger à part depuis « Votre activité » › « Télécharger les données chiffrées de bout en bout », si le stockage sécurisé est activé. Le fichier obtenu se dépose aussi dans l’outil."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Mes messages sont-ils envoyés sur un serveur ?",
+        "a": "Non. Le fichier est lu dans votre navigateur et rien n’est envoyé à ConversaPDF, même pas la conversation choisie."
+      },
+      {
+        "q": "Pourquoi le format JSON ?",
+        "a": "C’est le format que l’outil sait lire de façon fiable, avec les accents, les emojis et les photos. L’export HTML n’est pas pris en charge."
+      },
+      {
+        "q": "L’autre personne est-elle prévenue ?",
+        "a": "Non. L’export concerne uniquement votre compte et n’envoie aucune notification."
+      }
+    ]
+  },
+  {
+    "key": "messenger",
+    "slug": "conversation-messenger-pdf",
+    "label": "Conversation Messenger en PDF",
+    "metaTitle": "Convertir une conversation Messenger en PDF",
+    "metaDescription": "Exportez une conversation Facebook Messenger et transformez-la en PDF clair, avec dates, heures et photos. Conversion privée, dans le navigateur.",
+    "h1": "Conversation Messenger en PDF : exporter et imprimer vos messages",
+    "intro": "Facebook Messenger range vos messages dans des fichiers techniques quand vous les exportez. ConversaPDF en fait un document lisible et paginé, utile pour un dossier, un litige ou simplement pour garder une conversation qui compte.",
+    "sections": [
+      {
+        "h": "1. Discussions chiffrées (la plupart des conversations privées)",
+        "p": [
+          "Depuis 2024, les conversations privées de Messenger sont chiffrées de bout en bout. Elles se téléchargent à part, depuis un ordinateur :"
+        ],
+        "steps": [
+          "Ouvrez messenger.com et cliquez sur votre photo de profil.",
+          "Allez dans « Confidentialité et sécurité », puis « Discussions chiffrées de bout en bout » et « Stockage des messages ».",
+          "Choisissez de télécharger les données du stockage sécurisé, puis récupérez le fichier."
+        ]
+      },
+      {
+        "h": "2. Autres conversations : export Facebook",
+        "steps": [
+          "Dans Facebook, ouvrez l’Espace Comptes › « Vos informations et autorisations » › « Exporter vos informations ».",
+          "Créez une exportation vers l’appareil et ne cochez que « Messages ».",
+          "Format : JSON. Lancez l’export, puis téléchargez le .zip quand Facebook vous prévient."
+        ]
+      },
+      {
+        "h": "3. Le convertir en PDF",
+        "steps": [
+          "Déposez le fichier ou le .zip tel quel dans l’outil ci-dessous.",
+          "Si l’export contient plusieurs conversations, choisissez celle qui vous intéresse.",
+          "Indiquez qui vous êtes, vérifiez l’aperçu gratuit et téléchargez le PDF."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Je ne trouve pas ma conversation dans l’export Facebook",
+        "a": "Elle est sûrement chiffrée de bout en bout. Téléchargez-la depuis messenger.com, dans « Stockage des messages », comme expliqué plus haut."
+      },
+      {
+        "q": "Mes messages sont-ils envoyés sur un serveur ?",
+        "a": "Non. Tout est lu et converti dans votre navigateur. ConversaPDF ne voit jamais vos messages."
+      },
+      {
+        "q": "Les photos sont-elles incluses ?",
+        "a": "Oui, si elles sont dans l’export. Choisissez la version « Avec photos » pour les voir à leur place dans la conversation."
+      }
+    ]
+  },
 ];

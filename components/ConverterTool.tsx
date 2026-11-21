@@ -8,6 +8,7 @@ import { ui, type UiStrings } from '@/lib/i18n/ui';
 import { intlLocale } from '@/lib/i18n/pdf';
 import type { LoadedChat } from '@/lib/whatsapp/load';
 import type { Edition, PdfImage } from '@/lib/pdf/ChatDocument';
+import { useThreadPicker } from './ThreadPicker';
 import { buyEdition, PAYMENTS_ENABLED, verifyPurchase } from '@/lib/pay-client';
 import { countPhotos, preparePhotos } from '@/lib/images';
 
@@ -48,7 +49,7 @@ function slug(s: string) {
       .replace(/[^a-zA-Z0-9]+/g, '-')
       .replace(/^-|-$/g, '')
       .toLowerCase()
-      .slice(0, 40) || 'whatsapp'
+      .slice(0, 40) || 'conversation'
   );
 }
 
@@ -84,6 +85,7 @@ async function buildPdf(opts: {
       images={opts.images}
       sha256={chat.sha256}
       sourceName={chat.sourceName}
+      app={chat.app}
       sourceSize={chat.sourceSize}
       generatedAt={Date.now()}
       hasSeconds={chat.hasSeconds}
@@ -108,6 +110,7 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
   const photoCache = useRef<Record<string, PdfImage> | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [paidNotice, setPaidNotice] = useState(false);
+  const { pickThread, picker } = useThreadPicker(locale);
 
   // Back from a payment page (checkout_id in the URL): the chat in memory was
   // lost, so keep the id and unlock as soon as the chat is selected again.
@@ -174,7 +177,8 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
     try {
       const { loadChatFiles } = await import('@/lib/whatsapp/load');
       const loaded = await loadChatFiles(
-        await Promise.all(files.map(async (f) => ({ name: f.name, bytes: new Uint8Array(await f.arrayBuffer()) })))
+        await Promise.all(files.map(async (f) => ({ name: f.name, bytes: new Uint8Array(await f.arrayBuffer()) }))),
+        { pickThread }
       );
       setChat(loaded);
       setMe('');
@@ -186,10 +190,11 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
       setPhase('ready');
       if (PAYMENTS_ENABLED) restoreUnlock(loaded);
     } catch (e: any) {
-      setError((e?.code as ErrorCode) || 'generic');
+      if (e?.code !== 'cancelled') setError((e?.code as ErrorCode) || 'generic');
       setPhase('idle');
+      if (inputRef.current) inputRef.current.value = '';
     }
-  }, [restoreUnlock]);
+  }, [restoreUnlock, pickThread]);
 
   const photos = async (edition: Edition): Promise<Record<string, PdfImage>> => {
     if (!chat || edition === 'text') return {};
@@ -225,7 +230,7 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
     setDownloadUrl(url);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `${slug(chat?.title || chat?.authors.join('-') || 'whatsapp')}-${edition}.pdf`;
+    a.download = `${slug(chat?.title || chat?.authors.join('-') || 'conversation')}-${edition}.pdf`;
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -279,7 +284,9 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
         </p>
       )}
 
-      {(phase === 'idle' || phase === 'loading') && (
+      {picker}
+
+      {(phase === 'idle' || phase === 'loading') && !picker && (
         <label
           onDragOver={(e) => {
             e.preventDefault();
@@ -311,7 +318,7 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
           <input
             ref={inputRef}
             type="file"
-            accept=".zip,.txt,application/zip,text/plain,image/*,audio/*,video/*"
+            accept=".zip,.txt,.json,application/zip,text/plain,application/json,image/*,audio/*,video/*"
             multiple
             className="sr-only"
             onChange={(e) => {

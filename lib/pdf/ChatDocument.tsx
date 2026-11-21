@@ -2,7 +2,7 @@ import React from 'react';
 import { Document, Image, Page, StyleSheet, Text, View } from '@react-pdf/renderer';
 import type { Locale } from '@/config/site';
 import type { ChatMessage } from '@/lib/whatsapp/parse';
-import { intlLocale, pdfStrings } from '@/lib/i18n/pdf';
+import { appName, intlLocale, pdfStrings } from '@/lib/i18n/pdf';
 
 export type Edition = 'text' | 'photos' | 'proof';
 
@@ -24,6 +24,8 @@ export interface ChatDocumentProps {
   images: Record<string, PdfImage>;
   sha256: string;
   sourceName: string;
+  /** whatsapp | instagram | messenger | meta */
+  app?: string;
   sourceSize: number;
   generatedAt: number;
   /** Watermarked preview: only the first messages are drawn. */
@@ -157,6 +159,7 @@ function fitImage(img: PdfImage, maxW = 230, maxH = 260) {
 export function ChatDocument(props: ChatDocumentProps) {
   const { locale, edition, messages, me, images, preview } = props;
   const t = pdfStrings(locale);
+  const app = appName(props.app);
   const tag = intlLocale[locale];
   const dayFmt = new Intl.DateTimeFormat(tag, { timeZone: 'UTC', dateStyle: 'full' });
   const shortDayFmt = new Intl.DateTimeFormat(tag, { timeZone: 'UTC', dateStyle: 'medium' });
@@ -172,7 +175,7 @@ export function ChatDocument(props: ChatDocumentProps) {
   const isGroup = props.authors.length > 2;
   const colorOf = (author: string) => NAME_COLORS[Math.max(0, props.authors.indexOf(author)) % NAME_COLORS.length];
   const shown = preview ? messages.slice(0, previewCount(messages.length)) : messages;
-  const title = props.title || props.authors.join(', ') || t.conversation;
+  const title = props.title || props.authors.join(', ') || t.conversation(app);
   const first = messages[0]?.time;
   const last = messages[messages.length - 1]?.time;
   const period = first != null && last != null ? `${shortDayFmt.format(first)} – ${shortDayFmt.format(last)}` : '';
@@ -259,7 +262,7 @@ export function ChatDocument(props: ChatDocumentProps) {
     <>
       <View style={s.header} fixed>
         <Text>{title}</Text>
-        <Text>{t.conversation}</Text>
+        <Text>{t.conversation(app)}</Text>
       </View>
       <View style={s.footer} fixed>
         <Text>conversapdf.com</Text>
@@ -277,7 +280,7 @@ export function ChatDocument(props: ChatDocumentProps) {
     : null;
 
   return (
-    <Document title={`${title} – ${t.conversation}`} author="ConversaPDF" creator="conversapdf.com" producer="conversapdf.com">
+    <Document title={`${title} – ${t.conversation(app)}`} author="ConversaPDF" creator="conversapdf.com" producer="conversapdf.com">
       {edition === 'proof' && (
         <Page size="A4" style={s.page}>
           {chrome}
@@ -310,7 +313,7 @@ export function ChatDocument(props: ChatDocumentProps) {
             <Text style={s.value}>{generatedFmt.format(props.generatedAt)}</Text>
           </View>
           <Text style={s.note}>
-            {t.proofNote} {t.notAffiliated}
+            {t.proofNote(app)} {t.notAffiliated}
           </Text>
         </Page>
       )}
