@@ -141,6 +141,23 @@ export const threadMedia = (t: MetaThread) => Array.from(new Set(t.raw.flatMap(m
 /** Name used for a media file in the PDF: the file name, made unique per thread. */
 export const mediaKey = (uri: string) => baseName(uri);
 
+/** Instagram's own "Ana sent an attachment." line that comes with a shared post or reel, in the export's language. */
+const GENERIC_SHARE = /\s(sent an attachment|a envoyé une pièce jointe|envió un archivo adjunto|enviou um anexo|ha inviato un allegato|hat einen Anhang gesendet)\.?$/i;
+
+/** Drops the tracking query Instagram adds to shared links (?id=…, ?igsh=…). */
+function cleanLink(link: string): string {
+  try {
+    const u = new URL(link);
+    if (/(^|\.)instagram\.com$|(^|\.)facebook\.com$/.test(u.hostname)) {
+      u.search = '';
+      u.hash = '';
+    }
+    return u.toString();
+  } catch {
+    return link;
+  }
+}
+
 const toWallClock = (ms: number) => ms - new Date(ms).getTimezoneOffset() * 60_000;
 
 export function threadToChat(t: MetaThread): ParsedChat {
@@ -152,8 +169,13 @@ export function threadToChat(t: MetaThread): ParsedChat {
     const time = toWallClock(ms);
     const author = senderOf(m);
     let text: string = (m.content ?? m.text ?? '').toString();
-    const link = m.share?.link;
-    if (link && !text.includes(link)) text = text ? `${text}\n${link}` : link;
+    const rawLink: string | undefined = m.share?.link;
+    if (rawLink) {
+      const link = cleanLink(rawLink);
+      if (text.includes(rawLink)) text = text.replace(rawLink, link);
+      else if (!text.trim() || GENERIC_SHARE.test(text)) text = link;
+      else text = `${text}\n${link}`;
+    }
     const unsent = m.is_unsent === true || m.isUnsent === true;
     if (unsent) {
       messages.push({ time, author, text: '', deleted: true });

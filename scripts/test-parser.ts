@@ -181,6 +181,7 @@ async function main() {
   const igZip = zipSync({
     'your_instagram_activity/messages/inbox/lea_123/message_1.json': strToU8(
       igThread('Léa', [
+        { sender_name: 'Marc', timestamp_ms: t0 + 4000, content: mojibake('Marc a envoyé une pièce jointe.'), share: { link: 'https://www.instagram.com/reel/AbC/?id=123_456', share_text: 'caption' } },
         { sender_name: 'Marc', timestamp_ms: t0 + 3000, content: mojibake('À demain 😀') },
         { sender_name: mojibake('Léa'), timestamp_ms: t0 + 2000, photos: [{ uri: 'your_instagram_activity/messages/inbox/lea_123/photos/111.jpg' }] },
         { sender_name: mojibake('Léa'), timestamp_ms: t0 + 1000, content: 'Salut', share: { link: 'https://example.com/a' } },
@@ -207,7 +208,7 @@ async function main() {
     assert.equal(c.app, 'instagram');
     assert.equal(c.title, 'Léa');
     assert.deepEqual(c.authors, ['Marc', 'Léa']);
-    assert.deepEqual(c.messages.map((m) => m.text), ['Premier', 'Salut\nhttps://example.com/a', '', 'À demain 😀']);
+    assert.deepEqual(c.messages.map((m) => m.text), ['Premier', 'Salut\nhttps://example.com/a', '', 'À demain 😀', 'https://www.instagram.com/reel/AbC/']);
     assert.equal(c.messages[2].attachment, '111.jpg');
     assert.ok(c.media['111.jpg']);
     assert.equal(c.media['999.jpg'], undefined); // other threads' media stay compressed
