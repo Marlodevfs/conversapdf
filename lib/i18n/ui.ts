@@ -160,7 +160,7 @@ const es: UiStrings = {
 };
 
 const pt: UiStrings = {
-  langName: 'Português',
+  langName: 'Português (Brasil)',
   meta: {
     title: 'Converter conversa do WhatsApp em PDF | ConversaPDF',
     description:
