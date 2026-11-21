@@ -20,7 +20,7 @@ const es: Pages = {
     title: 'Política de privacidad',
     sections: [
       { h: 'Tu conversación no sale de tu dispositivo', p: ['El archivo que exportas desde WhatsApp se lee y el PDF se crea directamente en tu navegador. No subimos, no guardamos y no vemos tus conversaciones ni tus fotos.'] },
-      { h: 'Pagos', p: ['Los pagos los gestiona Paddle.com, que actúa como vendedor oficial (Merchant of Record). Paddle trata tus datos de pago y tu correo electrónico según su propia política de privacidad. Nosotros solo recibimos la confirmación del pago.'] },
+      { h: 'Pagos', p: ['Los pagos los gestiona Polar (polar.sh), que actúa como vendedor oficial (Merchant of Record). Polar trata tus datos de pago y tu correo electrónico según su propia política de privacidad. Nosotros solo recibimos la confirmación del pago.'] },
       { h: 'Datos técnicos', p: ['Nuestro proveedor de alojamiento (Vercel) registra datos técnicos como la dirección IP para el funcionamiento y la seguridad del sitio. Los emojis del PDF se descargan desde la red jsDelivr. Si usamos estadísticas de visitas, son anónimas y sin cookies.'] },
       { h: 'Tus derechos', p: [`Puedes ejercer tus derechos de acceso, rectificación y supresión escribiendo a ${mail}.`] },
     ],
@@ -31,7 +31,7 @@ const es: Pages = {
       { h: 'El servicio', p: ['ConversaPDF convierte en PDF las conversaciones exportadas desde WhatsApp. La vista previa es gratuita; el PDF completo se paga una sola vez por conversación.'] },
       { h: 'Tu responsabilidad', p: ['Solo debes convertir conversaciones de las que formas parte o que tienes derecho a usar, y respetar la privacidad de los demás participantes.'] },
       { h: 'Uso como prueba', p: ['ConversaPDF no es un servicio de certificación ni un despacho de abogados. El valor de un documento como prueba lo decide el tribunal.'] },
-      { h: 'Compra', p: ['Las compras se realizan a través de Paddle.com, vendedor oficial, cuyas condiciones de compra también se aplican.'] },
+      { h: 'Compra', p: ['Las compras se realizan a través de Polar (polar.sh), vendedor oficial, cuyas condiciones de compra también se aplican.'] },
     ],
   },
   refund: {
@@ -57,7 +57,7 @@ const pt: Pages = {
     title: 'Política de privacidade',
     sections: [
       { h: 'Sua conversa não sai do seu aparelho', p: ['O arquivo que você exporta do WhatsApp é lido e o PDF é criado diretamente no seu navegador. Não enviamos, não guardamos e não vemos suas conversas nem suas fotos.'] },
-      { h: 'Pagamentos', p: ['Os pagamentos são processados pela Paddle.com, que atua como revendedora oficial (Merchant of Record). A Paddle trata seus dados de pagamento e seu e-mail conforme a própria política de privacidade. Nós recebemos apenas a confirmação do pagamento.'] },
+      { h: 'Pagamentos', p: ['Os pagamentos são processados pela Polar (polar.sh), que atua como revendedora oficial (Merchant of Record). A Polar trata seus dados de pagamento e seu e-mail conforme a própria política de privacidade. Nós recebemos apenas a confirmação do pagamento.'] },
       { h: 'Dados técnicos', p: ['Nosso provedor de hospedagem (Vercel) registra dados técnicos como o endereço IP para o funcionamento e a segurança do site. Os emojis do PDF são baixados da rede jsDelivr. Se usarmos estatísticas de visitas, elas são anônimas e sem cookies.'] },
       { h: 'Seus direitos', p: [`Você pode exercer seus direitos de acesso, correção e exclusão escrevendo para ${mail}.`] },
     ],
@@ -68,7 +68,7 @@ const pt: Pages = {
       { h: 'O serviço', p: ['O ConversaPDF converte em PDF as conversas exportadas do WhatsApp. A prévia é grátis; o PDF completo é pago uma única vez por conversa.'] },
       { h: 'Sua responsabilidade', p: ['Converta apenas conversas das quais você participa ou que tem o direito de usar, e respeite a privacidade dos outros participantes.'] },
       { h: 'Uso como prova', p: ['O ConversaPDF não é um serviço de certificação nem um escritório de advocacia. O valor de um documento como prova é decidido pelo tribunal.'] },
-      { h: 'Compra', p: ['As compras são feitas pela Paddle.com, revendedora oficial, cujos termos de compra também se aplicam.'] },
+      { h: 'Compra', p: ['As compras são feitas pela Polar (polar.sh), revendedora oficial, cujos termos de compra também se aplicam.'] },
     ],
   },
   refund: {
@@ -94,7 +94,7 @@ const it: Pages = {
     title: 'Informativa sulla privacy',
     sections: [
       { h: 'La tua chat non lascia il tuo dispositivo', p: ['Il file esportato da WhatsApp viene letto e il PDF viene creato direttamente nel tuo browser. Non carichiamo, non conserviamo e non vediamo le tue chat né le tue foto.'] },
-      { h: 'Pagamenti', p: ['I pagamenti sono gestiti da Paddle.com, che agisce come rivenditore ufficiale (Merchant of Record). Paddle tratta i tuoi dati di pagamento e la tua email secondo la propria informativa. Noi riceviamo solo la conferma del pagamento.'] },
+      { h: 'Pagamenti', p: ['I pagamenti sono gestiti da Polar (polar.sh), che agisce come rivenditore ufficiale (Merchant of Record). Polar tratta i tuoi dati di pagamento e la tua email secondo la propria informativa. Noi riceviamo solo la conferma del pagamento.'] },
       { h: 'Dati tecnici', p: ['Il nostro fornitore di hosting (Vercel) registra dati tecnici come l’indirizzo IP per il funzionamento e la sicurezza del sito. Le emoji del PDF vengono scaricate dalla rete jsDelivr. Se usiamo statistiche di visita, sono anonime e senza cookie.'] },
       { h: 'I tuoi diritti', p: [`Puoi esercitare i tuoi diritti di accesso, rettifica e cancellazione scrivendo a ${mail}.`] },
     ],
@@ -105,7 +105,7 @@ const it: Pages = {
       { h: 'Il servizio', p: ['ConversaPDF converte in PDF le chat esportate da WhatsApp. L’anteprima è gratuita; il PDF completo si paga una sola volta per chat.'] },
       { h: 'La tua responsabilità', p: ['Converti solo chat di cui fai parte o che hai il diritto di usare, rispettando la privacy degli altri partecipanti.'] },
       { h: 'Uso come prova', p: ['ConversaPDF non è un servizio di certificazione né uno studio legale. Il valore di un documento come prova è deciso dal giudice.'] },
-      { h: 'Acquisto', p: ['Gli acquisti avvengono tramite Paddle.com, rivenditore ufficiale, le cui condizioni di acquisto si applicano anch’esse.'] },
+      { h: 'Acquisto', p: ['Gli acquisti avvengono tramite Polar (polar.sh), rivenditore ufficiale, le cui condizioni di acquisto si applicano anch’esse.'] },
     ],
   },
   refund: {
@@ -131,7 +131,7 @@ const fr: Pages = {
     title: 'Politique de confidentialité',
     sections: [
       { h: 'Votre conversation ne quitte pas votre appareil', p: ["Le fichier exporté depuis WhatsApp est lu et le PDF est créé directement dans votre navigateur. Nous n'envoyons, ne conservons et ne voyons ni vos conversations ni vos photos."] },
-      { h: 'Paiements', p: ["Les paiements sont gérés par Paddle.com, revendeur officiel (Merchant of Record). Paddle traite vos données de paiement et votre e-mail selon sa propre politique de confidentialité. Nous recevons seulement la confirmation du paiement."] },
+      { h: 'Paiements', p: ["Les paiements sont gérés par Polar (polar.sh), revendeur officiel (Merchant of Record). Polar traite vos données de paiement et votre e-mail selon sa propre politique de confidentialité. Nous recevons seulement la confirmation du paiement."] },
       { h: 'Données techniques', p: ["Notre hébergeur (Vercel) enregistre des données techniques comme l'adresse IP pour le fonctionnement et la sécurité du site. Les emojis du PDF sont téléchargés depuis le réseau jsDelivr. Si nous mesurons l'audience, c'est de façon anonyme et sans cookies."] },
       { h: 'Vos droits', p: [`Vous pouvez exercer vos droits d'accès, de rectification et de suppression en écrivant à ${mail}.`] },
     ],
@@ -142,7 +142,7 @@ const fr: Pages = {
       { h: 'Le service', p: ["ConversaPDF convertit en PDF les conversations exportées depuis WhatsApp. L'aperçu est gratuit ; le PDF complet se paie une seule fois par conversation."] },
       { h: 'Votre responsabilité', p: ['Ne convertissez que des conversations auxquelles vous participez ou que vous avez le droit d’utiliser, en respectant la vie privée des autres participants.'] },
       { h: 'Usage comme preuve', p: ["ConversaPDF n'est ni un service de certification ni un cabinet d'avocats. La valeur de preuve d'un document est appréciée par le juge."] },
-      { h: 'Achat', p: ["Les achats se font via Paddle.com, revendeur officiel, dont les conditions d'achat s'appliquent également."] },
+      { h: 'Achat', p: ["Les achats se font via Polar (polar.sh), revendeur officiel, dont les conditions d'achat s'appliquent également."] },
     ],
   },
   refund: {
@@ -168,7 +168,7 @@ const en: Pages = {
     title: 'Privacy policy',
     sections: [
       { h: 'Your chat never leaves your device', p: ['The file you export from WhatsApp is read and the PDF is built directly in your browser. We do not upload, store or see your chats or photos.'] },
-      { h: 'Payments', p: ['Payments are handled by Paddle.com, our Merchant of Record. Paddle processes your payment details and email under its own privacy policy. We only receive the payment confirmation.'] },
+      { h: 'Payments', p: ['Payments are handled by Polar (polar.sh), our Merchant of Record. Polar processes your payment details and email under its own privacy policy. We only receive the payment confirmation.'] },
       { h: 'Technical data', p: ['Our hosting provider (Vercel) logs technical data such as IP addresses to run and secure the site. Emoji images in the PDF are downloaded from the jsDelivr network. If we measure visits, it is anonymous and cookie-free.'] },
       { h: 'Your rights', p: [`You can exercise your rights of access, correction and deletion by writing to ${mail}.`] },
     ],
@@ -179,7 +179,7 @@ const en: Pages = {
       { h: 'The service', p: ['ConversaPDF turns chats exported from WhatsApp into PDF. The preview is free; the full PDF is a one-time payment per chat.'] },
       { h: 'Your responsibility', p: ['Only convert chats you are part of or have the right to use, and respect the privacy of the other participants.'] },
       { h: 'Use as evidence', p: ['ConversaPDF is neither a certification service nor a law firm. The weight of a document as evidence is for the court to decide.'] },
-      { h: 'Purchases', p: ['Purchases are made through Paddle.com, our Merchant of Record, whose terms of sale also apply.'] },
+      { h: 'Purchases', p: ['Purchases are made through Polar (polar.sh), our Merchant of Record, whose terms of sale also apply.'] },
     ],
   },
   refund: {

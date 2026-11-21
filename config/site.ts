@@ -23,6 +23,6 @@ export const siteConfig = {
     publisherAddress: '',
     host: { name: 'Vercel Inc.', address: '440 N Barranca Ave #4133, Covina, CA 91723, USA' },
   },
-  /** Prices shown on the site. Must match the Paddle prices. */
+  /** Prices shown on the site. Must match the Polar prices. */
   prices: { text: 4.99, photos: 8.99, proof: 14.99, currency: 'EUR' },
 };

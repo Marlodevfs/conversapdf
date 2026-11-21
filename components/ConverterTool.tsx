@@ -8,7 +8,7 @@ import { ui, type UiStrings } from '@/lib/i18n/ui';
 import { intlLocale } from '@/lib/i18n/pdf';
 import type { LoadedChat } from '@/lib/whatsapp/load';
 import type { Edition, PdfImage } from '@/lib/pdf/ChatDocument';
-import { buyEdition, PAYMENTS_ENABLED, verifyPurchase } from '@/lib/paddle-client';
+import { buyEdition, PAYMENTS_ENABLED, verifyPurchase } from '@/lib/pay-client';
 import { countPhotos, preparePhotos } from '@/lib/images';
 
 type Phase = 'idle' | 'loading' | 'ready' | 'working' | 'done';

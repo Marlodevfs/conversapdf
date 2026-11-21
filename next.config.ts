@@ -1,14 +1,10 @@
 import type { NextConfig } from 'next';
 
-// Paid downloads are only offered when Paddle is fully configured (or in local
+// Paid downloads are only offered when Polar is configured (or in local
 // development, where checkout is simulated).
 const paymentsEnabled =
   process.env.NODE_ENV !== 'production' ||
-  Boolean(
-    process.env.PADDLE_API_KEY &&
-      process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN &&
-      process.env.NEXT_PUBLIC_PADDLE_PRICE_TEXT
-  );
+  Boolean(process.env.POLAR_ACCESS_TOKEN && process.env.POLAR_PRODUCT_TEXT);
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,

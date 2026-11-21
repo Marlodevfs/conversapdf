@@ -10,19 +10,20 @@ entirely in the browser. Live at https://conversapdf.com.
   separators, page numbers, inline photos, emojis (self-hosted Twemoji in
   `public/emoji`), and an "evidence" edition with a cover page and the SHA-256
   fingerprint of the original file. Sample PDFs: `npm run test:pdf`.
-- **Payments**: Paddle one-time prices (text / photos / proof), checked server-side
-  in `app/api/verify`. Without Paddle keys, local dev simulates the purchase and
-  production hides paid downloads.
+- **Payments**: Polar embedded checkout, one-time products (text / photos / proof).
+  `app/api/checkout` creates the session, `app/api/verify` confirms it is paid.
+  Without Polar keys, local dev simulates the purchase and production hides paid
+  downloads.
 - **Languages**: es, pt, it, fr, en (`lib/i18n`).
 
 ## Setup
 
 ```bash
 npm install
-cp .env.example .env.local   # fill in Paddle values
+cp .env.example .env.local   # fill in Polar values
 npm run dev
 ```
 
 On Vercel, add the same environment variables. Prices shown on the site live in
-`config/site.ts` and must match the Paddle prices. Fill in `siteConfig.legal`
+`config/site.ts` and must match the Polar prices. Fill in `siteConfig.legal`
 before selling.
