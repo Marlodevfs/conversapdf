@@ -65,7 +65,7 @@ const es: UiStrings = {
     kicker: 'Chat de WhatsApp → PDF',
     title: 'Convierte tu chat de WhatsApp a PDF, claro y ordenado',
     subtitle:
-      'Para un abogado, un juicio, un propietario, una aseguradora o simplemente para guardarlo. Con nombres, fechas, horas y fotos en su sitio.',
+      'Convertir un chat de WhatsApp a PDF claro y ordenado, con nombres, fechas, horas y fotos en su sitio. Para un abogado, un juicio, un propietario o simplemente para guardarlo.',
     privacy: 'Tu conversación nunca sale de tu dispositivo: todo se procesa en tu navegador.',
   },
   tool: {
@@ -171,7 +171,7 @@ const pt: UiStrings = {
     kicker: 'Conversa do WhatsApp → PDF',
     title: 'Converta sua conversa do WhatsApp em um PDF claro e organizado',
     subtitle:
-      'Para um advogado, um processo, um proprietário, uma seguradora ou simplesmente para guardar. Com nomes, datas, horas e fotos no lugar certo.',
+      'Converter uma conversa do WhatsApp em um PDF claro e organizado, com nomes, datas, horários e fotos no lugar certo. Para um advogado, um processo, um proprietário ou simplesmente para guardar.',
     privacy: 'Sua conversa nunca sai do seu aparelho: tudo é processado no seu navegador.',
   },
   tool: {
@@ -277,7 +277,7 @@ const it: UiStrings = {
     kicker: 'Chat WhatsApp → PDF',
     title: 'Converti la tua chat WhatsApp in un PDF chiaro e ordinato',
     subtitle:
-      'Per un avvocato, una causa, un proprietario, un’assicurazione o semplicemente per conservarla. Con nomi, date, orari e foto al posto giusto.',
+      'Convertire una chat WhatsApp in un PDF chiaro e ordinato, con nomi, date, orari e foto al posto giusto. Per un avvocato, una causa, un proprietario o semplicemente per conservarla.',
     privacy: 'La tua chat non lascia mai il tuo dispositivo: tutto viene elaborato nel browser.',
   },
   tool: {
@@ -383,7 +383,7 @@ const fr: UiStrings = {
     kicker: 'Conversation WhatsApp → PDF',
     title: 'Convertissez votre conversation WhatsApp en PDF clair et ordonné',
     subtitle:
-      'Pour un avocat, une procédure, un propriétaire, une assurance ou simplement pour la garder. Avec noms, dates, heures et photos à leur place.',
+      'Convertir une conversation WhatsApp en PDF clair et ordonné, avec noms, dates, heures et photos à leur place. Pour un avocat, une procédure, un propriétaire ou simplement pour la garder.',
     privacy: 'Votre conversation ne quitte jamais votre appareil : tout est traité dans votre navigateur.',
   },
   tool: {
@@ -489,7 +489,7 @@ const en: UiStrings = {
     kicker: 'WhatsApp chat → PDF',
     title: 'Convert your WhatsApp chat to a clear, tidy PDF',
     subtitle:
-      'For a lawyer, a court case, a landlord, an insurer, or just to keep it. With names, dates, times and photos where they belong.',
+      'Convert any WhatsApp chat to a clear, tidy PDF with names, dates, times and photos where they belong. For a lawyer, a court case, a landlord, or just to keep it. A PDF converter that runs in your browser.',
     privacy: 'Your chat never leaves your device: everything runs in your browser.',
   },
   tool: {

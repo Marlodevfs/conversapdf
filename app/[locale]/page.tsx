@@ -12,6 +12,14 @@ import { analyzer } from '@/lib/analyzer/i18n';
 
 type Props = { params: Promise<{ locale: string }> };
 
+const officialHelp: Record<Locale, string> = {
+  es: 'Guía oficial de WhatsApp: cómo exportar el historial de chat (en inglés)',
+  pt: 'Guia oficial do WhatsApp: como exportar o histórico de conversas (em inglês)',
+  it: 'Guida ufficiale di WhatsApp: come esportare la cronologia chat (in inglese)',
+  fr: 'Aide officielle de WhatsApp : exporter l’historique d’une discussion (en anglais)',
+  en: 'Official WhatsApp help: how to export your chat history',
+};
+
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
@@ -121,6 +129,16 @@ export default async function Home({ params }: Props) {
             ))}
           </div>
           <p className="mt-8 max-w-[60ch] text-ink/70">{t.howTip}</p>
+          <p className="mt-3 text-sm">
+            <a
+              href="https://whatsapp.com/faq/en/android/23756533"
+              target="_blank"
+              rel="noopener"
+              className="font-medium text-leaf underline decoration-1 underline-offset-4 hover:text-leaf-dark"
+            >
+              {officialHelp[locale]}
+            </a>
+          </p>
         </div>
       </section>
 
@@ -194,11 +212,6 @@ export default async function Home({ params }: Props) {
         <h2 className="text-3xl font-extrabold tracking-display sm:text-4xl">{guideChrome(locale).guidesTitle}</h2>
         <p className="mt-3 max-w-[60ch] text-ink/70">{guideChrome(locale).guidesIntro}</p>
         <ul className="mt-8 grid border-t border-sand md:grid-cols-2 md:gap-x-12">
-          <li className="border-b border-sand">
-            <Link href={`/${locale}/${analyzer(locale).slug}`} className="block py-4 font-medium decoration-leaf decoration-2 underline-offset-4 hover:underline">
-              {analyzer(locale).label}
-            </Link>
-          </li>
           {guidesFor(locale).map((g) => (
             <li key={g.key} className="border-b border-sand">
               <Link href={`/${locale}/${g.slug}`} className="block py-4 font-medium decoration-leaf decoration-2 underline-offset-4 hover:underline">
