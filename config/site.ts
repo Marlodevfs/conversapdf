@@ -12,7 +12,7 @@ export const siteConfig = {
   url: 'https://conversapdf.com',
   contact: { email: 'support@conversapdf.com' },
   /** GoatCounter site code (https://<code>.goatcounter.com). Empty = no analytics. */
-  goatcounter: '',
+  goatcounter: 'conversapdf',
   /**
    * Legal notice. TO FILL IN before selling: French law (LCEN art. 6) requires
    * the publisher's identity on the site. Empty fields are simply not displayed.
