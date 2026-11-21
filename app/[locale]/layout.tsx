@@ -8,6 +8,7 @@ import { ui } from '@/lib/i18n/ui';
 import Logo from '@/components/Logo';
 import SiteFooter from '@/components/SiteFooter';
 import LanguageMenu from '@/components/LanguageMenu';
+import CookieConsent from '@/components/CookieConsent';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -56,6 +57,7 @@ export default async function LocaleLayout({
         </header>
         <main className="relative z-0 overflow-x-clip">{children}</main>
         <SiteFooter locale={locale} t={t} />
+        <CookieConsent locale={locale} />
         {siteConfig.goatcounter && (
           <Script
             data-goatcounter={`https://${siteConfig.goatcounter}.goatcounter.com/count`}

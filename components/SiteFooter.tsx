@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Logo from '@/components/Logo';
+import { CookieSettingsLink } from '@/components/CookieConsent';
 import { locales, siteConfig, type Locale } from '@/config/site';
 import { ui, type UiStrings } from '@/lib/i18n/ui';
 import { guideChrome, guidesFor } from '@/lib/guides';
@@ -44,6 +45,7 @@ export default function SiteFooter({ locale, t }: { locale: Locale; t: UiStrings
           <Link href={`/${locale}/privacy`} className="hover:text-ink">{t.footer.privacy}</Link>
           <Link href={`/${locale}/terms`} className="hover:text-ink">{t.footer.terms}</Link>
           <Link href={`/${locale}/refund`} className="hover:text-ink">{t.footer.refund}</Link>
+          <CookieSettingsLink locale={locale} className="hover:text-ink" />
         </nav>
         <nav aria-label={t.footer.languages} className="mb-4 flex flex-wrap gap-x-4 gap-y-2">
           {locales.map((l) => (

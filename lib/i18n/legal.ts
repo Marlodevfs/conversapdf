@@ -21,7 +21,8 @@ const es: Pages = {
     sections: [
       { h: 'Tu conversación no sale de tu dispositivo', p: ['El archivo que exportas desde WhatsApp se lee y el PDF se crea directamente en tu navegador. No subimos, no guardamos y no vemos tus conversaciones ni tus fotos.'] },
       { h: 'Pagos', p: ['Los pagos los gestiona Polar (polar.sh), que actúa como vendedor oficial (Merchant of Record). Polar trata tus datos de pago y tu correo electrónico según su propia política de privacidad. Nosotros solo recibimos la confirmación del pago.'] },
-      { h: 'Datos técnicos', p: ['Nuestro proveedor de alojamiento (Vercel) registra datos técnicos como la dirección IP para el funcionamiento y la seguridad del sitio. Los emojis del PDF se descargan desde la red jsDelivr. Si usamos estadísticas de visitas, son anónimas y sin cookies.'] },
+      { h: 'Datos técnicos', p: ['Nuestro proveedor de alojamiento (Cloudflare) registra datos técnicos como la dirección IP para el funcionamiento y la seguridad del sitio. Medimos las visitas de forma anónima y sin cookies con GoatCounter.'] },
+      { h: 'Cookies y Google Analytics', p: ['Solo si lo aceptas en el aviso de cookies, usamos Google Analytics (a través de Google Tag Manager) para saber cómo se usa el sitio. Google puede depositar cookies y tratar datos como tu dirección IP. Nunca recibe el contenido de tus conversaciones. Puedes cambiar tu elección en cualquier momento con el enlace «Cookies» al pie de página.'] },
       { h: 'Tus derechos', p: [`Puedes ejercer tus derechos de acceso, rectificación y supresión escribiendo a ${mail}.`] },
     ],
   },
@@ -58,7 +59,8 @@ const pt: Pages = {
     sections: [
       { h: 'Sua conversa não sai do seu aparelho', p: ['O arquivo que você exporta do WhatsApp é lido e o PDF é criado diretamente no seu navegador. Não enviamos, não guardamos e não vemos suas conversas nem suas fotos.'] },
       { h: 'Pagamentos', p: ['Os pagamentos são processados pela Polar (polar.sh), que atua como revendedora oficial (Merchant of Record). A Polar trata seus dados de pagamento e seu e-mail conforme a própria política de privacidade. Nós recebemos apenas a confirmação do pagamento.'] },
-      { h: 'Dados técnicos', p: ['Nosso provedor de hospedagem (Vercel) registra dados técnicos como o endereço IP para o funcionamento e a segurança do site. Os emojis do PDF são baixados da rede jsDelivr. Se usarmos estatísticas de visitas, elas são anônimas e sem cookies.'] },
+      { h: 'Dados técnicos', p: ['Nosso provedor de hospedagem (Cloudflare) registra dados técnicos como o endereço IP para o funcionamento e a segurança do site. Medimos as visitas de forma anônima e sem cookies com o GoatCounter.'] },
+      { h: 'Cookies e Google Analytics', p: ['Somente se você aceitar no aviso de cookies, usamos o Google Analytics (por meio do Google Tag Manager) para entender como o site é usado. O Google pode gravar cookies e tratar dados como o seu endereço IP. Ele nunca recebe o conteúdo das suas conversas. Você pode mudar sua escolha a qualquer momento pelo link «Cookies» no rodapé.'] },
       { h: 'Seus direitos', p: [`Você pode exercer seus direitos de acesso, correção e exclusão escrevendo para ${mail}.`] },
     ],
   },
@@ -95,7 +97,8 @@ const it: Pages = {
     sections: [
       { h: 'La tua chat non lascia il tuo dispositivo', p: ['Il file esportato da WhatsApp viene letto e il PDF viene creato direttamente nel tuo browser. Non carichiamo, non conserviamo e non vediamo le tue chat né le tue foto.'] },
       { h: 'Pagamenti', p: ['I pagamenti sono gestiti da Polar (polar.sh), che agisce come rivenditore ufficiale (Merchant of Record). Polar tratta i tuoi dati di pagamento e la tua email secondo la propria informativa. Noi riceviamo solo la conferma del pagamento.'] },
-      { h: 'Dati tecnici', p: ['Il nostro fornitore di hosting (Vercel) registra dati tecnici come l’indirizzo IP per il funzionamento e la sicurezza del sito. Le emoji del PDF vengono scaricate dalla rete jsDelivr. Se usiamo statistiche di visita, sono anonime e senza cookie.'] },
+      { h: 'Dati tecnici', p: ['Il nostro fornitore di hosting (Cloudflare) registra dati tecnici come l’indirizzo IP per il funzionamento e la sicurezza del sito. Misuriamo le visite in modo anonimo e senza cookie con GoatCounter.'] },
+      { h: 'Cookie e Google Analytics', p: ['Solo se lo accetti nell’avviso sui cookie, usiamo Google Analytics (tramite Google Tag Manager) per capire come viene usato il sito. Google può salvare cookie e trattare dati come il tuo indirizzo IP. Non riceve mai il contenuto delle tue chat. Puoi cambiare la tua scelta in qualsiasi momento con il link «Cookie» a piè di pagina.'] },
       { h: 'I tuoi diritti', p: [`Puoi esercitare i tuoi diritti di accesso, rettifica e cancellazione scrivendo a ${mail}.`] },
     ],
   },
@@ -132,7 +135,8 @@ const fr: Pages = {
     sections: [
       { h: 'Votre conversation ne quitte pas votre appareil', p: ["Le fichier exporté depuis WhatsApp est lu et le PDF est créé directement dans votre navigateur. Nous n'envoyons, ne conservons et ne voyons ni vos conversations ni vos photos."] },
       { h: 'Paiements', p: ["Les paiements sont gérés par Polar (polar.sh), revendeur officiel (Merchant of Record). Polar traite vos données de paiement et votre e-mail selon sa propre politique de confidentialité. Nous recevons seulement la confirmation du paiement."] },
-      { h: 'Données techniques', p: ["Notre hébergeur (Vercel) enregistre des données techniques comme l'adresse IP pour le fonctionnement et la sécurité du site. Les emojis du PDF sont téléchargés depuis le réseau jsDelivr. Si nous mesurons l'audience, c'est de façon anonyme et sans cookies."] },
+      { h: 'Données techniques', p: ["Notre hébergeur (Cloudflare) enregistre des données techniques comme l'adresse IP pour le fonctionnement et la sécurité du site. Nous mesurons l'audience de façon anonyme et sans cookies avec GoatCounter."] },
+      { h: 'Cookies et Google Analytics', p: ["Seulement si vous l'acceptez dans le bandeau cookies, nous utilisons Google Analytics (via Google Tag Manager) pour comprendre comment le site est utilisé. Google peut déposer des cookies et traiter des données comme votre adresse IP. Il ne reçoit jamais le contenu de vos conversations. Vous pouvez changer d'avis à tout moment avec le lien « Cookies » en bas de page."] },
       { h: 'Vos droits', p: [`Vous pouvez exercer vos droits d'accès, de rectification et de suppression en écrivant à ${mail}.`] },
     ],
   },
@@ -169,7 +173,8 @@ const en: Pages = {
     sections: [
       { h: 'Your chat never leaves your device', p: ['The file you export from WhatsApp is read and the PDF is built directly in your browser. We do not upload, store or see your chats or photos.'] },
       { h: 'Payments', p: ['Payments are handled by Polar (polar.sh), our Merchant of Record. Polar processes your payment details and email under its own privacy policy. We only receive the payment confirmation.'] },
-      { h: 'Technical data', p: ['Our hosting provider (Vercel) logs technical data such as IP addresses to run and secure the site. Emoji images in the PDF are downloaded from the jsDelivr network. If we measure visits, it is anonymous and cookie-free.'] },
+      { h: 'Technical data', p: ['Our hosting provider (Cloudflare) logs technical data such as IP addresses to run and secure the site. We measure visits anonymously and without cookies with GoatCounter.'] },
+      { h: 'Cookies and Google Analytics', p: ['Only if you agree in the cookie notice, we use Google Analytics (through Google Tag Manager) to understand how the site is used. Google may set cookies and process data such as your IP address. It never receives the content of your chats. You can change your choice at any time with the “Cookies” link in the footer.'] },
       { h: 'Your rights', p: [`You can exercise your rights of access, correction and deletion by writing to ${mail}.`] },
     ],
   },
