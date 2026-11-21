@@ -73,14 +73,14 @@ async function buildPdf(opts: {
   return pdf(doc).toBlob();
 }
 
-export default function ConverterTool({ locale }: { locale: Locale }) {
+export default function ConverterTool({ locale, preloaded }: { locale: Locale; preloaded?: LoadedChat }) {
   const t = ui(locale);
-  const [phase, setPhase] = useState<Phase>('idle');
+  const [phase, setPhase] = useState<Phase>(preloaded ? 'ready' : 'idle');
   const [error, setError] = useState<ErrorCode | null>(null);
-  const [chat, setChat] = useState<LoadedChat | null>(null);
+  const [chat, setChat] = useState<LoadedChat | null>(preloaded ?? null);
   const [me, setMe] = useState<string>('');
-  const [from, setFrom] = useState('');
-  const [to, setTo] = useState('');
+  const [from, setFrom] = useState(preloaded ? dayKey(preloaded.messages[0].time) : '');
+  const [to, setTo] = useState(preloaded ? dayKey(preloaded.messages[preloaded.messages.length - 1].time) : '');
   const [status, setStatus] = useState('');
   const [dragging, setDragging] = useState(false);
   const [unlocked, setUnlocked] = useState<Edition | null>(null);

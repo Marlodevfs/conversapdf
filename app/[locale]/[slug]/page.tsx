@@ -8,6 +8,8 @@ import { guideBySlug, guideByKey, guideChrome, guidesFor, type Guide } from '@/l
 import { intlLocale } from '@/lib/i18n/pdf';
 import { ui } from '@/lib/i18n/ui';
 import ConverterTool from '@/components/ConverterTool';
+import AnalyzerTool from '@/components/AnalyzerTool';
+import { analyzer } from '@/lib/analyzer/i18n';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -17,6 +19,7 @@ export function generateStaticParams() {
   return locales.flatMap((locale) => [
     ...legalSlugs.map((slug) => ({ locale, slug })),
     ...guidesFor(locale).map((g) => ({ locale, slug: g.slug })),
+    { locale, slug: analyzer(locale).slug },
   ]);
 }
 
@@ -32,6 +35,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${page.title} | ConversaPDF`,
       description: first.length > 155 ? `${first.slice(0, 152).replace(/\s+\S*$/, '')}…` : first,
       alternates: { canonical: `${siteConfig.url}/${locale}/${slug}` },
+    };
+  }
+  if (slug === analyzer(locale).slug) {
+    const a = analyzer(locale);
+    const languages: Record<string, string> = Object.fromEntries(locales.map((l) => [l, `${siteConfig.url}/${l}/${analyzer(l).slug}`]));
+    languages['x-default'] = `${siteConfig.url}/en/${analyzer('en').slug}`;
+    const url = `${siteConfig.url}/${locale}/${a.slug}`;
+    const image = `${siteConfig.url}/${locale}/opengraph-image`;
+    return {
+      title: { absolute: a.metaTitle },
+      description: a.metaDescription,
+      alternates: { canonical: url, languages },
+      openGraph: { title: a.metaTitle, description: a.metaDescription, url, siteName: siteConfig.name, locale: intlLocale[locale].replace('-', '_'), type: 'website', images: [{ url: image, width: 1200, height: 630 }] },
+      twitter: { card: 'summary_large_image', title: a.metaTitle, description: a.metaDescription, images: [image] },
     };
   }
   const g = guideBySlug(locale, slug);
@@ -62,6 +79,7 @@ export default async function SlugPage({ params }: Props) {
   const { locale, slug } = await params;
   if (!isLocale(locale)) notFound();
   if (isLegal(slug)) return <LegalArticle locale={locale} slug={slug} />;
+  if (slug === analyzer(locale).slug) return <AnalyzerArticle locale={locale} />;
   const g = guideBySlug(locale, slug);
   if (!g) notFound();
   return <GuideArticle locale={locale} guide={g} />;
@@ -184,6 +202,81 @@ function GuideArticle({ locale, guide: g }: { locale: Locale; guide: Guide }) {
           ))}
         </ul>
       </nav>
+    </>
+  );
+}
+
+function AnalyzerArticle({ locale }: { locale: Locale }) {
+  const a = analyzer(locale);
+  const c = guideChrome(locale);
+  const t = ui(locale);
+  const url = `${siteConfig.url}/${locale}/${a.slug}`;
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      name: a.h1,
+      url,
+      applicationCategory: 'UtilitiesApplication',
+      operatingSystem: 'Any',
+      inLanguage: locale,
+      description: a.metaDescription,
+      isAccessibleForFree: true,
+      offers: { '@type': 'Offer', price: '0', priceCurrency: siteConfig.prices.currency },
+      featureList: a.what,
+      publisher: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: c.breadcrumbHome, item: `${siteConfig.url}/${locale}` },
+        { '@type': 'ListItem', position: 2, name: a.h1, item: url },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: a.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    },
+  ];
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <section className="mx-auto max-w-5xl px-5 pb-10 pt-10 sm:pt-14">
+        <nav className="mb-4 text-sm text-ink/70">
+          <Link href={`/${locale}`} className="hover:text-leaf">{c.breadcrumbHome}</Link>
+        </nav>
+        <h1 className="max-w-[18ch] text-[clamp(2.35rem,5.2vw,4rem)] font-extrabold leading-[1.02] tracking-display">{a.h1}</h1>
+        <p className="mt-5 max-w-[60ch] text-lg leading-relaxed text-ink/70">{a.intro}</p>
+        <div className="mt-9">
+          <AnalyzerTool locale={locale} />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-5 py-12">
+        <h2 className="text-3xl font-extrabold tracking-display">{a.whatTitle}</h2>
+        <ul className="mt-6 grid gap-x-12 border-t border-sand md:grid-cols-2">
+          {a.what.map((w) => (
+            <li key={w} className="border-b border-sand py-4 text-ink/80">{w}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-5 py-12">
+        <h2 className="text-3xl font-extrabold tracking-display">{t.faqTitle}</h2>
+        <div className="mt-8 border-t border-sand">
+          {a.faqs.map((f) => (
+            <details key={f.q} className="group border-b border-sand">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-lg font-semibold [&::-webkit-details-marker]:hidden">
+                {f.q}
+                <span aria-hidden className="mt-1 text-xl leading-none text-leaf transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <p className="-mt-1 max-w-[65ch] pb-6 leading-relaxed text-ink/75">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
     </>
   );
 }

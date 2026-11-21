@@ -8,6 +8,7 @@ import { intlLocale } from '@/lib/i18n/pdf';
 import ConverterTool from '@/components/ConverterTool';
 import Link from 'next/link';
 import { guideChrome, guidesFor } from '@/lib/guides';
+import { analyzer } from '@/lib/analyzer/i18n';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -133,6 +134,11 @@ export default async function Home({ params }: Props) {
             </div>
           ))}
         </div>
+        <p className="mt-10">
+          <Link href={`/${locale}/${analyzer(locale).slug}`} className="font-semibold text-leaf underline decoration-2 underline-offset-4 hover:text-leaf-dark">
+            {analyzer(locale).label}
+          </Link>
+        </p>
       </section>
 
       <section id="privacy" className="scroll-mt-20 border-y border-sand bg-white">
@@ -188,6 +194,11 @@ export default async function Home({ params }: Props) {
         <h2 className="text-3xl font-extrabold tracking-display sm:text-4xl">{guideChrome(locale).guidesTitle}</h2>
         <p className="mt-3 max-w-[60ch] text-ink/70">{guideChrome(locale).guidesIntro}</p>
         <ul className="mt-8 grid border-t border-sand md:grid-cols-2 md:gap-x-12">
+          <li className="border-b border-sand">
+            <Link href={`/${locale}/${analyzer(locale).slug}`} className="block py-4 font-medium decoration-leaf decoration-2 underline-offset-4 hover:underline">
+              {analyzer(locale).label}
+            </Link>
+          </li>
           {guidesFor(locale).map((g) => (
             <li key={g.key} className="border-b border-sand">
               <Link href={`/${locale}/${g.slug}`} className="block py-4 font-medium decoration-leaf decoration-2 underline-offset-4 hover:underline">

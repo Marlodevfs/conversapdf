@@ -4,6 +4,7 @@ export const dynamic = 'force-static';
 import { locales, siteConfig } from '@/config/site';
 import { legalSlugs } from '@/lib/i18n/legal';
 import { guideByKey, guideKeys } from '@/lib/guides';
+import { analyzer } from '@/lib/analyzer/i18n';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Date of the last real content change: bump it when pages change.
@@ -36,6 +37,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       }))
     ),
+    ...locales.map((l) => ({
+      url: `${siteConfig.url}/${l}/${analyzer(l).slug}`,
+      lastModified: updated,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+      alternates: {
+        languages: {
+          ...Object.fromEntries(locales.map((x) => [x, `${siteConfig.url}/${x}/${analyzer(x).slug}`])),
+          'x-default': `${siteConfig.url}/en/${analyzer('en').slug}`,
+        },
+      },
+    })),
     ...locales.flatMap((l) =>
       legalSlugs.map((s) => ({
         url: `${siteConfig.url}/${l}/${s}`,

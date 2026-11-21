@@ -3,6 +3,7 @@ import Logo from '@/components/Logo';
 import { locales, siteConfig, type Locale } from '@/config/site';
 import { ui, type UiStrings } from '@/lib/i18n/ui';
 import { guideChrome, guidesFor } from '@/lib/guides';
+import { analyzer } from '@/lib/analyzer/i18n';
 
 export default function SiteFooter({ locale, t }: { locale: Locale; t: UiStrings }) {
   return (
@@ -12,6 +13,9 @@ export default function SiteFooter({ locale, t }: { locale: Locale; t: UiStrings
         <nav aria-label={guideChrome(locale).guidesTitle} className="mb-6">
           <p className="mb-3 font-semibold text-white">{guideChrome(locale).guidesTitle}</p>
           <ul className="grid gap-x-5 gap-y-1 sm:grid-cols-2">
+            <li>
+              <Link href={`/${locale}/${analyzer(locale).slug}`} className="hover:text-white">{analyzer(locale).label}</Link>
+            </li>
             {guidesFor(locale).map((g) => (
               <li key={g.key}>
                 <Link href={`/${locale}/${g.slug}`} className="hover:text-white">{g.label}</Link>
