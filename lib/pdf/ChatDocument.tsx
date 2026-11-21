@@ -31,7 +31,9 @@ export interface ChatDocumentProps {
   hasSeconds?: boolean;
 }
 
-const PREVIEW_LIMIT = 30;
+/** The preview shows about a third of the chat, between 3 and 20 messages, so it never replaces the paid PDF. */
+const previewCount = (n: number) => Math.min(20, Math.max(3, Math.ceil(n * 0.3)));
+const WATERMARK_ROWS = [150, 400, 650];
 const IMAGE_EXT = /\.(jpe?g|png|webp)$/i;
 const NAME_COLORS = ['#1d6b4f', '#8a4b0f', '#2b4c9b', '#9b2b5a', '#5a3d99', '#0f6f80', '#7a6b00', '#a33a2b'];
 
@@ -105,15 +107,14 @@ const s = StyleSheet.create({
   photo: { marginTop: 2, marginBottom: 2, borderRadius: 4 },
   watermark: {
     position: 'absolute',
-    top: 360,
-    left: 0,
-    right: 0,
+    left: -60,
+    right: -60,
     textAlign: 'center',
-    fontSize: 64,
+    fontSize: 56,
     fontWeight: 'bold',
-    color: '#1d6b4f',
-    opacity: 0.08,
-    transform: 'rotate(-30deg)',
+    color: '#155741',
+    opacity: 0.16,
+    transform: 'rotate(-28deg)',
   },
   previewEnd: {
     marginTop: 18,
@@ -170,7 +171,7 @@ export function ChatDocument(props: ChatDocumentProps) {
   const showPhotos = edition !== 'text';
   const isGroup = props.authors.length > 2;
   const colorOf = (author: string) => NAME_COLORS[Math.max(0, props.authors.indexOf(author)) % NAME_COLORS.length];
-  const shown = preview ? messages.slice(0, PREVIEW_LIMIT) : messages;
+  const shown = preview ? messages.slice(0, previewCount(messages.length)) : messages;
   const title = props.title || props.authors.join(', ') || t.conversation;
   const first = messages[0]?.time;
   const last = messages[messages.length - 1]?.time;
@@ -264,13 +265,16 @@ export function ChatDocument(props: ChatDocumentProps) {
         <Text>conversapdf.com</Text>
         <Text render={({ pageNumber, totalPages }) => t.page(pageNumber, totalPages)} />
       </View>
-      {preview && (
-        <Text style={s.watermark} fixed>
-          {t.previewWatermark}
-        </Text>
-      )}
     </>
   );
+  // Drawn after the messages so it sits on top of them, on every page.
+  const watermark = preview
+    ? WATERMARK_ROWS.map((top) => (
+        <Text key={top} style={[s.watermark, { top }]} fixed>
+          {`${t.previewWatermark} · conversapdf.com`}
+        </Text>
+      ))
+    : null;
 
   return (
     <Document title={`${title} – ${t.conversation}`} author="ConversaPDF" creator="conversapdf.com" producer="conversapdf.com">
@@ -313,6 +317,7 @@ export function ChatDocument(props: ChatDocumentProps) {
       <Page size="A4" style={s.page} wrap>
         {chrome}
         {body}
+        {watermark}
       </Page>
     </Document>
   );
