@@ -1,4 +1,6 @@
 import type { MetadataRoute } from 'next';
+
+export const dynamic = 'force-static';
 import { locales, siteConfig } from '@/config/site';
 import { legalSlugs } from '@/lib/i18n/legal';
 import { guideByKey, guideKeys } from '@/lib/guides';
