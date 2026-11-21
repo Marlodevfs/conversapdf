@@ -39,7 +39,7 @@ export async function handleCheckout(request: Request, env: PolarEnv): Promise<R
   // The embedded checkout only renders inside the exact origin given here.
   const header = request.headers.get('origin') || '';
   const allowed = [siteConfig.url, 'https://www.conversapdf.com'];
-  const origin = allowed.includes(header) || /^https:\/\/[a-z0-9-]+\.conversapdf\.pages\.dev$/.test(header) || header.startsWith('http://localhost') ? header : siteConfig.url;
+  const origin = allowed.includes(header) || /^https:\/\/([a-z0-9-]+\.)?conversapdf\.pages\.dev$/.test(header) || header.startsWith('http://localhost') ? header : siteConfig.url;
   const lang = typeof locale === 'string' && /^[a-z]{2}$/.test(locale) ? locale : 'en';
   try {
     const checkout = await polar<{ id: string; url: string }>(env, '/v1/checkouts/', {
