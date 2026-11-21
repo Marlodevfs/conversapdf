@@ -13,7 +13,7 @@ export const guidesFr: Guide[] = [
     key: 'iphone',
     slug: 'exporter-conversation-whatsapp-iphone',
     label: 'Exporter une conversation WhatsApp sur iPhone',
-    metaTitle: 'Exporter une conversation WhatsApp en PDF sur iPhone (2026) | ConversaPDF',
+    metaTitle: 'Exporter une conversation WhatsApp en PDF sur iPhone',
     metaDescription:
       'Exportez une conversation WhatsApp depuis votre iPhone et transformez-la en PDF clair, avec dates, heures et photos. Guide pas à pas, sans rien installer.',
     h1: 'Exporter une conversation WhatsApp en PDF sur iPhone',
@@ -59,9 +59,9 @@ export const guidesFr: Guide[] = [
     key: 'android',
     slug: 'exporter-conversation-whatsapp-android',
     label: 'Exporter une conversation WhatsApp sur Android',
-    metaTitle: 'Exporter une conversation WhatsApp en PDF sur Android (2026) | ConversaPDF',
+    metaTitle: 'Exporter une conversation WhatsApp en PDF sur Android',
     metaDescription:
-      'Exportez une conversation WhatsApp depuis votre téléphone Android et transformez-la en PDF avec noms, dates, heures et photos. Pas à pas, sans rien installer.',
+      'Exportez une conversation WhatsApp depuis Android et transformez-la en PDF avec noms, dates, heures et photos. Pas à pas, sans rien installer.',
     h1: 'Exporter une conversation WhatsApp en PDF sur Android',
     intro:
       'Sur Android, WhatsApp exporte la conversation sous forme de fichier texte (.txt), parfois accompagné des photos. ConversaPDF transforme ces fichiers en un PDF clair et paginé, sans que la conversation quitte votre appareil.',
@@ -104,7 +104,7 @@ export const guidesFr: Guide[] = [
     key: 'photos',
     slug: 'exporter-whatsapp-avec-photos',
     label: 'Exporter une conversation WhatsApp avec les photos',
-    metaTitle: 'Exporter une conversation WhatsApp en PDF avec les photos | ConversaPDF',
+    metaTitle: 'Exporter WhatsApp en PDF avec photos | ConversaPDF',
     metaDescription:
       'Comment obtenir un PDF d’une conversation WhatsApp avec les photos à leur place, à côté des messages. Export avec médias sur iPhone et Android.',
     h1: 'Exporter une conversation WhatsApp en PDF avec les photos',
@@ -147,7 +147,7 @@ export const guidesFr: Guide[] = [
     key: 'evidence',
     slug: 'conversation-whatsapp-preuve-justice',
     label: 'Utiliser une conversation WhatsApp comme preuve',
-    metaTitle: 'Conversation WhatsApp comme preuve en justice : comment la présenter | ConversaPDF',
+    metaTitle: 'Conversation WhatsApp comme preuve en justice : le guide',
     metaDescription:
       'Préparer un PDF clair d’une conversation WhatsApp pour un avocat, une procédure ou une réclamation : export complet, dates, heures et empreinte du fichier.',
     h1: 'Conversation WhatsApp comme preuve : comment la préparer',
@@ -188,7 +188,7 @@ export const guidesFr: Guide[] = [
     key: 'group',
     slug: 'exporter-groupe-whatsapp',
     label: 'Exporter un groupe WhatsApp',
-    metaTitle: 'Exporter un groupe WhatsApp en PDF (avec noms et couleurs) | ConversaPDF',
+    metaTitle: 'Exporter un groupe WhatsApp en PDF | ConversaPDF',
     metaDescription:
       'Transformez la conversation d’un groupe WhatsApp en PDF lisible : chaque participant avec son nom et sa couleur, messages du groupe, dates et photos.',
     h1: 'Exporter un groupe WhatsApp en PDF',
@@ -231,9 +231,9 @@ export const guidesFr: Guide[] = [
     key: 'print',
     slug: 'imprimer-conversation-whatsapp',
     label: 'Imprimer une conversation WhatsApp',
-    metaTitle: 'Comment imprimer une conversation WhatsApp (sans captures) | ConversaPDF',
+    metaTitle: 'Imprimer une conversation WhatsApp | ConversaPDF',
     metaDescription:
-      'La façon la plus propre d’imprimer une conversation WhatsApp : un PDF paginé avec noms, dates, heures et photos, prêt à imprimer chez vous ou en reprographie.',
+      'La façon la plus propre d’imprimer une conversation WhatsApp : un PDF paginé avec noms, dates, heures et photos, prêt à imprimer.',
     h1: 'Comment imprimer une conversation WhatsApp',
     intro:
       'WhatsApp n’a pas de bouton imprimer. Faire des captures et les coller dans un document prend des heures, et le résultat est difficile à lire. Le plus rapide : transformer la conversation en PDF paginé, puis l’imprimer.',
@@ -266,9 +266,9 @@ export const guidesFr: Guide[] = [
     key: 'txt',
     slug: 'ouvrir-fichier-chat-txt-whatsapp',
     label: 'Ouvrir le fichier _chat.txt de WhatsApp',
-    metaTitle: 'Ouvrir le fichier _chat.txt de WhatsApp et le transformer en PDF | ConversaPDF',
+    metaTitle: 'Ouvrir le fichier _chat.txt de WhatsApp | ConversaPDF',
     metaDescription:
-      'Vous avez exporté une conversation WhatsApp et obtenu un _chat.txt illisible ? Voici comment l’ouvrir et le transformer en PDF clair, avec dates, noms et photos.',
+      'Un fichier _chat.txt illisible après l’export WhatsApp ? Voici comment l’ouvrir et le transformer en PDF clair, avec dates, noms et photos.',
     h1: 'Ouvrir le fichier _chat.txt de WhatsApp',
     intro:
       'Quand vous exportez une conversation, WhatsApp crée un fichier texte : _chat.txt sur iPhone ou « Discussion WhatsApp avec Nom.txt » sur Android. Il s’ouvre avec n’importe quel éditeur de texte, mais c’est une liste interminable de lignes difficile à lire.',
@@ -307,7 +307,7 @@ export const guidesFr: Guide[] = [
     key: 'save',
     slug: 'sauvegarder-conversation-whatsapp',
     label: 'Sauvegarder une conversation WhatsApp pour toujours',
-    metaTitle: 'Sauvegarder une conversation WhatsApp pour toujours | ConversaPDF',
+    metaTitle: 'Sauvegarder une conversation WhatsApp en PDF | ConversaPDF',
     metaDescription:
       'Gardez vos conversations WhatsApp importantes dans un PDF lisible sur n’importe quel appareil, avec les photos, même si vous changez de téléphone.',
     h1: 'Sauvegarder une conversation WhatsApp pour toujours',

@@ -239,7 +239,7 @@ export default function ConverterTool({ locale }: { locale: Locale }) {
             <>
               <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-leaf-light"><Upload className="h-6 w-6 text-leaf" aria-hidden /></span>
               <span className="text-xl font-bold tracking-tight">{t.tool.drop}</span>
-              <span className="mt-1 text-sm text-ink/60">{t.tool.dropHint}</span>
+              <span className="mt-1 text-sm text-ink/70">{t.tool.dropHint}</span>
               <span className="mt-6 rounded-full bg-leaf px-6 py-3 font-semibold text-white shadow-[0_8px_20px_-10px_rgba(21,87,65,.8)]">{t.tool.choose}</span>
             </>
           )}
@@ -260,23 +260,23 @@ export default function ConverterTool({ locale }: { locale: Locale }) {
         <div>
           <div className="mb-5 flex items-center gap-2 text-leaf">
             <CheckCircle2 className="h-5 w-5" aria-hidden />
-            <h3 className="text-lg font-semibold text-ink">{t.tool.summary}</h3>
+            <p className="text-lg font-semibold text-ink">{t.tool.summary}</p>
           </div>
           <dl className="mb-6 grid grid-cols-2 gap-3 text-sm sm:grid-cols-4">
             <div className="rounded-[10px] bg-paper p-3">
-              <dt className="text-ink/60">{t.tool.participants}</dt>
+              <dt className="text-ink/70">{t.tool.participants}</dt>
               <dd className="font-semibold">{chat.authors.length}</dd>
             </div>
             <div className="rounded-[10px] bg-paper p-3">
-              <dt className="text-ink/60">{t.tool.messages}</dt>
+              <dt className="text-ink/70">{t.tool.messages}</dt>
               <dd className="font-semibold">{messageCount.toLocaleString(intlLocale[locale])}</dd>
             </div>
             <div className="rounded-[10px] bg-paper p-3">
-              <dt className="text-ink/60">{t.tool.photos}</dt>
+              <dt className="text-ink/70">{t.tool.photos}</dt>
               <dd className="font-semibold">{photoCount}</dd>
             </div>
             <div className="rounded-[10px] bg-paper p-3">
-              <dt className="text-ink/60">{t.tool.period}</dt>
+              <dt className="text-ink/70">{t.tool.period}</dt>
               <dd className="font-semibold">
                 {dateFmt.format(chat.messages[0].time)} – {dateFmt.format(chat.messages[chat.messages.length - 1].time)}
               </dd>
@@ -356,7 +356,7 @@ export default function ConverterTool({ locale }: { locale: Locale }) {
             </div>
           )}
 
-          <h4 className="mb-3 text-lg font-bold">{t.tool.choosePlan}</h4>
+          <p className="mb-3 text-lg font-bold">{t.tool.choosePlan}</p>
           {!PAYMENTS_ENABLED && <p className="mb-3 text-sm text-ink/70">{t.tool.paymentsOff}</p>}
           <div className="grid gap-3 sm:grid-cols-3">
             {EDITIONS.map((e) => {
@@ -382,16 +382,16 @@ export default function ConverterTool({ locale }: { locale: Locale }) {
               );
             })}
           </div>
-          <p className="mt-3 text-xs text-ink/60">{t.oneTime}</p>
+          <p className="mt-3 text-xs text-ink/70">{t.oneTime}</p>
           {phase !== 'working' && phase !== 'done' && (
-            <button type="button" onClick={reset} className="mt-4 text-sm text-ink/60 underline">
+            <button type="button" onClick={reset} className="mt-4 text-sm text-ink/70 underline">
               {t.tool.another}
             </button>
           )}
         </div>
       )}
 
-      <p className="mt-5 flex items-center gap-2 text-xs text-ink/60">
+      <p className="mt-5 flex items-center gap-2 text-xs text-ink/70">
         <Lock className="h-3.5 w-3.5" aria-hidden /> {t.hero.privacy}
       </p>
     </div>

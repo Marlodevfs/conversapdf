@@ -77,11 +77,11 @@ export default function SamplePage({ locale }: { locale: Locale }) {
       {/* sheet underneath, so it reads as a stack of printed pages */}
       <div className="absolute inset-0 translate-x-3 translate-y-3 -rotate-1 rounded-[6px] bg-white/70 shadow-[0_1px_0_rgba(20,32,26,.06),0_20px_40px_-24px_rgba(20,32,26,.35)]" />
       <div className="relative flex aspect-[210/297] rotate-[2deg] animate-settle flex-col rounded-[6px] bg-white px-6 pb-4 pt-5 font-doc text-[11px] leading-snug text-ink shadow-[0_1px_0_rgba(20,32,26,.06),0_30px_60px_-28px_rgba(20,32,26,.45)]">
-        <div className="flex items-center justify-between border-b border-sand pb-2 text-[9px] text-ink/55">
+        <div className="flex items-center justify-between border-b border-sand pb-2 text-[9px] text-ink/70">
           <span className="truncate pr-3">{s.file}</span>
           <span className="font-bold text-ink/70">ConversaPDF</span>
         </div>
-        <div className="my-3 self-center rounded-full bg-paper px-3 py-0.5 text-[9px] text-ink/60">{s.day}</div>
+        <div className="my-3 self-center rounded-full bg-paper px-3 py-0.5 text-[9px] text-ink/70">{s.day}</div>
         <div className="flex flex-1 flex-col gap-2">
           {s.msgs.map((m) => (
             <div key={m.time} className={`max-w-[78%] rounded-[10px] px-3 py-2 ${m.me ? 'self-end bg-leaf-light' : 'self-start border border-sand bg-white'}`}>
@@ -97,11 +97,11 @@ export default function SamplePage({ locale }: { locale: Locale }) {
                 </svg>
               )}
               <span className={m.mark ? 'marker animate-sweep' : undefined}>{m.text}</span>
-              <div className="mt-0.5 text-right text-[8px] text-ink/45">{m.time}</div>
+              <div className="mt-0.5 text-right text-[8px] text-ink/70">{m.time}</div>
             </div>
           ))}
         </div>
-        <div className="flex items-center justify-between border-t border-sand pt-2 text-[9px] text-ink/50">
+        <div className="flex items-center justify-between border-t border-sand pt-2 text-[9px] text-ink/70">
           <span>SHA-256 7f3a…c91e</span>
           <span>{s.page}</span>
         </div>

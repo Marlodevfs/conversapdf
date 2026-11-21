@@ -27,7 +27,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isLocale(locale)) return {};
   if (isLegal(slug)) {
     const page = legalPage(locale, slug);
-    return { title: `${page.title} | ConversaPDF`, alternates: { canonical: `${siteConfig.url}/${locale}/${slug}` } };
+    const first = page.sections[0]?.p[0] || page.title;
+    return {
+      title: `${page.title} | ConversaPDF`,
+      description: first.length > 155 ? `${first.slice(0, 152).replace(/\s+\S*$/, '')}…` : first,
+      alternates: { canonical: `${siteConfig.url}/${locale}/${slug}` },
+    };
   }
   const g = guideBySlug(locale, slug);
   if (!g) return {};
@@ -49,6 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       images: [{ url: `${siteConfig.url}/${locale}/opengraph-image`, width: 1200, height: 630 }],
     },
+    twitter: { card: 'summary_large_image', title: g.metaTitle, description: g.metaDescription, images: [`${siteConfig.url}/${locale}/opengraph-image`] },
   };
 }
 
@@ -118,7 +124,7 @@ function GuideArticle({ locale, guide: g }: { locale: Locale; guide: Guide }) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <article className="mx-auto max-w-3xl px-5 pb-6 pt-10">
-        <nav className="mb-4 text-sm text-ink/60">
+        <nav className="mb-4 text-sm text-ink/70">
           <Link href={`/${locale}`} className="hover:text-leaf">{c.breadcrumbHome}</Link>
           <span className="mx-2">›</span>
           <span>{c.guidesTitle}</span>

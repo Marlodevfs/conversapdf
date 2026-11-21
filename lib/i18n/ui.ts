@@ -47,6 +47,7 @@ export interface UiStrings {
   uses: { title: string; text: string }[];
   pricingTitle: string;
   pricingIntro: string;
+  privacySection: { title: string; points: { title: string; text: string }[] };
   faqTitle: string;
   faqs: Faq[];
   footer: { legal: string; privacy: string; terms: string; refund: string; notAffiliated: string; twemoji: string; languages: string };
@@ -55,14 +56,14 @@ export interface UiStrings {
 const es: UiStrings = {
   langName: 'Español',
   meta: {
-    title: 'Convertir chat de WhatsApp a PDF – con fotos, fechas y horas | ConversaPDF',
+    title: 'Convertir chat de WhatsApp a PDF | ConversaPDF',
     description:
-      'Convierte una conversación de WhatsApp exportada en un PDF limpio y legible: nombres, fechas, horas, fotos y número de páginas. Todo se procesa en tu navegador, nada se sube a internet.',
+      'Convierte un chat de WhatsApp exportado en un PDF claro con fotos, fechas y horas. Para un abogado, una prueba o un recuerdo. Todo en tu navegador.',
   },
   nav: { how: 'Cómo funciona', pricing: 'Precios', faq: 'Preguntas' },
   hero: {
     kicker: 'Chat de WhatsApp → PDF',
-    title: 'Convierte tu chat de WhatsApp en un PDF claro y ordenado',
+    title: 'Convierte tu chat de WhatsApp a PDF, claro y ordenado',
     subtitle:
       'Para un abogado, un juicio, un propietario, una aseguradora o simplemente para guardarlo. Con nombres, fechas, horas y fotos en su sitio.',
     privacy: 'Tu conversación nunca sale de tu dispositivo: todo se procesa en tu navegador.',
@@ -126,9 +127,19 @@ const es: UiStrings = {
   ],
   pricingTitle: 'Precios sencillos',
   pricingIntro: 'Vista previa gratis. Pagas solo por el PDF que necesitas, sin suscripción ni cuenta.',
+  privacySection: {
+    title: 'Privacidad y seguridad',
+    points: [
+      { title: 'Procesado en tu dispositivo', text: 'El archivo se lee y el PDF se crea en tu navegador. Tu chat nunca se envía a nuestros servidores.' },
+      { title: 'Sin cuenta, nada guardado', text: 'No hace falta registrarse. No guardamos tus mensajes ni tus fotos: cierra la pestaña y no queda nada.' },
+      { title: 'Pago seguro', text: 'El pago lo gestiona Polar, nuestro revendedor autorizado. Nunca vemos los datos de tu tarjeta.' },
+    ],
+  },
   faqTitle: 'Preguntas frecuentes',
   faqs: [
     { q: '¿Mi conversación se sube a un servidor?', a: 'No. El archivo se lee y el PDF se crea directamente en tu navegador. Tu conversación y tus fotos nunca salen de tu dispositivo.' },
+    { q: '¿Cómo exporto un chat de WhatsApp en iPhone o Android?', a: 'En iPhone: abre el chat, toca el nombre del contacto y luego «Exportar chat». En Android: ⋮ > Más > «Exportar chat». Elige incluir archivos para conservar las fotos y suelta el archivo aquí.' },
+    { q: '¿Las fotos aparecen en el PDF?', a: 'Sí, con las versiones «Con fotos» y «Prueba», siempre que hayas exportado el chat con archivos. Cada foto aparece en su sitio dentro de la conversación.' },
     { q: '¿La otra persona se entera de que exporto el chat?', a: 'No. Exportar un chat desde WhatsApp no envía ninguna notificación a los demás participantes.' },
     { q: '¿Sirve como prueba en un juicio?', a: 'Un PDF claro y completo es mucho más útil que unas capturas, y la versión «Prueba» incluye la huella SHA-256 del archivo original para demostrar que no se ha modificado. Pero decidir si una prueba se admite corresponde al juez: consulta siempre a tu abogado.' },
     { q: '¿Funciona con chats de grupo?', a: 'Sí. Cada participante aparece con su nombre y un color distinto.' },
@@ -151,14 +162,14 @@ const es: UiStrings = {
 const pt: UiStrings = {
   langName: 'Português',
   meta: {
-    title: 'Converter conversa do WhatsApp em PDF – com fotos, datas e horas | ConversaPDF',
+    title: 'Converter conversa do WhatsApp em PDF | ConversaPDF',
     description:
-      'Transforme uma conversa exportada do WhatsApp em um PDF limpo e legível: nomes, datas, horas, fotos e números de página. Tudo é processado no seu navegador, nada é enviado para a internet.',
+      'Converta uma conversa exportada do WhatsApp em um PDF claro com fotos, datas e horários. Para advogado, prova ou lembrança. Tudo no seu navegador.',
   },
   nav: { how: 'Como funciona', pricing: 'Preços', faq: 'Dúvidas' },
   hero: {
     kicker: 'Conversa do WhatsApp → PDF',
-    title: 'Transforme sua conversa do WhatsApp em um PDF claro e organizado',
+    title: 'Converta sua conversa do WhatsApp em um PDF claro e organizado',
     subtitle:
       'Para um advogado, um processo, um proprietário, uma seguradora ou simplesmente para guardar. Com nomes, datas, horas e fotos no lugar certo.',
     privacy: 'Sua conversa nunca sai do seu aparelho: tudo é processado no seu navegador.',
@@ -222,9 +233,19 @@ const pt: UiStrings = {
   ],
   pricingTitle: 'Preços simples',
   pricingIntro: 'Prévia grátis. Você paga só pelo PDF de que precisa, sem assinatura e sem conta.',
+  privacySection: {
+    title: 'Privacidade e segurança',
+    points: [
+      { title: 'Processado no seu aparelho', text: 'O arquivo é lido e o PDF é criado no seu navegador. Sua conversa nunca é enviada para os nossos servidores.' },
+      { title: 'Sem conta, nada armazenado', text: 'Sem cadastro. Não guardamos suas mensagens nem suas fotos: feche a aba e não sobra nada.' },
+      { title: 'Pagamento seguro', text: 'O pagamento é feito pela Polar, nossa revendedora autorizada. Nunca vemos os dados do seu cartão.' },
+    ],
+  },
   faqTitle: 'Perguntas frequentes',
   faqs: [
     { q: 'Minha conversa é enviada para um servidor?', a: 'Não. O arquivo é lido e o PDF é criado diretamente no seu navegador. Sua conversa e suas fotos nunca saem do seu aparelho.' },
+    { q: 'Como exporto uma conversa do WhatsApp no iPhone ou Android?', a: 'No iPhone: abra a conversa, toque no nome do contato e depois em «Exportar conversa». No Android: ⋮ > Mais > «Exportar conversa». Escolha incluir mídia para manter as fotos e solte o arquivo aqui.' },
+    { q: 'As fotos aparecem no PDF?', a: 'Sim, nas versões «Com fotos» e «Prova», desde que a conversa tenha sido exportada com mídia. Cada foto aparece no lugar certo da conversa.' },
     { q: 'A outra pessoa fica sabendo que exportei a conversa?', a: 'Não. Exportar uma conversa no WhatsApp não envia nenhuma notificação aos outros participantes.' },
     { q: 'Serve como prova em um processo?', a: 'Um PDF claro e completo é muito mais útil do que capturas de tela, e a versão “Prova” inclui a impressão digital SHA-256 do arquivo original para mostrar que ele não foi alterado. Mas quem decide se uma prova é aceita é o juiz: consulte sempre o seu advogado.' },
     { q: 'Funciona com conversas em grupo?', a: 'Sim. Cada participante aparece com o seu nome e uma cor diferente.' },
@@ -247,14 +268,14 @@ const pt: UiStrings = {
 const it: UiStrings = {
   langName: 'Italiano',
   meta: {
-    title: 'Convertire una chat WhatsApp in PDF – con foto, date e orari | ConversaPDF',
+    title: 'Convertire una chat WhatsApp in PDF | ConversaPDF',
     description:
-      'Trasforma una chat WhatsApp esportata in un PDF pulito e leggibile: nomi, date, orari, foto e numeri di pagina. Tutto viene elaborato nel tuo browser, niente viene caricato su internet.',
+      'Converti una chat WhatsApp esportata in un PDF chiaro con foto, date e orari. Per un avvocato, una prova o un ricordo. Tutto nel tuo browser.',
   },
   nav: { how: 'Come funziona', pricing: 'Prezzi', faq: 'Domande' },
   hero: {
     kicker: 'Chat WhatsApp → PDF',
-    title: 'Trasforma la tua chat WhatsApp in un PDF chiaro e ordinato',
+    title: 'Converti la tua chat WhatsApp in un PDF chiaro e ordinato',
     subtitle:
       'Per un avvocato, una causa, un proprietario, un’assicurazione o semplicemente per conservarla. Con nomi, date, orari e foto al posto giusto.',
     privacy: 'La tua chat non lascia mai il tuo dispositivo: tutto viene elaborato nel browser.',
@@ -318,9 +339,19 @@ const it: UiStrings = {
   ],
   pricingTitle: 'Prezzi semplici',
   pricingIntro: 'Anteprima gratis. Paghi solo il PDF che ti serve, senza abbonamento e senza account.',
+  privacySection: {
+    title: 'Privacy e sicurezza',
+    points: [
+      { title: 'Elaborato sul tuo dispositivo', text: 'Il file viene letto e il PDF creato nel tuo browser. La tua chat non viene mai inviata ai nostri server.' },
+      { title: 'Nessun account, niente salvato', text: 'Nessuna registrazione. Non conserviamo i tuoi messaggi né le tue foto: chiudi la scheda e non resta nulla.' },
+      { title: 'Pagamento sicuro', text: 'Il pagamento è gestito da Polar, il nostro rivenditore autorizzato. Non vediamo mai i dati della tua carta.' },
+    ],
+  },
   faqTitle: 'Domande frequenti',
   faqs: [
     { q: 'La mia chat viene caricata su un server?', a: 'No. Il file viene letto e il PDF viene creato direttamente nel tuo browser. La chat e le foto non lasciano mai il tuo dispositivo.' },
+    { q: 'Come esporto una chat WhatsApp su iPhone o Android?', a: 'Su iPhone: apri la chat, tocca il nome del contatto e poi «Esporta chat». Su Android: ⋮ > Altro > «Esporta chat». Scegli di includere i media per tenere le foto, poi trascina qui il file.' },
+    { q: 'Le foto sono incluse nel PDF?', a: 'Sì, con le versioni «Con foto» e «Prova», purché tu abbia esportato la chat con i media. Ogni foto appare al suo posto nella conversazione.' },
     { q: 'L’altra persona sa che ho esportato la chat?', a: 'No. Esportare una chat da WhatsApp non invia nessuna notifica agli altri partecipanti.' },
     { q: 'Vale come prova in tribunale?', a: 'Un PDF chiaro e completo è molto più utile degli screenshot, e la versione «Prova» include l’impronta SHA-256 del file originale per mostrare che non è stato modificato. Ma è il giudice a decidere se una prova è ammessa: chiedi sempre al tuo avvocato.' },
     { q: 'Funziona con le chat di gruppo?', a: 'Sì. Ogni partecipante compare con il suo nome e un colore diverso.' },
@@ -343,14 +374,14 @@ const it: UiStrings = {
 const fr: UiStrings = {
   langName: 'Français',
   meta: {
-    title: 'Convertir une conversation WhatsApp en PDF – avec photos, dates et heures | ConversaPDF',
+    title: 'Convertir une conversation WhatsApp en PDF | ConversaPDF',
     description:
-      "Transformez une conversation WhatsApp exportée en un PDF propre et lisible : noms, dates, heures, photos et numéros de page. Tout est traité dans votre navigateur, rien n'est envoyé sur internet.",
+      'Exportez votre conversation WhatsApp en PDF clair, avec photos, dates et heures. Pour un avocat, une preuve ou un souvenir. Tout dans votre navigateur.',
   },
   nav: { how: 'Comment ça marche', pricing: 'Tarifs', faq: 'Questions' },
   hero: {
     kicker: 'Conversation WhatsApp → PDF',
-    title: 'Transformez votre conversation WhatsApp en un PDF clair et ordonné',
+    title: 'Convertissez votre conversation WhatsApp en PDF clair et ordonné',
     subtitle:
       'Pour un avocat, une procédure, un propriétaire, une assurance ou simplement pour la garder. Avec noms, dates, heures et photos à leur place.',
     privacy: 'Votre conversation ne quitte jamais votre appareil : tout est traité dans votre navigateur.',
@@ -414,9 +445,19 @@ const fr: UiStrings = {
   ],
   pricingTitle: 'Des tarifs simples',
   pricingIntro: "Aperçu gratuit. Vous payez seulement le PDF dont vous avez besoin, sans abonnement ni compte.",
+  privacySection: {
+    title: 'Confidentialité et sécurité',
+    points: [
+      { title: 'Traité sur votre appareil', text: 'Le fichier est lu et le PDF est créé dans votre navigateur. Votre conversation n\'est jamais envoyée sur nos serveurs.' },
+      { title: 'Sans compte, rien de stocké', text: 'Pas d\'inscription. Nous ne gardons ni vos messages ni vos photos : fermez l\'onglet et il ne reste rien.' },
+      { title: 'Paiement sécurisé', text: 'Le paiement est géré par Polar, notre revendeur agréé. Nous ne voyons jamais vos coordonnées bancaires.' },
+    ],
+  },
   faqTitle: 'Questions fréquentes',
   faqs: [
     { q: 'Ma conversation est-elle envoyée sur un serveur ?', a: 'Non. Le fichier est lu et le PDF est créé directement dans votre navigateur. Votre conversation et vos photos ne quittent jamais votre appareil.' },
+    { q: 'Comment exporter une conversation WhatsApp sur iPhone ou Android ?', a: 'Sur iPhone : ouvrez la conversation, touchez le nom du contact, puis « Exporter la discussion ». Sur Android : ⋮ > Plus > « Exporter la discussion ». Choisissez avec médias pour garder les photos, puis déposez le fichier ici.' },
+    { q: 'Les photos sont-elles incluses dans le PDF ?', a: 'Oui, avec les versions « Avec photos » et « Preuve », à condition d\'avoir exporté la discussion avec les médias. Chaque photo apparaît à sa place dans la conversation.' },
     { q: "L'autre personne sait-elle que j'exporte la conversation ?", a: "Non. Exporter une discussion depuis WhatsApp n'envoie aucune notification aux autres participants." },
     { q: 'Est-ce valable comme preuve devant un tribunal ?', a: "Un PDF clair et complet est bien plus utile que des captures d'écran, et la version « Preuve » contient l'empreinte SHA-256 du fichier original pour montrer qu'il n'a pas été modifié. Mais c'est le juge qui apprécie la valeur d'une preuve : demandez toujours conseil à votre avocat." },
     { q: 'Ça marche avec les groupes ?', a: 'Oui. Chaque participant apparaît avec son nom et une couleur différente.' },
@@ -439,14 +480,14 @@ const fr: UiStrings = {
 const en: UiStrings = {
   langName: 'English',
   meta: {
-    title: 'Convert a WhatsApp chat to PDF – with photos, dates and times | ConversaPDF',
+    title: 'WhatsApp Chat to PDF Converter | ConversaPDF',
     description:
-      'Turn an exported WhatsApp chat into a clean, readable PDF: names, dates, times, photos and page numbers. Everything runs in your browser, nothing is uploaded.',
+      'Convert an exported WhatsApp chat to a clean PDF with photos, dates and times. For lawyers, evidence or keepsakes. Runs entirely in your browser.',
   },
   nav: { how: 'How it works', pricing: 'Pricing', faq: 'FAQ' },
   hero: {
     kicker: 'WhatsApp chat → PDF',
-    title: 'Turn your WhatsApp chat into a clear, tidy PDF',
+    title: 'Convert your WhatsApp chat to a clear, tidy PDF',
     subtitle:
       'For a lawyer, a court case, a landlord, an insurer, or just to keep it. With names, dates, times and photos where they belong.',
     privacy: 'Your chat never leaves your device: everything runs in your browser.',
@@ -510,9 +551,19 @@ const en: UiStrings = {
   ],
   pricingTitle: 'Simple pricing',
   pricingIntro: 'Free preview. You only pay for the PDF you need, with no subscription and no account.',
+  privacySection: {
+    title: 'Privacy and security',
+    points: [
+      { title: 'Processed on your device', text: 'The file is read and the PDF is built in your browser. Your chat is never sent to our servers.' },
+      { title: 'No account, nothing stored', text: 'No sign-up. We keep none of your messages or photos: close the tab and nothing is left.' },
+      { title: 'Secure payment', text: 'Payment is handled by Polar, our authorized reseller. We never see your card details.' },
+    ],
+  },
   faqTitle: 'Frequently asked questions',
   faqs: [
     { q: 'Is my chat uploaded to a server?', a: 'No. The file is read and the PDF is built directly in your browser. Your chat and photos never leave your device.' },
+    { q: 'How do I export a WhatsApp chat on iPhone or Android?', a: 'On iPhone: open the chat, tap the contact name, then “Export Chat”. On Android: ⋮ > More > “Export chat”. Choose to include media to keep the photos, then drop the file here.' },
+    { q: 'Are photos included in the PDF?', a: 'Yes, with the “With photos” and “Evidence” editions, as long as you exported the chat with media. Each photo appears in place in the conversation.' },
     { q: 'Will the other person know I exported the chat?', a: 'No. Exporting a chat from WhatsApp does not notify the other participants.' },
     { q: 'Can I use it as evidence in court?', a: 'A clear, complete PDF is far more useful than screenshots, and the “Evidence” edition includes the SHA-256 fingerprint of the original file to show it was not changed. But whether evidence is admitted is for the court to decide: always check with your lawyer.' },
     { q: 'Does it work with group chats?', a: 'Yes. Each participant appears with their name in a different color.' },

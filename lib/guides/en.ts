@@ -13,7 +13,7 @@ export const guidesEn: Guide[] = [
     key: 'iphone',
     slug: 'export-whatsapp-chat-iphone',
     label: 'Export a WhatsApp chat on iPhone',
-    metaTitle: 'How to Export a WhatsApp Chat to PDF on iPhone (2026) | ConversaPDF',
+    metaTitle: 'Export a WhatsApp Chat to PDF on iPhone | ConversaPDF',
     metaDescription:
       'Export a WhatsApp conversation from your iPhone and turn it into a clean PDF with dates, times and photos. Step-by-step, nothing to install.',
     h1: 'How to export a WhatsApp chat to PDF on iPhone',
@@ -59,7 +59,7 @@ export const guidesEn: Guide[] = [
     key: 'android',
     slug: 'export-whatsapp-chat-android',
     label: 'Export a WhatsApp chat on Android',
-    metaTitle: 'How to Export a WhatsApp Chat to PDF on Android (2026) | ConversaPDF',
+    metaTitle: 'Export a WhatsApp Chat to PDF on Android | ConversaPDF',
     metaDescription:
       'Export a WhatsApp conversation from your Android phone and turn it into a PDF with names, dates, times and photos. Step-by-step, nothing to install.',
     h1: 'How to export a WhatsApp chat to PDF on Android',
@@ -188,7 +188,7 @@ export const guidesEn: Guide[] = [
     key: 'group',
     slug: 'export-whatsapp-group-chat',
     label: 'Export a WhatsApp group chat',
-    metaTitle: 'Export a WhatsApp Group Chat to PDF (Names & Colors) | ConversaPDF',
+    metaTitle: 'Export a WhatsApp Group Chat to PDF | ConversaPDF',
     metaDescription:
       'Turn a WhatsApp group conversation into a readable PDF: each participant with their name and color, group notices, dates and photos.',
     h1: 'Export a WhatsApp group chat to PDF',
@@ -231,7 +231,7 @@ export const guidesEn: Guide[] = [
     key: 'print',
     slug: 'print-whatsapp-chat',
     label: 'Print a WhatsApp chat',
-    metaTitle: 'How to Print a WhatsApp Chat (Without Screenshots) | ConversaPDF',
+    metaTitle: 'How to Print a WhatsApp Chat | ConversaPDF',
     metaDescription:
       'The cleanest way to print a WhatsApp conversation: a paginated PDF with names, dates, times and photos, ready to print at home or at a print shop.',
     h1: 'How to print a WhatsApp chat',
@@ -266,7 +266,7 @@ export const guidesEn: Guide[] = [
     key: 'txt',
     slug: 'open-whatsapp-chat-txt-file',
     label: 'Open a WhatsApp _chat.txt file',
-    metaTitle: 'How to Open a WhatsApp _chat.txt File and Turn It into a PDF | ConversaPDF',
+    metaTitle: 'Open a WhatsApp _chat.txt File as a PDF | ConversaPDF',
     metaDescription:
       'Exported a WhatsApp chat and ended up with an unreadable _chat.txt? Here’s how to open it and turn it into a clear PDF with dates, names and photos.',
     h1: 'How to open a WhatsApp _chat.txt file',

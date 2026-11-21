@@ -13,7 +13,7 @@ export const guidesIt: Guide[] = [
     key: 'iphone',
     slug: 'esportare-chat-whatsapp-iphone',
     label: 'Esportare una chat WhatsApp su iPhone',
-    metaTitle: 'Come esportare una chat WhatsApp in PDF su iPhone (2026) | ConversaPDF',
+    metaTitle: 'Esportare una chat WhatsApp in PDF su iPhone | ConversaPDF',
     metaDescription:
       'Esporta una chat WhatsApp dal tuo iPhone e trasformala in un PDF ordinato, con date, orari e foto. Guida passo passo, senza installare nulla.',
     h1: 'Come esportare una chat WhatsApp in PDF su iPhone',
@@ -59,7 +59,7 @@ export const guidesIt: Guide[] = [
     key: 'android',
     slug: 'esportare-chat-whatsapp-android',
     label: 'Esportare una chat WhatsApp su Android',
-    metaTitle: 'Come esportare una chat WhatsApp in PDF su Android (2026) | ConversaPDF',
+    metaTitle: 'Esportare una chat WhatsApp in PDF su Android | ConversaPDF',
     metaDescription:
       'Esporta una chat WhatsApp dal tuo telefono Android e trasformala in PDF con nomi, date, orari e foto. Passo passo, senza installare nulla.',
     h1: 'Come esportare una chat WhatsApp in PDF su Android',
@@ -104,7 +104,7 @@ export const guidesIt: Guide[] = [
     key: 'photos',
     slug: 'esportare-whatsapp-con-foto',
     label: 'Esportare una chat WhatsApp con le foto',
-    metaTitle: 'Esportare una chat WhatsApp in PDF con le foto | ConversaPDF',
+    metaTitle: 'Esportare chat WhatsApp in PDF con le foto | ConversaPDF',
     metaDescription:
       'Come ottenere un PDF di una chat WhatsApp con le foto al loro posto, accanto ai messaggi. Esportazione con media su iPhone e Android.',
     h1: 'Esportare una chat WhatsApp in PDF con le foto',
@@ -188,7 +188,7 @@ export const guidesIt: Guide[] = [
     key: 'group',
     slug: 'esportare-gruppo-whatsapp',
     label: 'Esportare un gruppo WhatsApp',
-    metaTitle: 'Esportare un gruppo WhatsApp in PDF (con nomi e colori) | ConversaPDF',
+    metaTitle: 'Esportare un gruppo WhatsApp in PDF | ConversaPDF',
     metaDescription:
       'Trasforma la chat di un gruppo WhatsApp in un PDF leggibile: ogni partecipante con nome e colore, avvisi del gruppo, date e foto.',
     h1: 'Esportare un gruppo WhatsApp in PDF',
@@ -231,7 +231,7 @@ export const guidesIt: Guide[] = [
     key: 'print',
     slug: 'stampare-chat-whatsapp',
     label: 'Stampare una chat WhatsApp',
-    metaTitle: 'Come stampare una chat WhatsApp (senza screenshot) | ConversaPDF',
+    metaTitle: 'Stampare una chat WhatsApp | ConversaPDF',
     metaDescription:
       'Il modo più pulito per stampare una chat WhatsApp: un PDF impaginato con nomi, date, orari e foto, pronto da stampare a casa o in copisteria.',
     h1: 'Come stampare una chat WhatsApp',
@@ -266,7 +266,7 @@ export const guidesIt: Guide[] = [
     key: 'txt',
     slug: 'aprire-file-chat-txt-whatsapp',
     label: 'Aprire il file _chat.txt di WhatsApp',
-    metaTitle: 'Come aprire il file _chat.txt di WhatsApp e trasformarlo in PDF | ConversaPDF',
+    metaTitle: 'Aprire il file _chat.txt di WhatsApp | ConversaPDF',
     metaDescription:
       'Hai esportato una chat WhatsApp e hai un file _chat.txt illeggibile? Ecco come aprirlo e trasformarlo in un PDF chiaro con date, nomi e foto.',
     h1: 'Come aprire il file _chat.txt di WhatsApp',
@@ -307,7 +307,7 @@ export const guidesIt: Guide[] = [
     key: 'save',
     slug: 'salvare-chat-whatsapp',
     label: 'Salvare una chat WhatsApp per sempre',
-    metaTitle: 'Come salvare una chat WhatsApp per sempre | ConversaPDF',
+    metaTitle: 'Salvare una chat WhatsApp per sempre | ConversaPDF',
     metaDescription:
       'Conserva le tue chat WhatsApp importanti in un PDF leggibile su qualsiasi dispositivo, con le foto, anche se cambi telefono o elimini l’app.',
     h1: 'Come salvare una chat WhatsApp per sempre',

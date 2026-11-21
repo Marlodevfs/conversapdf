@@ -13,7 +13,7 @@ export const guidesPt: Guide[] = [
     key: 'iphone',
     slug: 'exportar-conversa-whatsapp-iphone',
     label: 'Exportar uma conversa do WhatsApp no iPhone',
-    metaTitle: 'Como exportar uma conversa do WhatsApp em PDF no iPhone (2026) | ConversaPDF',
+    metaTitle: 'Exportar conversa do WhatsApp em PDF no iPhone | ConversaPDF',
     metaDescription:
       'Exporte uma conversa do WhatsApp do seu iPhone e transforme em um PDF organizado, com datas, horários e fotos. Passo a passo, sem instalar nada.',
     h1: 'Como exportar uma conversa do WhatsApp em PDF no iPhone',
@@ -59,7 +59,7 @@ export const guidesPt: Guide[] = [
     key: 'android',
     slug: 'exportar-conversa-whatsapp-android',
     label: 'Exportar uma conversa do WhatsApp no Android',
-    metaTitle: 'Como exportar uma conversa do WhatsApp em PDF no Android (2026) | ConversaPDF',
+    metaTitle: 'Exportar conversa do WhatsApp em PDF no Android',
     metaDescription:
       'Exporte uma conversa do WhatsApp do seu celular Android e transforme em PDF com nomes, datas, horários e fotos. Passo a passo, sem instalar nada.',
     h1: 'Como exportar uma conversa do WhatsApp em PDF no Android',
@@ -104,7 +104,7 @@ export const guidesPt: Guide[] = [
     key: 'photos',
     slug: 'exportar-whatsapp-com-fotos',
     label: 'Exportar uma conversa do WhatsApp com fotos',
-    metaTitle: 'Exportar uma conversa do WhatsApp em PDF com as fotos | ConversaPDF',
+    metaTitle: 'Exportar WhatsApp em PDF com fotos | ConversaPDF',
     metaDescription:
       'Como gerar um PDF de uma conversa do WhatsApp com as fotos no lugar certo, junto das mensagens. Exportação com mídia no iPhone e no Android.',
     h1: 'Exportar uma conversa do WhatsApp em PDF com as fotos',
@@ -147,9 +147,9 @@ export const guidesPt: Guide[] = [
     key: 'evidence',
     slug: 'conversa-whatsapp-como-prova',
     label: 'Usar uma conversa do WhatsApp como prova',
-    metaTitle: 'Conversa do WhatsApp como prova: como apresentar | ConversaPDF',
+    metaTitle: 'Conversa do WhatsApp como prova | ConversaPDF',
     metaDescription:
-      'Como preparar um PDF claro de uma conversa do WhatsApp para um advogado, um processo ou uma reclamação: exportação completa, datas, horários e impressão digital do arquivo.',
+      'Prepare um PDF claro de uma conversa do WhatsApp para o advogado ou um processo: conversa completa, datas, horários e impressão digital SHA-256.',
     h1: 'Conversa do WhatsApp como prova: como preparar',
     intro:
       'Locador, empresa, ex-companheiro, seguradora: muitos conflitos se resolvem com o que foi dito no WhatsApp. Uma pilha de prints é difícil de ler e fácil de contestar. Um documento completo e organizado ajuda muito mais o seu advogado.',
@@ -188,7 +188,7 @@ export const guidesPt: Guide[] = [
     key: 'group',
     slug: 'exportar-grupo-whatsapp',
     label: 'Exportar um grupo do WhatsApp',
-    metaTitle: 'Exportar um grupo do WhatsApp em PDF (com nomes e cores) | ConversaPDF',
+    metaTitle: 'Exportar grupo do WhatsApp em PDF | ConversaPDF',
     metaDescription:
       'Transforme a conversa de um grupo do WhatsApp em um PDF fácil de ler: cada participante com nome e cor, avisos do grupo, datas e fotos.',
     h1: 'Exportar um grupo do WhatsApp em PDF',
@@ -231,7 +231,7 @@ export const guidesPt: Guide[] = [
     key: 'print',
     slug: 'imprimir-conversa-whatsapp',
     label: 'Imprimir uma conversa do WhatsApp',
-    metaTitle: 'Como imprimir uma conversa do WhatsApp (sem prints) | ConversaPDF',
+    metaTitle: 'Imprimir conversa do WhatsApp | ConversaPDF',
     metaDescription:
       'O jeito mais limpo de imprimir uma conversa do WhatsApp: um PDF paginado com nomes, datas, horários e fotos, pronto para imprimir em casa ou na gráfica.',
     h1: 'Como imprimir uma conversa do WhatsApp',
@@ -266,7 +266,7 @@ export const guidesPt: Guide[] = [
     key: 'txt',
     slug: 'abrir-arquivo-chat-txt-whatsapp',
     label: 'Abrir o arquivo _chat.txt do WhatsApp',
-    metaTitle: 'Como abrir o arquivo _chat.txt do WhatsApp e transformar em PDF | ConversaPDF',
+    metaTitle: 'Abrir o arquivo _chat.txt do WhatsApp | ConversaPDF',
     metaDescription:
       'Exportou uma conversa do WhatsApp e ficou com um _chat.txt difícil de ler? Veja como abrir e transformar em um PDF claro, com datas, nomes e fotos.',
     h1: 'Como abrir o arquivo _chat.txt do WhatsApp',
@@ -307,7 +307,7 @@ export const guidesPt: Guide[] = [
     key: 'save',
     slug: 'guardar-conversa-whatsapp',
     label: 'Guardar uma conversa do WhatsApp para sempre',
-    metaTitle: 'Como guardar uma conversa do WhatsApp para sempre | ConversaPDF',
+    metaTitle: 'Guardar conversa do WhatsApp para sempre | ConversaPDF',
     metaDescription:
       'Guarde suas conversas importantes do WhatsApp em um PDF que abre em qualquer aparelho, com as fotos, mesmo se você trocar de celular ou apagar o app.',
     h1: 'Como guardar uma conversa do WhatsApp para sempre',

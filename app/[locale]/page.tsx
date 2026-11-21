@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Check, Lock } from 'lucide-react';
+import { Check, CreditCard, Lock, ShieldCheck } from 'lucide-react';
 import SamplePage from '@/components/SamplePage';
 import { isLocale, locales, siteConfig, type Locale } from '@/config/site';
 import { ui } from '@/lib/i18n/ui';
@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: intlLocale[locale].replace('-', '_'),
       type: 'website',
     },
+    twitter: { card: 'summary_large_image', title: t.meta.title, description: t.meta.description, images: [`${siteConfig.url}/${locale}/opengraph-image`] },
   };
 }
 
@@ -52,12 +53,28 @@ export default async function Home({ params }: Props) {
       operatingSystem: 'Any',
       inLanguage: locale,
       description: t.meta.description,
+      browserRequirements: 'Requires JavaScript. Works in any modern browser on iPhone, Android, Windows and Mac.',
+      featureList: t.plans.proof.features,
+      publisher: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url, email: siteConfig.contact.email },
       offers: (['text', 'photos', 'proof'] as const).map((e) => ({
         '@type': 'Offer',
         name: t.plans[e].name,
         price: siteConfig.prices[e].toFixed(2),
         priceCurrency: siteConfig.prices.currency,
       })),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: t.howTitle,
+      description: t.howIntro,
+      inLanguage: locale,
+      totalTime: 'PT2M',
+      tool: [{ '@type': 'HowToTool', name: 'WhatsApp' }],
+      step: [
+        ...t.iphone.steps.map((text, i) => ({ '@type': 'HowToStep', position: i + 1, name: `${t.iphone.title} ${i + 1}`, text })),
+        { '@type': 'HowToStep', position: t.iphone.steps.length + 1, name: siteConfig.name, text: t.howTip, url: `${siteConfig.url}/${locale}#tool` },
+      ],
     },
     {
       '@context': 'https://schema.org',
@@ -118,6 +135,24 @@ export default async function Home({ params }: Props) {
         </div>
       </section>
 
+      <section id="privacy" className="scroll-mt-20 border-y border-sand bg-white">
+        <div className="mx-auto max-w-6xl px-5 py-16">
+          <h2 className="text-3xl font-extrabold tracking-display sm:text-4xl">{t.privacySection.title}</h2>
+          <div className="mt-10 grid gap-10 md:grid-cols-3">
+            {t.privacySection.points.map((p, i) => {
+              const Icon = [Lock, ShieldCheck, CreditCard][i] ?? Lock;
+              return (
+                <div key={p.title}>
+                  <Icon className="h-6 w-6 text-leaf" aria-hidden />
+                  <h3 className="mt-4 text-lg font-bold">{p.title}</h3>
+                  <p className="mt-2 leading-relaxed text-ink/70">{p.text}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       <section id="pricing" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-16">
         <h2 className="text-3xl font-extrabold tracking-display sm:text-4xl">{t.pricingTitle}</h2>
         <p className="mt-3 max-w-[60ch] text-ink/70">{t.pricingIntro}</p>
@@ -131,7 +166,7 @@ export default async function Home({ params }: Props) {
               >
                 <h3 className="text-lg font-bold">{t.plans[e].name}</h3>
                 <p className="mt-4 text-5xl font-extrabold tabular-nums tracking-display">{price.format(siteConfig.prices[e])}</p>
-                <p className={`mt-1 text-sm ${featured ? 'text-white/65' : 'text-ink/55'}`}>{t.oneTime}</p>
+                <p className={`mt-1 text-sm ${featured ? 'text-white/65' : 'text-ink/70'}`}>{t.oneTime}</p>
                 <p className={`mt-5 ${featured ? 'text-white/85' : 'text-ink/75'}`}>{t.plans[e].desc}</p>
                 <ul className="mt-5 space-y-2.5 text-sm">
                   {t.plans[e].features.map((f) => (
@@ -144,7 +179,7 @@ export default async function Home({ params }: Props) {
             );
           })}
         </div>
-        <p className="mt-6 flex items-center gap-2 text-sm text-ink/60">
+        <p className="mt-6 flex items-center gap-2 text-sm text-ink/70">
           <Lock className="h-4 w-4" aria-hidden /> {t.hero.privacy}
         </p>
       </section>
