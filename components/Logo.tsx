@@ -1,10 +1,11 @@
-/** Mark: a white "C" on a blue tile, its lower end drawn as a chat bubble's tail. */
+/** Mark: an open ring that reads as a "C" (Conversa) and as a chat bubble, on a blue tile. */
 export function LogoMark({ className = 'h-8 w-8' }: { className?: string }) {
   return (
     <svg viewBox="0 0 64 64" className={className} aria-hidden>
       <rect x="2" y="2" width="60" height="60" rx="16" fill="#2554e8" />
-      <path d="M44 21a15 15 0 1 0 0 22" fill="none" stroke="#fff" strokeWidth="8" strokeLinecap="round" />
-      <path d="M22 44l-8 10 12-4z" fill="#fff" />
+      <path d="M44.5 22.5A14 14 0 1 0 44.5 39.5" fill="none" stroke="#fff" strokeWidth="7" strokeLinecap="round" />
+      <path d="M19.5 40l-6 11 13-6.5z" fill="#fff" />
+      <circle cx="47" cy="31" r="3.4" fill="#fff" />
     </svg>
   );
 }
