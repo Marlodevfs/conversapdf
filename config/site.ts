@@ -18,7 +18,7 @@ export const siteConfig = {
    * the publisher's identity on the site. Empty fields are simply not displayed.
    */
   legal: {
-    publisherName: '',
+    publisherName: 'ConversaPDF',
     publisherStatus: '',
     publisherAddress: '',
     host: { name: 'Vercel Inc.', address: '440 N Barranca Ave #4133, Covina, CA 91723, USA' },
