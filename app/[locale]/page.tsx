@@ -7,7 +7,7 @@ import { ui } from '@/lib/i18n/ui';
 import { intlLocale } from '@/lib/i18n/pdf';
 import ConverterTool from '@/components/ConverterTool';
 import Link from 'next/link';
-import { guideChrome, guidesFor } from '@/lib/guides';
+import { guideByKey, guideChrome, guidesFor } from '@/lib/guides';
 import { analyzer } from '@/lib/analyzer/i18n';
 
 type Props = { params: Promise<{ locale: string }> };
@@ -98,9 +98,16 @@ export default async function Home({ params }: Props) {
 
       <section className="mx-auto grid max-w-6xl gap-12 px-5 pb-16 pt-10 sm:pt-14 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,.8fr)] lg:gap-16">
         <div>
-          <h1 className="max-w-[16ch] text-[clamp(2.5rem,5vw,3.9rem)] leading-[1.05] font-display font-extrabold tracking-display">{t.hero.title}</h1>
-          <p className="mt-5 max-w-[56ch] text-lg leading-relaxed text-ink/70">{t.hero.subtitle}</p>
-          <div className="mt-9">
+          <h1 className="max-w-[16ch] text-[clamp(2.15rem,5vw,3.9rem)] leading-[1.05] font-display font-extrabold tracking-display">{t.hero.title}</h1>
+          <p className="mt-4 max-w-[56ch] text-base leading-relaxed text-ink/70 sm:mt-5 sm:text-lg">{t.hero.subtitle}</p>
+          <p className="mt-3 text-sm font-medium text-ink/70">
+            {t.hero.also[0]}
+            <a href={`/${locale}/${guideByKey(locale, 'instagram').slug}`} className="font-semibold text-leaf underline-offset-2 hover:underline">Instagram</a>
+            {t.hero.also[1]}
+            <a href={`/${locale}/${guideByKey(locale, 'messenger').slug}`} className="font-semibold text-leaf underline-offset-2 hover:underline">Messenger</a>
+            {t.hero.also[2]}
+          </p>
+          <div className="mt-6 sm:mt-9">
             <ConverterTool locale={locale} />
           </div>
         </div>

@@ -298,7 +298,7 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
             setDragging(false);
             if (e.dataTransfer.files?.length) handleFiles(e.dataTransfer.files);
           }}
-          className={`flex cursor-pointer flex-col items-center justify-center rounded-[14px] border-2 border-dashed px-6 py-14 text-center transition-colors focus-within:border-leaf ${
+          className={`flex cursor-pointer flex-col items-center justify-center rounded-[14px] border-2 border-dashed px-6 py-9 text-center sm:py-14 transition-colors focus-within:border-leaf ${
             dragging ? 'border-leaf bg-leaf-light' : 'border-sand bg-paper/50 hover:border-leaf'
           }`}
         >

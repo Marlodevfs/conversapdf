@@ -9,7 +9,7 @@ export interface UiStrings {
   langName: string;
   meta: { title: string; description: string };
   nav: { how: string; pricing: string; faq: string };
-  hero: { kicker: string; title: string; subtitle: string; privacy: string };
+  hero: { kicker: string; title: string; subtitle: string; privacy: string; also: [string, string, string] };
   tool: {
     drop: string;
     dropHint: string;
@@ -68,6 +68,7 @@ const es: UiStrings = {
   },
   nav: { how: 'Cómo funciona', pricing: 'Precios', faq: 'Preguntas' },
   hero: {
+    also: ['También funciona con ', ' y ', '.'],
     kicker: 'Chat de WhatsApp → PDF',
     title: 'Convierte tu chat de WhatsApp a PDF, claro y ordenado',
     subtitle:
@@ -181,6 +182,7 @@ const pt: UiStrings = {
   },
   nav: { how: 'Como funciona', pricing: 'Preços', faq: 'Dúvidas' },
   hero: {
+    also: ['Também funciona com ', ' e ', '.'],
     kicker: 'Conversa do WhatsApp → PDF',
     title: 'Converta sua conversa do WhatsApp em um PDF claro e organizado',
     subtitle:
@@ -294,6 +296,7 @@ const it: UiStrings = {
   },
   nav: { how: 'Come funziona', pricing: 'Prezzi', faq: 'Domande' },
   hero: {
+    also: ['Funziona anche con ', ' e ', '.'],
     kicker: 'Chat WhatsApp → PDF',
     title: 'Converti la tua chat WhatsApp in un PDF chiaro e ordinato',
     subtitle:
@@ -407,6 +410,7 @@ const fr: UiStrings = {
   },
   nav: { how: 'Comment ça marche', pricing: 'Tarifs', faq: 'Questions' },
   hero: {
+    also: ['Marche aussi avec ', ' et ', '.'],
     kicker: 'Conversation WhatsApp → PDF',
     title: 'Convertissez votre conversation WhatsApp en PDF clair et ordonné',
     subtitle:
@@ -520,6 +524,7 @@ const en: UiStrings = {
   },
   nav: { how: 'How it works', pricing: 'Pricing', faq: 'FAQ' },
   hero: {
+    also: ['Also works with ', ' and ', '.'],
     kicker: 'WhatsApp chat → PDF',
     title: 'Convert your WhatsApp chat to a clear, tidy PDF',
     subtitle:
