@@ -63,7 +63,7 @@ export default async function Home({ params }: Props) {
       inLanguage: locale,
       description: t.meta.description,
       browserRequirements: 'Requires JavaScript. Works in any modern browser on iPhone, Android, Windows and Mac.',
-      featureList: t.plans.proof.features,
+      featureList: [...t.plans.proof.features, `${t.hero.also[0]}Instagram${t.hero.also[1]}Messenger`.trim()],
       publisher: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url, email: siteConfig.contact.email },
       offers: (['text', 'photos', 'proof'] as const).map((e) => ({
         '@type': 'Offer',
