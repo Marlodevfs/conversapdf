@@ -72,9 +72,9 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
 
   if (!chat || !stats) {
     return (
-      <div className="rounded-[20px] border border-sand bg-white p-4 shadow-[0_1px_0_rgba(20,32,26,.04),0_24px_48px_-32px_rgba(20,32,26,.4)] sm:p-6">
+      <div className="rounded-[20px] border border-sand bg-surface p-4 shadow-[0_30px_80px_-40px_rgba(0,0,0,.9)] sm:p-6">
         {error && (
-          <p role="alert" className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-800">
+          <p role="alert" className="mb-4 rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-200">
             {t.tool.errors[error]}
           </p>
         )}
@@ -105,7 +105,7 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
               </span>
               <span className="text-xl font-bold tracking-tight">{t.tool.drop}</span>
               <span className="mt-1 text-sm text-ink/70">{t.tool.dropHint}</span>
-              <span className="mt-6 rounded-full bg-leaf px-6 py-3 font-semibold text-white shadow-[0_8px_20px_-10px_rgba(21,87,65,.8)]">{t.tool.choose}</span>
+              <span className="mt-6 rounded-full bg-leaf px-6 py-3 font-semibold text-paper shadow-[0_0_32px_rgba(237,229,214,.22)]">{t.tool.choose}</span>
             </>
           )}
           <input
@@ -138,15 +138,15 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
           [a.words, nf.format(stats.words), null],
           [a.days, nf.format(stats.spanDays), a.since(df.format(stats.first))],
         ].map(([label, value, sub]) => (
-          <div key={label} className="bg-white p-6">
+          <div key={label} className="bg-surface p-6">
             <p className="text-sm font-medium text-ink/70">{label}</p>
-            <p className="mt-1 text-4xl font-extrabold tabular-nums tracking-display">{value}</p>
+            <p className="mt-1 text-4xl tabular-nums font-display font-normal tracking-display">{value}</p>
             {sub && <p className="mt-1 text-sm text-ink/70">{sub}</p>}
           </div>
         ))}
       </div>
 
-      <section className="rounded-[20px] border border-sand bg-white p-6">
+      <section className="rounded-[20px] border border-sand bg-surface p-6">
         <h2 className="text-xl font-bold">{a.perPerson}</h2>
         <ul className="mt-5 space-y-5">
           {shown.map((p) => (
@@ -184,14 +184,14 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
       </section>
 
       <div className="grid gap-5 md:grid-cols-2">
-        <section className="rounded-[20px] border border-sand bg-white p-6">
+        <section className="rounded-[20px] border border-sand bg-surface p-6">
           <h2 className="text-xl font-bold">{a.hours}</h2>
           <div className="mt-6 flex h-36 items-end gap-[3px]" role="img" aria-label={`${a.hours}: ${peakHour}h`}>
             {stats.byHour.map((n, h) => (
               <div
                 key={h}
                 title={`${h}h: ${nf.format(n)}`}
-                className={`flex-1 rounded-t-[3px] ${h === peakHour ? 'bg-leaf-dark' : 'bg-leaf/45'}`}
+                className={`flex-1 rounded-t-[3px] ${h === peakHour ? 'bg-marker' : 'bg-leaf/35'}`}
                 style={{ height: `${Math.max((n / maxHour) * 100, n ? 3 : 0)}%` }}
               />
             ))}
@@ -205,7 +205,7 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
           </div>
         </section>
 
-        <section className="rounded-[20px] border border-sand bg-white p-6">
+        <section className="rounded-[20px] border border-sand bg-surface p-6">
           <h2 className="text-xl font-bold">{a.weekdays}</h2>
           <ul className="mt-5 space-y-2.5">
             {stats.byWeekday.map((n, i) => (
@@ -213,7 +213,7 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
                 <span className="w-10 shrink-0 capitalize text-ink/70">{weekdayNames[i]}</span>
                 <span className="h-3 flex-1 overflow-hidden rounded-full bg-paper">
                   <span
-                    className={`block h-full rounded-full ${n === maxDay ? 'bg-leaf-dark' : 'bg-leaf/45'}`}
+                    className={`block h-full rounded-full ${n === maxDay ? 'bg-marker' : 'bg-leaf/35'}`}
                     style={{ width: `${(n / maxDay) * 100}%` }}
                   />
                 </span>
@@ -224,7 +224,7 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
         </section>
       </div>
 
-      <section className="rounded-[20px] border border-sand bg-white p-6">
+      <section className="rounded-[20px] border border-sand bg-surface p-6">
         <h2 className="text-xl font-bold">{a.emojis}</h2>
         {stats.topEmojis.length ? (
           <ul className="mt-5 flex flex-wrap gap-3">
@@ -247,7 +247,7 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
           [a.media, nf.format(stats.media), ''],
           [a.deleted, nf.format(stats.deleted), ''],
         ].map(([label, value, sub]) => (
-          <div key={label} className="bg-white p-5">
+          <div key={label} className="bg-surface p-5">
             <p className="text-sm font-medium text-ink/70">{label}</p>
             <p className="mt-1 text-lg font-bold">{value}</p>
             {sub && <p className="text-sm text-ink/70">{sub}</p>}
@@ -255,10 +255,10 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
         ))}
       </div>
 
-      <section className="rounded-[20px] bg-leaf-dark p-4 text-white sm:p-6">
+      <section className="rounded-[20px] border border-leaf/30 bg-surface-raised p-4 sm:p-6">
         <div className="px-2 pb-5 pt-2">
-          <h2 className="text-2xl font-extrabold tracking-display sm:text-3xl">{a.ctaTitle}</h2>
-          <p className="mt-2 max-w-[60ch] text-white/80">{a.ctaText}</p>
+          <h2 className="text-2xl font-display font-normal tracking-display sm:text-3xl">{a.ctaTitle}</h2>
+          <p className="mt-2 max-w-[60ch] text-ink/75">{a.ctaText}</p>
         </div>
         <div className="text-ink">
           <ConverterTool key={chat.sha256} locale={locale} preloaded={chat} />

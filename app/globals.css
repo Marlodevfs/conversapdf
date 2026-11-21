@@ -1,33 +1,38 @@
-@import '@fontsource-variable/schibsted-grotesk/wght.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Noto Sans';
-  src: url('/fonts/NotoSans_400Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Noto Sans';
-  src: url('/fonts/NotoSans_700Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-display: swap;
+@font-face { font-family: 'Inter'; src: url('/fonts/site/inter-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('/fonts/site/inter-latin-500-normal.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('/fonts/site/inter-latin-600-normal.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('/fonts/site/inter-latin-700-normal.woff2') format('woff2'); font-weight: 700 800; font-display: swap; }
+@font-face { font-family: 'Instrument Serif'; src: url('/fonts/site/instrument-serif-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Instrument Serif'; src: url('/fonts/site/instrument-serif-latin-400-italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'IBM Plex Mono'; src: url('/fonts/site/ibm-plex-mono-latin-500-normal.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Noto Sans'; src: url('/fonts/NotoSans_400Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Noto Sans'; src: url('/fonts/NotoSans_700Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+
+:root {
+  color-scheme: dark;
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: theme('colors.paper');
 }
 
 body {
   @apply bg-paper font-sans text-ink antialiased;
-  font-feature-settings: 'ss01', 'tnum' 0;
+  overflow-x: clip;
 }
 
 h1, h2, h3 {
   text-wrap: balance;
+}
+
+::selection {
+  background: theme('colors.marker');
+  color: #09090b;
 }
 
 :focus-visible {
@@ -35,7 +40,32 @@ h1, h2, h3 {
   outline-offset: 2px;
 }
 
-/* Highlighter stroke used on the sample page and the price that matters. */
+/* The room: film grain over everything, and a vignette at the edges. */
+.room-grain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* The one light in the room: a warm glow behind the document. */
+.room-halo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(760px, 150vw);
+  height: min(760px, 150vw);
+  border-radius: 9999px;
+  background: radial-gradient(closest-side, rgb(237 229 214 / 0.20), rgb(237 229 214 / 0.06) 55%, transparent 72%);
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Highlighter stroke used on the sample page. */
 .marker {
   background-image: linear-gradient(transparent 12%, theme('colors.marker') 12%, theme('colors.marker') 88%, transparent 88%);
   background-repeat: no-repeat;
@@ -44,5 +74,5 @@ h1, h2, h3 {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .animate-settle, .animate-sweep { animation: none !important; }
+  .animate-settle, .animate-sweep, .animate-breathe { animation: none !important; }
 }

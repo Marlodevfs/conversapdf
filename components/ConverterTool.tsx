@@ -207,9 +207,9 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
   const messageCount = chat ? chat.messages.filter((m) => m.author).length : 0;
 
   return (
-    <div id="tool" className="scroll-mt-24 rounded-[20px] border border-sand bg-white p-4 shadow-[0_1px_0_rgba(20,32,26,.04),0_24px_48px_-32px_rgba(20,32,26,.4)] sm:p-6">
+    <div id="tool" className="scroll-mt-24 rounded-[20px] border border-sand bg-surface p-4 shadow-[0_30px_80px_-40px_rgba(0,0,0,.9)] sm:p-6">
       {error && (
-        <p role="alert" className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-800">
+        <p role="alert" className="mb-4 rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-200">
           {t.tool.errors[error]}
         </p>
       )}
@@ -240,7 +240,7 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
               <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-leaf-light"><Upload className="h-6 w-6 text-leaf" aria-hidden /></span>
               <span className="text-xl font-bold tracking-tight">{t.tool.drop}</span>
               <span className="mt-1 text-sm text-ink/70">{t.tool.dropHint}</span>
-              <span className="mt-6 rounded-full bg-leaf px-6 py-3 font-semibold text-white shadow-[0_8px_20px_-10px_rgba(21,87,65,.8)]">{t.tool.choose}</span>
+              <span className="mt-6 rounded-full bg-leaf px-6 py-3 font-semibold text-paper shadow-[0_0_32px_rgba(237,229,214,.22)]">{t.tool.choose}</span>
             </>
           )}
           <input
@@ -289,7 +289,7 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
               <select
                 value={me}
                 onChange={(e) => setMe(e.target.value)}
-                className="w-full rounded-lg border border-sand bg-white px-3 py-2"
+                className="w-full rounded-lg border border-sand bg-surface px-3 py-2"
                 disabled={phase === 'working'}
               >
                 <option value="">{t.tool.meNone}</option>
@@ -366,14 +366,14 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
                 <div key={e} className={`flex flex-col rounded-xl p-4 ${e === 'photos' ? 'border-2 border-leaf' : 'border border-sand'}`}>
                   <div className="flex items-baseline justify-between">
                     <span className="font-semibold">{plan.name}</span>
-                    <span className="text-lg font-extrabold tabular-nums">{price.format(siteConfig.prices[e])}</span>
+                    <span className="font-display text-2xl leading-none">{price.format(siteConfig.prices[e])}</span>
                   </div>
                   <p className="mt-1 flex-1 text-xs text-ink/70">{plan.desc}</p>
                   <button
                     type="button"
                     onClick={() => purchase(e)}
                     disabled={phase === 'working' || (!PAYMENTS_ENABLED && !owned)}
-                    className="mt-3 flex items-center justify-center gap-2 rounded-lg bg-leaf px-3 py-2 text-sm font-semibold text-white hover:bg-leaf-dark disabled:opacity-50"
+                    className="mt-3 flex items-center justify-center gap-2 rounded-lg bg-leaf px-3 py-2 text-sm font-semibold text-paper hover:bg-leaf-dark disabled:opacity-50"
                   >
                     {owned ? <FileText className="h-4 w-4" aria-hidden /> : <Lock className="h-4 w-4" aria-hidden />}
                     {t.tool.buy}

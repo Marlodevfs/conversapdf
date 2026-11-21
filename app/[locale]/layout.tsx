@@ -13,7 +13,7 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export const viewport: Viewport = { themeColor: '#155741', width: 'device-width', initialScale: 1 };
+export const viewport: Viewport = { themeColor: '#09090b', width: 'device-width', initialScale: 1 };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -39,6 +39,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body>
+        <div aria-hidden className="room-grain" />
         <header className="sticky top-0 z-40 border-b border-sand/80 bg-paper/85 backdrop-blur-md">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
             <Link href={`/${locale}`} aria-label="ConversaPDF">
@@ -54,7 +55,7 @@ export default async function LocaleLayout({
             </div>
           </div>
         </header>
-        <main className="relative z-0">{children}</main>
+        <main className="relative z-0 overflow-x-clip">{children}</main>
         <SiteFooter locale={locale} t={t} />
         {siteConfig.goatcounter && (
           <Script
