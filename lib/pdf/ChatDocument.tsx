@@ -31,8 +31,8 @@ export interface ChatDocumentProps {
   hasSeconds?: boolean;
 }
 
-/** The preview shows about a third of the chat, between 3 and 20 messages, so it never replaces the paid PDF. */
-const previewCount = (n: number) => Math.min(20, Math.max(3, Math.ceil(n * 0.3)));
+/** The preview shows only a taste of the chat (3 to 6 messages), enough to judge the layout, never enough to replace the paid PDF. */
+const previewCount = (n: number) => Math.min(6, Math.max(3, Math.ceil(n * 0.15)));
 const WATERMARK_ROWS = [150, 400, 650];
 const IMAGE_EXT = /\.(jpe?g|png|webp)$/i;
 const NAME_COLORS = ['#1d6b4f', '#8a4b0f', '#2b4c9b', '#9b2b5a', '#5a3d99', '#0f6f80', '#7a6b00', '#a33a2b'];
