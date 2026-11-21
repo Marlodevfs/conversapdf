@@ -1,0 +1,28 @@
+export const locales = ['es', 'pt', 'it', 'fr', 'en'] as const;
+export type Locale = (typeof locales)[number];
+export const defaultLocale: Locale = 'en';
+
+export function isLocale(value: string): value is Locale {
+  return (locales as readonly string[]).includes(value);
+}
+
+export const siteConfig = {
+  name: 'ConversaPDF',
+  domain: 'conversapdf.com',
+  url: 'https://conversapdf.com',
+  contact: { email: 'support@conversapdf.com' },
+  /** GoatCounter site code (https://<code>.goatcounter.com). Empty = no analytics. */
+  goatcounter: '',
+  /**
+   * Legal notice. TO FILL IN before selling: French law (LCEN art. 6) requires
+   * the publisher's identity on the site. Empty fields are simply not displayed.
+   */
+  legal: {
+    publisherName: '',
+    publisherStatus: '',
+    publisherAddress: '',
+    host: { name: 'Vercel Inc.', address: '440 N Barranca Ave #4133, Covina, CA 91723, USA' },
+  },
+  /** Prices shown on the site. Must match the Paddle prices. */
+  prices: { text: 4.99, photos: 8.99, proof: 14.99, currency: 'EUR' },
+};

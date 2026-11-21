@@ -1,0 +1,15 @@
+export default function Logo({ className = '' }: { className?: string }) {
+  return (
+    <span className={`inline-flex items-center gap-2 font-bold ${className}`}>
+      <svg viewBox="0 0 64 64" className="h-7 w-7" aria-hidden>
+        <rect x="10" y="6" width="44" height="52" rx="6" fill="#1d6b4f" />
+        <path d="M20 20h24a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H30l-7 6v-6h-3a4 4 0 0 1-4-4V24a4 4 0 0 1 4-4z" fill="#fbf8f2" />
+        <rect x="22" y="26" width="18" height="3" rx="1.5" fill="#1d6b4f" />
+        <rect x="22" y="31" width="12" height="3" rx="1.5" fill="#1d6b4f" />
+      </svg>
+      <span>
+        Conversa<span className="text-leaf">PDF</span>
+      </span>
+    </span>
+  );
+}
