@@ -17,7 +17,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
     (
       <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 80, background: '#f5f8ff', color: '#0f172a' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 20, fontSize: 44, fontWeight: 700 }}>
-          <svg width="76" height="76" viewBox="0 0 64 64"><path d="M14 6H44L58 20V42a8 8 0 0 1-8 8H26L12 59l2-9a8 8 0 0 1-8-8V14a8 8 0 0 1 8-8z" fill="#2554e8" /><path d="M44 6v10a4 4 0 0 0 4 4h10z" fill="#f5e14a" /><rect x="14" y="23" width="26" height="4.5" rx="2.25" fill="#fff" /><rect x="14" y="32" width="17" height="4.5" rx="2.25" fill="#fff" opacity="0.75" /></svg>
+          <svg width="76" height="76" viewBox="0 0 64 64"><rect x="2" y="2" width="60" height="60" rx="16" fill="#2554e8" /><path d="M44 21a15 15 0 1 0 0 22" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" /><path d="M22 44l-8 10 12-4z" fill="#fff" /></svg>
           ConversaPDF
         </div>
         <div style={{ marginTop: 50, fontSize: 64, fontWeight: 700, lineHeight: 1.15 }}>{t.hero.title}</div>
