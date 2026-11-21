@@ -8,7 +8,7 @@ export interface Faq {
 export interface UiStrings {
   langName: string;
   meta: { title: string; description: string };
-  nav: { how: string; pricing: string; faq: string; convert: string; toPdf: string };
+  nav: { how: string; pricing: string; faq: string; convert: string; convertShort: string; toPdf: string };
   hero: { kicker: string; title: string; subtitle: string; privacy: string; also: [string, string, string] };
   tool: {
     drop: string;
@@ -66,7 +66,7 @@ const es: UiStrings = {
     description:
       'Convierte un chat de WhatsApp exportado en un PDF claro con fotos, fechas y horas. Para un abogado, una prueba o un recuerdo. Todo en tu navegador.',
   },
-  nav: { how: 'Cómo funciona', pricing: 'Precios', faq: 'Preguntas', convert: 'Convertir a PDF', toPdf: '¿Prefieres el PDF de la conversación?' },
+  nav: { how: 'Cómo funciona', pricing: 'Precios', faq: 'Preguntas', convert: 'Convertir a PDF', convertShort: 'Convertir', toPdf: '¿Prefieres el PDF de la conversación?' },
   hero: {
     also: ['También funciona con ', ' y ', '.'],
     kicker: 'Chat de WhatsApp → PDF',
@@ -180,7 +180,7 @@ const pt: UiStrings = {
     description:
       'Converta uma conversa exportada do WhatsApp em um PDF claro com fotos, datas e horários. Para advogado, prova ou lembrança. Tudo no seu navegador.',
   },
-  nav: { how: 'Como funciona', pricing: 'Preços', faq: 'Dúvidas', convert: 'Converter em PDF', toPdf: 'Prefere o PDF da conversa?' },
+  nav: { how: 'Como funciona', pricing: 'Preços', faq: 'Dúvidas', convert: 'Converter em PDF', convertShort: 'Converter', toPdf: 'Prefere o PDF da conversa?' },
   hero: {
     also: ['Também funciona com ', ' e ', '.'],
     kicker: 'Conversa do WhatsApp → PDF',
@@ -294,7 +294,7 @@ const it: UiStrings = {
     description:
       'Converti una chat WhatsApp esportata in un PDF chiaro con foto, date e orari. Per un avvocato, una prova o un ricordo. Tutto nel tuo browser.',
   },
-  nav: { how: 'Come funziona', pricing: 'Prezzi', faq: 'Domande', convert: 'Converti in PDF', toPdf: 'Preferisci il PDF della chat?' },
+  nav: { how: 'Come funziona', pricing: 'Prezzi', faq: 'Domande', convert: 'Converti in PDF', convertShort: 'Converti', toPdf: 'Preferisci il PDF della chat?' },
   hero: {
     also: ['Funziona anche con ', ' e ', '.'],
     kicker: 'Chat WhatsApp → PDF',
@@ -408,7 +408,7 @@ const fr: UiStrings = {
     description:
       'Exportez votre conversation WhatsApp en PDF clair, avec photos, dates et heures. Pour un avocat, une preuve ou un souvenir. Tout dans votre navigateur.',
   },
-  nav: { how: 'Comment ça marche', pricing: 'Tarifs', faq: 'Questions', convert: 'Convertir en PDF', toPdf: 'Vous voulez plutôt le PDF de la conversation ?' },
+  nav: { how: 'Comment ça marche', pricing: 'Tarifs', faq: 'Questions', convert: 'Convertir en PDF', convertShort: 'Convertir', toPdf: 'Vous voulez plutôt le PDF de la conversation ?' },
   hero: {
     also: ['Marche aussi avec ', ' et ', '.'],
     kicker: 'Conversation WhatsApp → PDF',
@@ -522,7 +522,7 @@ const en: UiStrings = {
     description:
       'Convert an exported WhatsApp chat to a clean PDF with photos, dates and times. For lawyers, evidence or keepsakes. Runs entirely in your browser.',
   },
-  nav: { how: 'How it works', pricing: 'Pricing', faq: 'FAQ', convert: 'Convert to PDF', toPdf: 'Want the PDF of the chat instead?' },
+  nav: { how: 'How it works', pricing: 'Pricing', faq: 'FAQ', convert: 'Convert to PDF', convertShort: 'Convert', toPdf: 'Want the PDF of the chat instead?' },
   hero: {
     also: ['Also works with ', ' and ', '.'],
     kicker: 'WhatsApp chat → PDF',
