@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { CheckCircle2, FileText, Loader2, Lock, Upload } from 'lucide-react';
 import type { Locale } from '@/config/site';
 import { siteConfig } from '@/config/site';
@@ -19,6 +19,26 @@ const RANK: Record<Edition, number> = { text: 0, photos: 1, proof: 2 };
 const MAX_BYTES = 1024 * 1024 * 1024;
 
 const dayKey = (t: number) => new Date(t).toISOString().slice(0, 10);
+
+/**
+ * Purchases are remembered on this device per conversation (by the export's
+ * SHA-256), so a reload or a second visit does not ask to pay twice. The
+ * stored checkout id is checked again with the server before unlocking.
+ */
+const UNLOCKS = 'cpdf-unlocks';
+const PENDING = 'cpdf-pending-checkout';
+function readUnlocks(): Record<string, string> {
+  try {
+    return JSON.parse(localStorage.getItem(UNLOCKS) || '{}');
+  } catch {
+    return {};
+  }
+}
+function rememberUnlock(sha: string, checkoutId: string) {
+  try {
+    localStorage.setItem(UNLOCKS, JSON.stringify({ ...readUnlocks(), [sha]: checkoutId }));
+  } catch {}
+}
 
 function slug(s: string) {
   return (
@@ -87,6 +107,44 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
   const photoCache = useRef<Record<string, PdfImage> | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [paidNotice, setPaidNotice] = useState(false);
+
+  // Back from a payment page (checkout_id in the URL): the chat in memory was
+  // lost, so keep the id and unlock as soon as the chat is selected again.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('checkout_id');
+    if (id && /^[A-Za-z0-9_-]{8,80}$/.test(id)) {
+      try {
+        sessionStorage.setItem(PENDING, id);
+      } catch {}
+      params.delete('checkout_id');
+      const q = params.toString();
+      window.history.replaceState(null, '', window.location.pathname + (q ? `?${q}` : '') + window.location.hash);
+    }
+    try {
+      if (sessionStorage.getItem(PENDING)) setPaidNotice(true);
+    } catch {}
+  }, []);
+
+  const restoreUnlock = useCallback(async (loaded: LoadedChat) => {
+    let pending: string | null = null;
+    try {
+      pending = sessionStorage.getItem(PENDING);
+    } catch {}
+    const id = pending || readUnlocks()[loaded.sha256];
+    if (!id) return;
+    const edition = await verifyPurchase(id).catch(() => null);
+    if (!edition) return;
+    setUnlocked((u) => (u && RANK[u] >= RANK[edition] ? u : edition));
+    rememberUnlock(loaded.sha256, id);
+    if (pending) {
+      try {
+        sessionStorage.removeItem(PENDING);
+      } catch {}
+      setPaidNotice(false);
+    }
+  }, []);
 
   const price = useMemo(
     () => new Intl.NumberFormat(intlLocale[locale], { style: 'currency', currency: siteConfig.prices.currency }),
@@ -126,11 +184,12 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
       setDownloadUrl(null);
       photoCache.current = null;
       setPhase('ready');
+      if (PAYMENTS_ENABLED) restoreUnlock(loaded);
     } catch (e: any) {
       setError((e?.code as ErrorCode) || 'generic');
       setPhase('idle');
     }
-  }, []);
+  }, [restoreUnlock]);
 
   const photos = async (edition: Edition): Promise<Record<string, PdfImage>> => {
     if (!chat || edition === 'text') return {};
@@ -189,6 +248,7 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
           return;
         }
         setUnlocked(granted);
+        rememberUnlock(chat.sha256, txn);
       }
       setPhase('working');
       const images = await photos(granted);
@@ -208,6 +268,11 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
 
   return (
     <div id="tool" className="scroll-mt-24 rounded-[20px] border border-sand bg-surface p-4 shadow-[0_24px_60px_-28px_rgba(37,84,232,.35)] sm:p-6">
+      {paidNotice && !chat && (
+        <p role="status" className="mb-4 rounded-lg bg-leaf-light px-4 py-3 text-sm font-medium text-leaf-dark">
+          {t.tool.paidReload}
+        </p>
+      )}
       {error && (
         <p role="alert" className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-800">
           {t.tool.errors[error]}
@@ -366,7 +431,7 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
                 <div key={e} className={`flex flex-col rounded-xl p-4 ${e === 'photos' ? 'border-2 border-leaf' : 'border border-sand'}`}>
                   <div className="flex items-baseline justify-between">
                     <span className="font-semibold">{plan.name}</span>
-                    <span className="font-display text-2xl leading-none">{price.format(siteConfig.prices[e])}</span>
+                    <span className="text-xl font-extrabold leading-none tracking-tight">{price.format(siteConfig.prices[e])}</span>
                   </div>
                   <p className="mt-1 flex-1 text-xs text-ink/70">{plan.desc}</p>
                   <button

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ShieldCheck } from 'lucide-react';
 import { isLocale, locales, siteConfig, type Locale } from '@/config/site';
 import { legalPage, legalSlugs, type LegalSlug } from '@/lib/i18n/legal';
 import { guideBySlug, guideByKey, guideChrome, guidesFor, type Guide } from '@/lib/guides';
@@ -174,20 +173,20 @@ function GuideArticle({ locale, guide: g }: { locale: Locale; guide: Guide }) {
       </article>
 
       <section className="mx-auto max-w-6xl px-5 py-8">
-        <h2 className="mb-2 text-2xl font-bold">{c.toolTitle}</h2>
-        <p className="mb-5 flex items-center gap-2 text-sm font-medium text-leaf-dark">
-          <ShieldCheck className="h-4 w-4" aria-hidden /> {t.hero.privacy}
-        </p>
+        <h2 className="mb-5 text-2xl font-bold">{c.toolTitle}</h2>
         <ConverterTool locale={locale} />
       </section>
 
       <section className="mx-auto max-w-3xl px-5 py-8">
         <h2 className="text-2xl font-bold">{t.faqTitle}</h2>
-        <div className="mt-5 divide-y divide-sand rounded-2xl border border-sand bg-surface">
+        <div className="mt-6 border-t border-sand">
           {g.faqs.map((f) => (
-            <details key={f.q} className="group p-5">
-              <summary className="cursor-pointer list-none font-semibold">{f.q}</summary>
-              <p className="mt-2 text-ink/75">{f.a}</p>
+            <details key={f.q} className="group border-b border-sand">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-lg font-semibold [&::-webkit-details-marker]:hidden">
+                {f.q}
+                <span aria-hidden className="mt-1 text-xl leading-none text-leaf transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <p className="-mt-1 max-w-[65ch] pb-6 leading-relaxed text-ink/75">{f.a}</p>
             </details>
           ))}
         </div>

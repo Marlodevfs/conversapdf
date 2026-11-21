@@ -36,7 +36,11 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
 
   const nf = useMemo(() => new Intl.NumberFormat(intlLocale[locale]), [locale]);
   const pf = useMemo(() => new Intl.NumberFormat(intlLocale[locale], { style: 'percent', maximumFractionDigits: 0 }), [locale]);
-  const df = useMemo(() => new Intl.DateTimeFormat(intlLocale[locale], { timeZone: 'UTC', dateStyle: 'long' }), [locale]);
+  const df = useMemo(() => {
+    const f = new Intl.DateTimeFormat(intlLocale[locale], { timeZone: 'UTC', dateStyle: 'long' });
+    // French writes the first day of the month as "1er".
+    return { format: (t: number) => (locale === 'fr' ? f.format(t).replace(/^1 /, '1er ') : f.format(t)) };
+  }, [locale]);
   const weekdayNames = useMemo(() => {
     const f = new Intl.DateTimeFormat(intlLocale[locale], { timeZone: 'UTC', weekday: 'short' });
     return Array.from({ length: 7 }, (_, i) => f.format(Date.UTC(2024, 0, 1 + i))); // 1 Jan 2024 is a Monday

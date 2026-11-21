@@ -29,7 +29,9 @@ const baseName = (path: string) => path.split('/').pop() || path;
 export function titleFromFileName(name: string): string | null {
   const stem = baseName(name).replace(/\.(txt|zip)$/i, '');
   if (stem === '_chat') return null;
-  const m = /whatsapp\s+(?:chat\s+)?(?:with|con|com|avec|mit|met)\s+(.+)$/i.exec(stem);
+  const m =
+    /whatsapp\s+(?:chat\s+)?(?:with|con|com|avec|mit|met)\s+(.+)$/i.exec(stem) || // Android: "WhatsApp Chat with Ana"
+    /whatsapp\s+chat\s*[-–]\s*(.+)$/i.exec(stem); // iPhone: "WhatsApp Chat - Ana"
   if (m) return m[1].trim();
   return null;
 }

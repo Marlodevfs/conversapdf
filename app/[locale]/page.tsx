@@ -120,7 +120,7 @@ export default async function Home({ params }: Props) {
                 <ol className="mt-2">
                   {device.steps.map((s, i) => (
                     <li key={s} className="flex gap-4 border-b border-sand py-3.5">
-                      <span className="w-6 shrink-0 font-display text-2xl leading-none text-leaf">{i + 1}</span>
+                      <span className="w-6 shrink-0 text-xl font-extrabold leading-6 text-leaf">{i + 1}</span>
                       <span className="text-ink/85">{s}</span>
                     </li>
                   ))}

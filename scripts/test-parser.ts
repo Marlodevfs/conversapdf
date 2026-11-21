@@ -175,6 +175,8 @@ async function main() {
   await test('Titles from Android file names', () => {
     assert.equal(titleFromFileName('WhatsApp Chat with Ana.txt'), 'Ana');
     assert.equal(titleFromFileName('Chat de WhatsApp con Juan Pérez.txt'), 'Juan Pérez');
+    assert.equal(titleFromFileName('WhatsApp Chat - Julien Martin.zip'), 'Julien Martin');
+    assert.equal(titleFromFileName('Discussion WhatsApp avec Léa.txt'), 'Léa');
     assert.equal(titleFromFileName('Conversa do WhatsApp com Maria.txt'), 'Maria');
     assert.equal(titleFromFileName('_chat.txt'), null);
   });

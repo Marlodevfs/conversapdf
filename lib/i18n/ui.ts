@@ -35,6 +35,7 @@ export interface UiStrings {
     downloadAgain: string;
     another: string;
     paymentsOff: string;
+    paidReload: string;
   };
   plans: Record<'text' | 'photos' | 'proof', { name: string; desc: string; features: string[] }>;
   oneTime: string;
@@ -101,6 +102,7 @@ const es: UiStrings = {
     downloadAgain: 'Descargar otra vez',
     another: 'Convertir otra conversación',
     paymentsOff: 'Las descargas de pago estarán disponibles muy pronto.',
+    paidReload: 'Pago recibido. Vuelve a seleccionar tu conversación para descargar tu PDF.',
   },
   plans: {
     text: { name: 'Texto', desc: 'Toda la conversación, ordenada y paginada.', features: ['Nombres, fechas y horas', 'Números de página', 'Adjuntos indicados por su nombre'] },
@@ -207,6 +209,7 @@ const pt: UiStrings = {
     downloadAgain: 'Baixar novamente',
     another: 'Converter outra conversa',
     paymentsOff: 'Os downloads pagos estarão disponíveis em breve.',
+    paidReload: 'Pagamento recebido. Selecione sua conversa de novo para baixar o PDF.',
   },
   plans: {
     text: { name: 'Texto', desc: 'A conversa inteira, organizada e paginada.', features: ['Nomes, datas e horas', 'Números de página', 'Anexos indicados pelo nome'] },
@@ -313,6 +316,7 @@ const it: UiStrings = {
     downloadAgain: 'Scarica di nuovo',
     another: 'Converti un’altra chat',
     paymentsOff: 'I download a pagamento saranno disponibili a breve.',
+    paidReload: 'Pagamento ricevuto. Seleziona di nuovo la tua chat per scaricare il PDF.',
   },
   plans: {
     text: { name: 'Testo', desc: 'Tutta la chat, ordinata e impaginata.', features: ['Nomi, date e orari', 'Numeri di pagina', 'Allegati indicati per nome'] },
@@ -419,6 +423,7 @@ const fr: UiStrings = {
     downloadAgain: 'Télécharger à nouveau',
     another: 'Convertir une autre conversation',
     paymentsOff: 'Les téléchargements payants arrivent très bientôt.',
+    paidReload: 'Paiement reçu. Sélectionnez à nouveau votre conversation pour télécharger votre PDF.',
   },
   plans: {
     text: { name: 'Texte', desc: 'Toute la conversation, ordonnée et paginée.', features: ['Noms, dates et heures', 'Numéros de page', 'Pièces jointes indiquées par leur nom'] },
@@ -525,6 +530,7 @@ const en: UiStrings = {
     downloadAgain: 'Download again',
     another: 'Convert another chat',
     paymentsOff: 'Paid downloads are coming very soon.',
+    paidReload: 'Payment received. Select your chat again to download your PDF.',
   },
   plans: {
     text: { name: 'Text', desc: 'The whole chat, in order and paginated.', features: ['Names, dates and times', 'Page numbers', 'Attachments listed by name'] },
