@@ -72,9 +72,9 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
 
   if (!chat || !stats) {
     return (
-      <div className="rounded-[20px] border border-sand bg-surface p-4 shadow-[0_30px_80px_-40px_rgba(0,0,0,.9)] sm:p-6">
+      <div className="rounded-[20px] border border-sand bg-surface p-4 shadow-[0_24px_60px_-28px_rgba(37,84,232,.35)] sm:p-6">
         {error && (
-          <p role="alert" className="mb-4 rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-200">
+          <p role="alert" className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-800">
             {t.tool.errors[error]}
           </p>
         )}
@@ -105,7 +105,7 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
               </span>
               <span className="text-xl font-bold tracking-tight">{t.tool.drop}</span>
               <span className="mt-1 text-sm text-ink/70">{t.tool.dropHint}</span>
-              <span className="mt-6 rounded-full bg-leaf px-6 py-3 font-semibold text-paper shadow-[0_0_32px_rgba(237,229,214,.22)]">{t.tool.choose}</span>
+              <span className="mt-6 rounded-full bg-leaf px-6 py-3 font-semibold text-white shadow-[0_12px_24px_-10px_rgba(37,84,232,.7)] hover:bg-leaf-dark">{t.tool.choose}</span>
             </>
           )}
           <input
@@ -140,7 +140,7 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
         ].map(([label, value, sub]) => (
           <div key={label} className="bg-surface p-6">
             <p className="text-sm font-medium text-ink/70">{label}</p>
-            <p className="mt-1 text-4xl tabular-nums font-display font-normal tracking-display">{value}</p>
+            <p className="mt-1 text-4xl tabular-nums font-display font-extrabold tracking-display">{value}</p>
             {sub && <p className="mt-1 text-sm text-ink/70">{sub}</p>}
           </div>
         ))}
@@ -191,7 +191,7 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
               <div
                 key={h}
                 title={`${h}h: ${nf.format(n)}`}
-                className={`flex-1 rounded-t-[3px] ${h === peakHour ? 'bg-marker' : 'bg-leaf/35'}`}
+                className={`flex-1 rounded-t-[3px] ${h === peakHour ? 'bg-leaf' : 'bg-leaf/25'}`}
                 style={{ height: `${Math.max((n / maxHour) * 100, n ? 3 : 0)}%` }}
               />
             ))}
@@ -213,7 +213,7 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
                 <span className="w-10 shrink-0 capitalize text-ink/70">{weekdayNames[i]}</span>
                 <span className="h-3 flex-1 overflow-hidden rounded-full bg-paper">
                   <span
-                    className={`block h-full rounded-full ${n === maxDay ? 'bg-marker' : 'bg-leaf/35'}`}
+                    className={`block h-full rounded-full ${n === maxDay ? 'bg-leaf' : 'bg-leaf/25'}`}
                     style={{ width: `${(n / maxDay) * 100}%` }}
                   />
                 </span>
@@ -255,9 +255,9 @@ export default function AnalyzerTool({ locale }: { locale: Locale }) {
         ))}
       </div>
 
-      <section className="rounded-[20px] border border-leaf/30 bg-surface-raised p-4 sm:p-6">
+      <section className="rounded-[20px] border border-leaf/20 bg-leaf-light p-4 sm:p-6">
         <div className="px-2 pb-5 pt-2">
-          <h2 className="text-2xl font-display font-normal tracking-display sm:text-3xl">{a.ctaTitle}</h2>
+          <h2 className="text-2xl font-display font-extrabold tracking-display sm:text-3xl">{a.ctaTitle}</h2>
           <p className="mt-2 max-w-[60ch] text-ink/75">{a.ctaText}</p>
         </div>
         <div className="text-ink">

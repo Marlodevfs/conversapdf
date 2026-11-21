@@ -92,7 +92,7 @@ function LegalArticle({ locale, slug }: { locale: Locale; slug: LegalSlug }) {
   const page = legalPage(locale, slug);
   return (
     <article className="mx-auto max-w-3xl px-5 py-12">
-      <h1 className="mb-8 text-4xl font-display font-normal tracking-display">{page.title}</h1>
+      <h1 className="mb-8 text-4xl font-display font-extrabold tracking-display">{page.title}</h1>
       {page.sections.map((s) => (
         <section key={s.h} className="mb-6">
           <h2 className="mb-2 text-lg font-semibold">{s.h}</h2>
@@ -150,7 +150,7 @@ function GuideArticle({ locale, guide: g }: { locale: Locale; guide: Guide }) {
           <span className="mx-2">›</span>
           <span>{c.guidesTitle}</span>
         </nav>
-        <h1 className="text-[clamp(2rem,4.6vw,3.2rem)] leading-[1.05] font-display font-normal tracking-display">{g.h1}</h1>
+        <h1 className="text-[clamp(2rem,4.6vw,3.2rem)] leading-[1.05] font-display font-extrabold tracking-display">{g.h1}</h1>
         <p className="mt-5 text-lg leading-relaxed text-ink/75">{g.intro}</p>
 
         {g.sections.map((s) => (
@@ -250,7 +250,7 @@ function AnalyzerArticle({ locale }: { locale: Locale }) {
         <nav className="mb-4 text-sm text-ink/70">
           <Link href={`/${locale}`} className="hover:text-leaf">{c.breadcrumbHome}</Link>
         </nav>
-        <h1 className="max-w-[18ch] text-[clamp(2.35rem,5.2vw,4rem)] leading-[1.02] font-display font-normal tracking-display">{a.h1}</h1>
+        <h1 className="max-w-[18ch] text-[clamp(2.35rem,5.2vw,4rem)] leading-[1.02] font-display font-extrabold tracking-display">{a.h1}</h1>
         <p className="mt-5 max-w-[60ch] text-lg leading-relaxed text-ink/70">{a.intro}</p>
         <div className="mt-9">
           <AnalyzerTool locale={locale} />
@@ -258,7 +258,7 @@ function AnalyzerArticle({ locale }: { locale: Locale }) {
       </section>
 
       <section className="mx-auto max-w-5xl px-5 py-12">
-        <h2 className="text-3xl font-display font-normal tracking-display">{a.whatTitle}</h2>
+        <h2 className="text-3xl font-display font-extrabold tracking-display">{a.whatTitle}</h2>
         <ul className="mt-6 grid gap-x-12 border-t border-sand md:grid-cols-2">
           {a.what.map((w) => (
             <li key={w} className="border-b border-sand py-4 text-ink/80">{w}</li>
@@ -267,7 +267,7 @@ function AnalyzerArticle({ locale }: { locale: Locale }) {
       </section>
 
       <section className="mx-auto max-w-3xl px-5 py-12">
-        <h2 className="text-3xl font-display font-normal tracking-display">{t.faqTitle}</h2>
+        <h2 className="text-3xl font-display font-extrabold tracking-display">{t.faqTitle}</h2>
         <div className="mt-8 border-t border-sand">
           {a.faqs.map((f) => (
             <details key={f.q} className="group border-b border-sand">

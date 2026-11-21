@@ -74,10 +74,10 @@ export default function SamplePage({ locale }: { locale: Locale }) {
   const s = samples[locale];
   return (
     <div aria-hidden className="relative mx-auto w-full max-w-[380px] select-none">
-      <div className="room-halo animate-breathe" />
+      <div className="room-halo " />
       {/* sheet underneath, so it reads as a stack of printed pages */}
-      <div className="absolute inset-0 translate-x-3 translate-y-3 -rotate-1 rounded-[6px] bg-sheet/15 shadow-[0_1px_0_rgba(0,0,0,.2),0_20px_40px_-24px_rgba(0,0,0,.8)]" />
-      <div className="relative flex aspect-[210/297] rotate-[2deg] animate-settle flex-col rounded-[6px] bg-sheet px-6 pb-4 pt-5 font-doc text-[11px] leading-snug text-sheet-ink shadow-[0_1px_0_rgba(0,0,0,.2),0_40px_80px_-30px_rgba(0,0,0,.9)]">
+      <div className="absolute inset-0 translate-x-3 translate-y-3 -rotate-1 rounded-[6px] bg-sheet shadow-[0_1px_0_rgba(15,23,42,.04),0_10px_30px_-10px_rgba(15,23,42,.12)]" />
+      <div className="relative flex aspect-[210/297] rotate-[2deg] animate-settle flex-col rounded-[6px] bg-sheet px-6 pb-4 pt-5 font-doc text-[11px] leading-snug text-sheet-ink shadow-[0_1px_0_rgba(15,23,42,.04),0_30px_60px_-24px_rgba(15,23,42,.3)]">
         <div className="flex items-center justify-between border-b border-sheet-line pb-2 text-[9px] text-sheet-muted">
           <span className="truncate pr-3">{s.file}</span>
           <span className="font-bold text-sheet-muted">ConversaPDF</span>

@@ -98,7 +98,7 @@ export default async function Home({ params }: Props) {
 
       <section className="mx-auto grid max-w-6xl gap-12 px-5 pb-16 pt-10 sm:pt-14 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,.8fr)] lg:gap-16">
         <div>
-          <h1 className="max-w-[15ch] text-[clamp(2.9rem,6.4vw,5.4rem)] leading-[0.98] font-display font-normal tracking-display">{t.hero.title}</h1>
+          <h1 className="max-w-[16ch] text-[clamp(2.5rem,5vw,3.9rem)] leading-[1.05] font-display font-extrabold tracking-display">{t.hero.title}</h1>
           <p className="mt-5 max-w-[56ch] text-lg leading-relaxed text-ink/70">{t.hero.subtitle}</p>
           <div className="mt-9">
             <ConverterTool locale={locale} />
@@ -111,7 +111,7 @@ export default async function Home({ params }: Props) {
 
       <section id="how" className="scroll-mt-20 border-y border-sand bg-surface">
         <div className="mx-auto max-w-6xl px-5 py-16">
-          <h2 className="text-3xl font-display font-normal tracking-display sm:text-4xl">{t.howTitle}</h2>
+          <h2 className="text-3xl font-display font-extrabold tracking-display sm:text-4xl">{t.howTitle}</h2>
           <p className="mt-3 max-w-[60ch] text-ink/70">{t.howIntro}</p>
           <div className="mt-10 grid gap-12 md:grid-cols-2">
             {[t.iphone, t.android].map((device) => (
@@ -143,7 +143,7 @@ export default async function Home({ params }: Props) {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-16">
-        <h2 className="text-3xl font-display font-normal tracking-display sm:text-4xl">{t.usesTitle}</h2>
+        <h2 className="text-3xl font-display font-extrabold tracking-display sm:text-4xl">{t.usesTitle}</h2>
         <div className="mt-10 grid gap-10 md:grid-cols-3">
           {t.uses.map((u) => (
             <div key={u.title}>
@@ -161,7 +161,7 @@ export default async function Home({ params }: Props) {
 
       <section id="privacy" className="scroll-mt-20 border-y border-sand bg-surface">
         <div className="mx-auto max-w-6xl px-5 py-16">
-          <h2 className="text-3xl font-display font-normal tracking-display sm:text-4xl">{t.privacySection.title}</h2>
+          <h2 className="text-3xl font-display font-extrabold tracking-display sm:text-4xl">{t.privacySection.title}</h2>
           <div className="mt-10 grid gap-10 md:grid-cols-3">
             {t.privacySection.points.map((p, i) => {
               const Icon = [Lock, ShieldCheck, CreditCard][i] ?? Lock;
@@ -178,7 +178,7 @@ export default async function Home({ params }: Props) {
       </section>
 
       <section id="pricing" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-16">
-        <h2 className="text-3xl font-display font-normal tracking-display sm:text-4xl">{t.pricingTitle}</h2>
+        <h2 className="text-3xl font-display font-extrabold tracking-display sm:text-4xl">{t.pricingTitle}</h2>
         <p className="mt-3 max-w-[60ch] text-ink/70">{t.pricingIntro}</p>
         <div className="mt-10 grid items-stretch gap-4 md:grid-cols-3">
           {(['text', 'photos', 'proof'] as const).map((e) => {
@@ -186,16 +186,16 @@ export default async function Home({ params }: Props) {
             return (
               <div
                 key={e}
-                className={`flex flex-col rounded-2xl p-7 ${featured ? 'border border-leaf/40 bg-surface-raised shadow-[0_0_80px_-30px_rgba(237,229,214,.45)]' : 'border border-sand bg-surface'}`}
+                className={`flex flex-col rounded-2xl p-7 ${featured ? 'border-2 border-leaf bg-surface shadow-[0_24px_60px_-28px_rgba(37,84,232,.5)]' : 'border border-sand bg-surface'}`}
               >
                 <h3 className="text-lg font-bold">{t.plans[e].name}</h3>
-                <p className="mt-4 text-5xl tabular-nums font-display font-normal tracking-display">{price.format(siteConfig.prices[e])}</p>
+                <p className="mt-4 text-5xl tabular-nums font-display font-extrabold tracking-display">{price.format(siteConfig.prices[e])}</p>
                 <p className={`mt-1 text-sm ${'text-ink/70'}`}>{t.oneTime}</p>
                 <p className={`mt-5 ${featured ? 'text-ink/85' : 'text-ink/75'}`}>{t.plans[e].desc}</p>
                 <ul className="mt-5 space-y-2.5 text-sm">
                   {t.plans[e].features.map((f) => (
                     <li key={f} className="flex gap-2.5">
-                      <Check className={`mt-0.5 h-4 w-4 shrink-0 ${featured ? 'text-marker' : 'text-leaf'}`} aria-hidden /> {f}
+                      <Check className={`mt-0.5 h-4 w-4 shrink-0 text-leaf`} aria-hidden /> {f}
                     </li>
                   ))}
                 </ul>
@@ -209,7 +209,7 @@ export default async function Home({ params }: Props) {
       </section>
 
       <section id="guides" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-16">
-        <h2 className="text-3xl font-display font-normal tracking-display sm:text-4xl">{guideChrome(locale).guidesTitle}</h2>
+        <h2 className="text-3xl font-display font-extrabold tracking-display sm:text-4xl">{guideChrome(locale).guidesTitle}</h2>
         <p className="mt-3 max-w-[60ch] text-ink/70">{guideChrome(locale).guidesIntro}</p>
         <ul className="mt-8 grid border-t border-sand md:grid-cols-2 md:gap-x-12">
           {guidesFor(locale).map((g) => (
@@ -223,7 +223,7 @@ export default async function Home({ params }: Props) {
       </section>
 
       <section id="faq" className="mx-auto max-w-3xl scroll-mt-20 px-5 py-16">
-        <h2 className="text-3xl font-display font-normal tracking-display sm:text-4xl">{t.faqTitle}</h2>
+        <h2 className="text-3xl font-display font-extrabold tracking-display sm:text-4xl">{t.faqTitle}</h2>
         <div className="mt-8 border-t border-sand">
           {t.faqs.map((f) => (
             <details key={f.q} className="group border-b border-sand">

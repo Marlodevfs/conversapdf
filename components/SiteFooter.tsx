@@ -15,7 +15,7 @@ const contact: Record<Locale, string> = {
 
 export default function SiteFooter({ locale, t }: { locale: Locale; t: UiStrings }) {
   return (
-    <footer className="mt-16 border-t border-sand bg-[#060607] text-ink">
+    <footer className="mt-16 border-t border-sand bg-surface text-ink">
       <div className="mx-auto max-w-6xl px-5 py-14 text-sm text-ink/70">
         <div className="mb-10 flex flex-col gap-4 border-b border-sand pb-10 sm:flex-row sm:items-end sm:justify-between">
           <Logo className="text-xl text-ink" />

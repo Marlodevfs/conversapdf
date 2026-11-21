@@ -1,30 +1,30 @@
 import type { Config } from 'tailwindcss';
 
 /**
- * "Night archive": a dark, quiet room where the only light is the document.
- * Token names are kept from the first theme so components stay readable:
- * paper = the room, ink = text, sand = hairlines, leaf = the warm light (accent).
+ * "Bleu confiance": a bright, airy tool. Token names kept from earlier themes:
+ * paper = page background, ink = text, sand = hairlines, leaf = the blue accent,
+ * marker = highlighter yellow (the brand's small signature), sheet = the printed PDF.
  */
 export default {
   content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        ink: '#f2ece2',
-        paper: '#09090b',
-        surface: { DEFAULT: '#121215', raised: '#1a1a1f' },
-        leaf: { DEFAULT: '#ede5d6', dark: '#c9bfae', light: '#1c1c21' },
-        sand: '#26262c',
+        ink: '#0f172a',
+        paper: '#f7f9fe',
+        surface: { DEFAULT: '#ffffff', raised: '#ffffff' },
+        leaf: { DEFAULT: '#2554e8', dark: '#1b3fbf', light: '#e8eeff' },
+        sand: '#e2e8f3',
         marker: '#f5e14a',
-        sheet: { DEFAULT: '#fbf8f2', ink: '#1f2a24', line: '#e4ddd0', tint: '#e8f1ec', muted: '#5a605b' },
+        sheet: { DEFAULT: '#ffffff', ink: '#1f2a24', line: '#e4ddd0', tint: '#e8f1ec', muted: '#5a605b' },
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['"Instrument Serif"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans Variable"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['"Plus Jakarta Sans Variable"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
         doc: ['"Noto Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
-      letterSpacing: { display: '-0.015em' },
+      letterSpacing: { display: '-0.035em' },
       keyframes: {
         settle: {
           '0%': { opacity: '0', transform: 'translateY(24px) rotate(0deg)' },

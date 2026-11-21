@@ -44,7 +44,7 @@ export default function LanguageMenu({ current, langs, label }: { current: strin
         <Flag code={current} />
         {current}
       </summary>
-      <ul className="absolute right-0 z-30 mt-2 min-w-[10rem] overflow-hidden rounded-xl border border-sand bg-surface py-1 shadow-[0_20px_40px_-16px_rgba(0,0,0,.8)]">
+      <ul className="absolute right-0 z-30 mt-2 min-w-[10rem] overflow-hidden rounded-xl border border-sand bg-surface py-1 shadow-[0_16px_32px_-16px_rgba(15,23,42,.25)]">
         {langs.map((l) => (
           <li key={l.code}>
             <a
