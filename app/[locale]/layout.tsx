@@ -45,11 +45,14 @@ export default async function LocaleLayout({
               <Logo className="text-xl" />
             </Link>
             <div className="flex items-center gap-7">
-              <nav className="hidden gap-7 text-[15px] font-medium text-ink/75 md:flex">
+              <nav className="hidden gap-7 text-[15px] font-medium text-ink/75 lg:flex">
                 <a href={`/${locale}#how`} className="hover:text-ink">{t.nav.how}</a>
                 <a href={`/${locale}#pricing`} className="hover:text-ink">{t.nav.pricing}</a>
                 <a href={`/${locale}#faq`} className="hover:text-ink">{t.nav.faq}</a>
               </nav>
+              <a href={`/${locale}#tool`} className="hidden rounded-full bg-leaf px-4 py-2 text-[15px] font-semibold text-white hover:bg-leaf-dark sm:inline-block">
+                {t.nav.convert}
+              </a>
               <LanguageMenu current={locale} label={t.footer.languages} langs={locales.map((l) => ({ code: l, name: ui(l).langName }))} />
             </div>
           </div>

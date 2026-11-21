@@ -18,7 +18,12 @@ export default function SiteFooter({ locale, t }: { locale: Locale; t: UiStrings
     <footer className="mt-16 border-t border-sand bg-surface text-ink">
       <div className="mx-auto max-w-6xl px-5 py-14 text-sm text-ink/70">
         <div className="mb-10 flex flex-col gap-4 border-b border-sand pb-10 sm:flex-row sm:items-end sm:justify-between">
-          <Logo className="text-xl text-ink" />
+          <div className="flex flex-col items-start gap-4">
+            <Logo className="text-xl text-ink" />
+            <Link href={`/${locale}#tool`} className="rounded-full bg-leaf px-5 py-2.5 text-[15px] font-semibold text-white hover:bg-leaf-dark">
+              {t.nav.convert}
+            </Link>
+          </div>
           <p className="text-base">
             <span className="text-ink/70">{contact[locale]} </span>
             <a href={`mailto:${siteConfig.contact.email}`} className="font-semibold text-ink underline decoration-marker decoration-2 underline-offset-4">

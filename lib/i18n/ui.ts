@@ -8,7 +8,7 @@ export interface Faq {
 export interface UiStrings {
   langName: string;
   meta: { title: string; description: string };
-  nav: { how: string; pricing: string; faq: string };
+  nav: { how: string; pricing: string; faq: string; convert: string; toPdf: string };
   hero: { kicker: string; title: string; subtitle: string; privacy: string; also: [string, string, string] };
   tool: {
     drop: string;
@@ -66,7 +66,7 @@ const es: UiStrings = {
     description:
       'Convierte un chat de WhatsApp exportado en un PDF claro con fotos, fechas y horas. Para un abogado, una prueba o un recuerdo. Todo en tu navegador.',
   },
-  nav: { how: 'Cómo funciona', pricing: 'Precios', faq: 'Preguntas' },
+  nav: { how: 'Cómo funciona', pricing: 'Precios', faq: 'Preguntas', convert: 'Convertir a PDF', toPdf: '¿Prefieres el PDF de la conversación?' },
   hero: {
     also: ['También funciona con ', ' y ', '.'],
     kicker: 'Chat de WhatsApp → PDF',
@@ -167,7 +167,7 @@ const es: UiStrings = {
     privacy: 'Privacidad',
     terms: 'Condiciones',
     refund: 'Reembolsos',
-    notAffiliated: 'ConversaPDF no está afiliado a WhatsApp ni a Meta. WhatsApp es una marca de WhatsApp LLC.',
+    notAffiliated: 'ConversaPDF no está afiliado a WhatsApp, Instagram, Messenger ni Meta. Son marcas de Meta Platforms, Inc.',
     twemoji: 'Emojis: Twemoji (CC-BY 4.0).',
     languages: 'Idiomas',
   },
@@ -180,7 +180,7 @@ const pt: UiStrings = {
     description:
       'Converta uma conversa exportada do WhatsApp em um PDF claro com fotos, datas e horários. Para advogado, prova ou lembrança. Tudo no seu navegador.',
   },
-  nav: { how: 'Como funciona', pricing: 'Preços', faq: 'Dúvidas' },
+  nav: { how: 'Como funciona', pricing: 'Preços', faq: 'Dúvidas', convert: 'Converter em PDF', toPdf: 'Prefere o PDF da conversa?' },
   hero: {
     also: ['Também funciona com ', ' e ', '.'],
     kicker: 'Conversa do WhatsApp → PDF',
@@ -281,7 +281,7 @@ const pt: UiStrings = {
     privacy: 'Privacidade',
     terms: 'Termos',
     refund: 'Reembolsos',
-    notAffiliated: 'O ConversaPDF não é afiliado ao WhatsApp nem à Meta. WhatsApp é uma marca da WhatsApp LLC.',
+    notAffiliated: 'O ConversaPDF não é afiliado ao WhatsApp, Instagram, Messenger nem à Meta. São marcas da Meta Platforms, Inc.',
     twemoji: 'Emojis: Twemoji (CC-BY 4.0).',
     languages: 'Idiomas',
   },
@@ -294,7 +294,7 @@ const it: UiStrings = {
     description:
       'Converti una chat WhatsApp esportata in un PDF chiaro con foto, date e orari. Per un avvocato, una prova o un ricordo. Tutto nel tuo browser.',
   },
-  nav: { how: 'Come funziona', pricing: 'Prezzi', faq: 'Domande' },
+  nav: { how: 'Come funziona', pricing: 'Prezzi', faq: 'Domande', convert: 'Converti in PDF', toPdf: 'Preferisci il PDF della chat?' },
   hero: {
     also: ['Funziona anche con ', ' e ', '.'],
     kicker: 'Chat WhatsApp → PDF',
@@ -395,7 +395,7 @@ const it: UiStrings = {
     privacy: 'Privacy',
     terms: 'Condizioni',
     refund: 'Rimborsi',
-    notAffiliated: 'ConversaPDF non è affiliato a WhatsApp né a Meta. WhatsApp è un marchio di WhatsApp LLC.',
+    notAffiliated: 'ConversaPDF non è affiliato a WhatsApp, Instagram, Messenger né a Meta. Sono marchi di Meta Platforms, Inc.',
     twemoji: 'Emoji: Twemoji (CC-BY 4.0).',
     languages: 'Lingue',
   },
@@ -408,7 +408,7 @@ const fr: UiStrings = {
     description:
       'Exportez votre conversation WhatsApp en PDF clair, avec photos, dates et heures. Pour un avocat, une preuve ou un souvenir. Tout dans votre navigateur.',
   },
-  nav: { how: 'Comment ça marche', pricing: 'Tarifs', faq: 'Questions' },
+  nav: { how: 'Comment ça marche', pricing: 'Tarifs', faq: 'Questions', convert: 'Convertir en PDF', toPdf: 'Vous voulez plutôt le PDF de la conversation ?' },
   hero: {
     also: ['Marche aussi avec ', ' et ', '.'],
     kicker: 'Conversation WhatsApp → PDF',
@@ -509,7 +509,7 @@ const fr: UiStrings = {
     privacy: 'Confidentialité',
     terms: 'Conditions',
     refund: 'Remboursements',
-    notAffiliated: "ConversaPDF n'est affilié ni à WhatsApp ni à Meta. WhatsApp est une marque de WhatsApp LLC.",
+    notAffiliated: "ConversaPDF n'est affilié ni à WhatsApp, ni à Instagram, ni à Messenger, ni à Meta. Ce sont des marques de Meta Platforms, Inc.",
     twemoji: 'Emojis : Twemoji (CC-BY 4.0).',
     languages: 'Langues',
   },
@@ -522,7 +522,7 @@ const en: UiStrings = {
     description:
       'Convert an exported WhatsApp chat to a clean PDF with photos, dates and times. For lawyers, evidence or keepsakes. Runs entirely in your browser.',
   },
-  nav: { how: 'How it works', pricing: 'Pricing', faq: 'FAQ' },
+  nav: { how: 'How it works', pricing: 'Pricing', faq: 'FAQ', convert: 'Convert to PDF', toPdf: 'Want the PDF of the chat instead?' },
   hero: {
     also: ['Also works with ', ' and ', '.'],
     kicker: 'WhatsApp chat → PDF',
@@ -623,7 +623,7 @@ const en: UiStrings = {
     privacy: 'Privacy',
     terms: 'Terms',
     refund: 'Refunds',
-    notAffiliated: 'ConversaPDF is not affiliated with WhatsApp or Meta. WhatsApp is a trademark of WhatsApp LLC.',
+    notAffiliated: 'ConversaPDF is not affiliated with WhatsApp, Instagram, Messenger or Meta. They are trademarks of Meta Platforms, Inc.',
     twemoji: 'Emoji: Twemoji (CC-BY 4.0).',
     languages: 'Languages',
   },

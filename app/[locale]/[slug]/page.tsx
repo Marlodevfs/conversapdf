@@ -251,7 +251,13 @@ function AnalyzerArticle({ locale }: { locale: Locale }) {
         </nav>
         <h1 className="max-w-[18ch] text-[clamp(2.35rem,5.2vw,4rem)] leading-[1.02] font-display font-extrabold tracking-display">{a.h1}</h1>
         <p className="mt-5 max-w-[60ch] text-lg leading-relaxed text-ink/70">{a.intro}</p>
-        <div className="mt-9">
+        <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px] text-ink/80">
+          {t.nav.toPdf}
+          <Link href={`/${locale}#tool`} className="rounded-full border-2 border-leaf bg-leaf-light px-4 py-1 font-bold text-leaf-dark hover:bg-leaf hover:text-white">
+            {t.nav.convert}
+          </Link>
+        </p>
+        <div className="mt-7 sm:mt-9">
           <AnalyzerTool locale={locale} />
         </div>
       </section>
