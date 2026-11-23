@@ -12,6 +12,8 @@ export interface UiStrings {
   hero: { kicker: string; title: string; subtitle: string; privacy: string; also: [string, string, string] };
   tool: {
     drop: string;
+    /** Same, on phones (nothing to drag there). */
+    dropMobile: string;
     dropHint: string;
     choose: string;
     loading: string;
@@ -72,11 +74,12 @@ const es: UiStrings = {
     kicker: 'Chat de WhatsApp → PDF',
     title: 'Convierte tu chat de WhatsApp a PDF, claro y ordenado',
     subtitle:
-      'Convertir un chat de WhatsApp a PDF claro y ordenado, con nombres, fechas, horas y fotos en su sitio. Para un abogado, un juicio, un propietario o simplemente para guardarlo.',
+      'Nombres, fechas, horas y fotos en su sitio, sin subir nada a internet. Para un abogado, un juicio, un propietario o simplemente para guardarla.',
     privacy: 'Tu conversación nunca sale de tu dispositivo: todo se procesa en tu navegador.',
   },
   tool: {
     drop: 'Suelta aquí la exportación de tu chat',
+    dropMobile: 'Elige la exportación de tu chat',
     dropHint: 'El .zip de WhatsApp, o la exportación de Instagram o Messenger (JSON)',
     choose: 'Elegir archivo',
     loading: 'Leyendo la conversación…',
@@ -87,7 +90,7 @@ const es: UiStrings = {
       'not-whatsapp': 'Este archivo no parece una exportación de WhatsApp, Instagram o Messenger. Consulta nuestras guías para exportar bien la conversación.',
       generic: 'Algo ha fallado. Inténtalo de nuevo.',
       payment: 'No hemos podido confirmar el pago. Si se te ha cobrado, escríbenos y lo solucionamos.',
-      'too-big': 'El archivo es demasiado grande para tu navegador (más de 1 GB).',
+      'too-big': 'El archivo es demasiado grande para este navegador. Prueba en un ordenador o exporta el chat sin archivos multimedia.',
     },
     summary: 'Conversación lista',
     participants: 'Participantes',
@@ -186,11 +189,12 @@ const pt: UiStrings = {
     kicker: 'Conversa do WhatsApp → PDF',
     title: 'Converta sua conversa do WhatsApp em um PDF claro e organizado',
     subtitle:
-      'Converter uma conversa do WhatsApp em um PDF claro e organizado, com nomes, datas, horários e fotos no lugar certo. Para um advogado, um processo, um proprietário ou simplesmente para guardar.',
+      'Nomes, datas, horários e fotos no lugar certo, sem enviar nada para a internet. Para um advogado, um processo, um proprietário ou simplesmente para guardar.',
     privacy: 'Sua conversa nunca sai do seu aparelho: tudo é processado no seu navegador.',
   },
   tool: {
     drop: 'Solte aqui a exportação da sua conversa',
+    dropMobile: 'Escolha a exportação da sua conversa',
     dropHint: 'O .zip do WhatsApp, ou a exportação do Instagram ou Messenger (JSON)',
     choose: 'Escolher arquivo',
     loading: 'Lendo a conversa…',
@@ -201,7 +205,7 @@ const pt: UiStrings = {
       'not-whatsapp': 'Este arquivo não parece uma exportação do WhatsApp, Instagram ou Messenger. Veja nossos guias para exportar a conversa.',
       generic: 'Algo deu errado. Tente novamente.',
       payment: 'Não conseguimos confirmar o pagamento. Se você foi cobrado, fale conosco e resolvemos.',
-      'too-big': 'O arquivo é grande demais para o seu navegador (mais de 1 GB).',
+      'too-big': 'O arquivo é grande demais para este navegador. Tente em um computador ou exporte a conversa sem mídia.',
     },
     summary: 'Conversa pronta',
     participants: 'Participantes',
@@ -300,11 +304,12 @@ const it: UiStrings = {
     kicker: 'Chat WhatsApp → PDF',
     title: 'Converti la tua chat WhatsApp in un PDF chiaro e ordinato',
     subtitle:
-      'Convertire una chat WhatsApp in un PDF chiaro e ordinato, con nomi, date, orari e foto al posto giusto. Per un avvocato, una causa, un proprietario o semplicemente per conservarla.',
+      'Nomi, date, orari e foto al posto giusto, senza caricare nulla online. Per un avvocato, una causa, un proprietario o semplicemente per conservarla.',
     privacy: 'La tua chat non lascia mai il tuo dispositivo: tutto viene elaborato nel browser.',
   },
   tool: {
     drop: 'Trascina qui l’esportazione della chat',
+    dropMobile: 'Scegli l’esportazione della chat',
     dropHint: 'Lo .zip di WhatsApp, oppure l’esportazione di Instagram o Messenger (JSON)',
     choose: 'Scegli file',
     loading: 'Lettura della chat…',
@@ -315,7 +320,7 @@ const it: UiStrings = {
       'not-whatsapp': 'Questo file non sembra un’esportazione di WhatsApp, Instagram o Messenger. Consulta le nostre guide per esportare la chat.',
       generic: 'Qualcosa è andato storto. Riprova.',
       payment: 'Non riusciamo a confermare il pagamento. Se ti è stato addebitato, scrivici e risolviamo.',
-      'too-big': 'Il file è troppo grande per il tuo browser (oltre 1 GB).',
+      'too-big': 'Il file è troppo grande per questo browser. Prova da un computer o esporta la chat senza media.',
     },
     summary: 'Chat pronta',
     participants: 'Partecipanti',
@@ -414,11 +419,12 @@ const fr: UiStrings = {
     kicker: 'Conversation WhatsApp → PDF',
     title: 'Convertissez votre conversation WhatsApp en PDF clair et ordonné',
     subtitle:
-      'Convertir une conversation WhatsApp en PDF clair et ordonné, avec noms, dates, heures et photos à leur place. Pour un avocat, une procédure, un propriétaire ou simplement pour la garder.',
+      'Noms, dates, heures et photos à leur place, sans rien envoyer en ligne. Pour un avocat, une procédure, un propriétaire ou simplement pour la garder.',
     privacy: 'Votre conversation ne quitte jamais votre appareil : tout est traité dans votre navigateur.',
   },
   tool: {
     drop: "Déposez ici l'export de votre conversation",
+    dropMobile: "Choisissez l'export de votre conversation",
     dropHint: "Le .zip de WhatsApp, ou l'export Instagram ou Messenger (JSON)",
     choose: 'Choisir un fichier',
     loading: 'Lecture de la conversation…',
@@ -429,7 +435,7 @@ const fr: UiStrings = {
       'not-whatsapp': "Ce fichier ne ressemble pas à un export WhatsApp, Instagram ou Messenger. Suivez nos guides pour bien exporter la conversation.",
       generic: "Une erreur s'est produite. Réessayez.",
       payment: "Nous n'avons pas pu confirmer le paiement. Si vous avez été débité, écrivez-nous et on règle ça.",
-      'too-big': 'Le fichier est trop gros pour votre navigateur (plus de 1 Go).',
+      'too-big': 'Le fichier est trop gros pour ce navigateur. Essayez sur un ordinateur, ou exportez la conversation sans les médias.',
     },
     summary: 'Conversation prête',
     participants: 'Participants',
@@ -528,11 +534,12 @@ const en: UiStrings = {
     kicker: 'WhatsApp chat → PDF',
     title: 'Convert your WhatsApp chat to a clear, tidy PDF',
     subtitle:
-      'Convert any WhatsApp chat to a clear, tidy PDF with names, dates, times and photos where they belong. For a lawyer, a court case, a landlord, or just to keep it. A PDF converter that runs in your browser.',
+      'Names, dates, times and photos where they belong, without uploading anything. For a lawyer, a court case, a landlord, or just to keep it.',
     privacy: 'Your chat never leaves your device: everything runs in your browser.',
   },
   tool: {
     drop: 'Drop your chat export here',
+    dropMobile: 'Choose your chat export',
     dropHint: 'The WhatsApp .zip, or your Instagram or Messenger export (JSON)',
     choose: 'Choose file',
     loading: 'Reading the chat…',
@@ -543,7 +550,7 @@ const en: UiStrings = {
       'not-whatsapp': 'This file does not look like a WhatsApp, Instagram or Messenger export. See our guides to export the chat.',
       generic: 'Something went wrong. Please try again.',
       payment: 'We could not confirm the payment. If you were charged, write to us and we will sort it out.',
-      'too-big': 'The file is too large for your browser (over 1 GB).',
+      'too-big': 'The file is too large for this browser. Try on a computer, or export the chat without media.',
     },
     summary: 'Chat ready',
     participants: 'Participants',

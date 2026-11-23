@@ -18,6 +18,9 @@ type ErrorCode = keyof UiStrings['tool']['errors'];
 const EDITIONS: Edition[] = ['text', 'photos', 'proof'];
 const RANK: Record<Edition, number> = { text: 0, photos: 1, proof: 2 };
 const MAX_BYTES = 1024 * 1024 * 1024;
+/** Phones have far less memory: past this, the tab would crash without a word. */
+const MAX_BYTES_MOBILE = 400 * 1024 * 1024;
+const isMobile = () => typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
 
 const dayKey = (t: number) => new Date(t).toISOString().slice(0, 10);
 
@@ -163,7 +166,10 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
     setChat(null);
     setError(null);
     setUnlocked(null);
-    setDownloadUrl(null);
+    setDownloadUrl((old) => {
+      if (old) URL.revokeObjectURL(old);
+      return null;
+    });
     photoCache.current = null;
     if (inputRef.current) inputRef.current.value = '';
   };
@@ -172,7 +178,7 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
     const files = Array.from(list);
     if (files.length === 0) return;
     setError(null);
-    if (files.reduce((sum, f) => sum + f.size, 0) > MAX_BYTES) return setError('too-big');
+    if (files.reduce((sum, f) => sum + f.size, 0) > (isMobile() ? MAX_BYTES_MOBILE : MAX_BYTES)) return setError('too-big');
     setPhase('loading');
     try {
       const { loadChatFiles } = await import('@/lib/whatsapp/load');
@@ -223,6 +229,7 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
       const url = URL.createObjectURL(blob);
       if (win) win.location.href = url;
       else window.location.href = url;
+      setTimeout(() => URL.revokeObjectURL(url), 5 * 60 * 1000); // the tab has loaded it by then
       setPhase('ready');
     } catch {
       win?.close();
@@ -233,7 +240,10 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
 
   const download = (blob: Blob, edition: Edition) => {
     const url = URL.createObjectURL(blob);
-    setDownloadUrl(url);
+    setDownloadUrl((old) => {
+      if (old) URL.revokeObjectURL(old); // free the previous PDF
+      return url;
+    });
     const a = document.createElement('a');
     a.href = url;
     a.download = `${slug(chat?.title || chat?.authors.join('-') || 'conversation')}-${edition}.pdf`;
@@ -316,7 +326,10 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
           ) : (
             <>
               <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-leaf-light"><Upload className="h-6 w-6 text-leaf" aria-hidden /></span>
-              <span className="text-xl font-bold tracking-tight">{t.tool.drop}</span>
+              <span className="text-xl font-bold tracking-tight">
+                <span className="hidden sm:inline">{t.tool.drop}</span>
+                <span className="sm:hidden">{t.tool.dropMobile}</span>
+              </span>
               <span className="mt-1 text-sm text-ink/70">{t.tool.dropHint}</span>
               <span className="mt-6 rounded-full bg-leaf px-6 py-3 font-semibold text-white shadow-[0_12px_24px_-10px_rgba(37,84,232,.7)] hover:bg-leaf-dark">{t.tool.choose}</span>
             </>

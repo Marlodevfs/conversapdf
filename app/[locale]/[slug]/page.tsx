@@ -29,7 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isLocale(locale)) return {};
   if (isLegal(slug)) {
     const page = legalPage(locale, slug);
-    const first = page.sections[0]?.p[0] || page.title;
+    let first = page.sections[0]?.p[0] || page.title;
+    // A one-word first paragraph (the legal notice starts with the publisher's name) makes a useless description.
+    if (first.length < 50) first = `${page.title} · ConversaPDF · ${page.sections.map((x) => x.h).join(', ')}`;
     return {
       title: `${page.title} | ConversaPDF`,
       description: first.length > 155 ? `${first.slice(0, 152).replace(/\s+\S*$/, '')}…` : first,
