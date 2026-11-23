@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { CheckCircle2, FileText, Loader2, Lock, Upload } from 'lucide-react';
+import { CheckCircle2, Eye, FileText, Loader2, Lock, Upload } from 'lucide-react';
 import type { Locale } from '@/config/site';
 import { siteConfig } from '@/config/site';
 import { ui, type UiStrings } from '@/lib/i18n/ui';
@@ -137,7 +137,7 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
     } catch {}
     const id = pending || readUnlocks()[loaded.sha256];
     if (!id) return;
-    const edition = await verifyPurchase(id).catch(() => null);
+    const edition = await verifyPurchase(id, loaded.sha256).catch(() => null);
     if (!edition) return;
     setUnlocked((u) => (u && RANK[u] >= RANK[edition] ? u : edition));
     rememberUnlock(loaded.sha256, id);
@@ -211,7 +211,13 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
     setPhase('working');
     setStatus(t.tool.previewing);
     try {
-      const images = await photos('photos');
+      // The preview draws at most 6 messages: only prepare their photos.
+      const shown = chat.messages.filter((m) => {
+        const d = dayKey(m.time);
+        return d >= from && d <= to;
+      }).slice(0, 6);
+      const wanted = shown.map((m) => m.attachment).filter(Boolean) as string[];
+      const images = photoCache.current ?? (await preparePhotos(chat.media, wanted));
       setStatus(t.tool.previewing);
       const blob = await buildPdf({ chat, locale, edition: 'photos', me: me || null, from, to, preview: true, images });
       const url = URL.createObjectURL(blob);
@@ -242,11 +248,11 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
     try {
       let granted = unlocked && RANK[unlocked] >= RANK[edition] ? unlocked : null;
       if (!granted) {
-        const txn = await buyEdition(edition, locale);
+        const txn = await buyEdition(edition, locale, chat.sha256);
         if (!txn) return; // checkout closed
         setPhase('working');
         setStatus(t.tool.generating);
-        granted = await verifyPurchase(txn);
+        granted = await verifyPurchase(txn, chat.sha256);
         if (!granted) {
           setError('payment');
           setPhase('ready');
@@ -355,8 +361,8 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
             </div>
           </dl>
 
-          <div className="mb-6 grid gap-4 sm:grid-cols-3">
-            <label className="text-sm sm:col-span-3">
+          <div className="mb-6 grid gap-4 sm:grid-cols-2">
+            <label className="text-sm sm:col-span-2">
               <span className="mb-1 block font-medium">{t.tool.me}</span>
               <select
                 value={me}
@@ -396,17 +402,20 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
                 disabled={phase === 'working'}
               />
             </label>
-            <div className="flex items-end">
-              <button
-                type="button"
-                onClick={preview}
-                disabled={phase === 'working'}
-                className="w-full rounded-lg border border-leaf px-4 py-2 text-sm font-semibold text-leaf hover:bg-leaf-light disabled:opacity-50"
-              >
-                {t.tool.preview}
-              </button>
-            </div>
           </div>
+
+          {/* The free preview is the first step after loading: it is what convinces people to buy. */}
+          {!unlocked && (
+            <button
+              type="button"
+              onClick={preview}
+              disabled={phase === 'working'}
+              className="mb-6 flex w-full items-center justify-center gap-2 rounded-xl bg-leaf px-5 py-4 text-base font-bold text-white shadow-[0_12px_24px_-10px_rgba(37,84,232,.7)] hover:bg-leaf-dark disabled:opacity-50 sm:text-lg"
+            >
+              <Eye className="h-5 w-5" aria-hidden />
+              {t.tool.preview}
+            </button>
+          )}
 
           {phase === 'working' && (
             <p className="mb-4 flex items-center gap-2 rounded-lg bg-leaf-light px-4 py-3 text-sm font-medium text-leaf-dark" aria-live="polite">

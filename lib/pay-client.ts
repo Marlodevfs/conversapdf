@@ -13,11 +13,11 @@ export const PAYMENTS_ENABLED = process.env.NEXT_PUBLIC_PAYMENTS_ENABLED === '1'
  * or null if the buyer closes it. In local development without Polar
  * keys, the purchase is simulated.
  */
-export async function buyEdition(edition: Edition, locale: string): Promise<string | null> {
+export async function buyEdition(edition: Edition, locale: string, sha: string): Promise<string | null> {
   const res = await fetch('/api/checkout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ edition, locale }),
+    body: JSON.stringify({ edition, locale, sha }),
   });
   if (!res.ok) {
     if (process.env.NODE_ENV !== 'production') return `demo_${edition}`;
@@ -40,12 +40,13 @@ export async function buyEdition(edition: Edition, locale: string): Promise<stri
   });
 }
 
-export async function verifyPurchase(checkoutId: string): Promise<Edition | null> {
+/** Confirms the purchase with the server, for this chat only (its SHA-256). */
+export async function verifyPurchase(checkoutId: string, sha: string): Promise<Edition | null> {
   if (process.env.NODE_ENV !== 'production' && checkoutId.startsWith('demo_')) {
     return (checkoutId.slice(5) || 'proof') as Edition;
   }
   for (let attempt = 0; attempt < 3; attempt++) {
-    const res = await fetch(`/api/verify?checkout_id=${encodeURIComponent(checkoutId)}`);
+    const res = await fetch(`/api/verify?checkout_id=${encodeURIComponent(checkoutId)}&sha=${encodeURIComponent(sha)}`);
     if (res.status === 202) continue; // still processing
     if (!res.ok) return null;
     const json = await res.json();

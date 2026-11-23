@@ -30,11 +30,15 @@ async function polar<T = any>(env: PolarEnv, path: string, init?: { method?: str
   return (await res.json()) as T;
 }
 
-/** POST { edition, locale } -> { url, id } */
+/** SHA-256 of the chat export, in hex: a purchase only unlocks that chat. */
+const SHA = /^[a-f0-9]{64}$/;
+
+/** POST { edition, locale, sha } -> { url, id } */
 export async function handleCheckout(request: Request, env: PolarEnv): Promise<Response> {
-  const { edition, locale } = (await request.json().catch(() => ({}))) as { edition?: Edition; locale?: string };
+  const { edition, locale, sha } = (await request.json().catch(() => ({}))) as { edition?: Edition; locale?: string; sha?: string };
   const productId = edition ? productIds(env)[edition] : '';
   if (!productId) return json({ error: 'unknown edition' }, 400);
+  if (typeof sha !== 'string' || !SHA.test(sha)) return json({ error: 'missing chat fingerprint' }, 400);
 
   // The embedded checkout only renders inside the exact origin given here.
   const header = request.headers.get('origin') || '';
@@ -48,7 +52,7 @@ export async function handleCheckout(request: Request, env: PolarEnv): Promise<R
         products: [productId],
         success_url: `${origin}/${lang}?checkout_id={CHECKOUT_ID}`,
         embed_origin: origin,
-        metadata: { edition: edition!, locale: lang },
+        metadata: { edition: edition!, locale: lang, sha },
       },
     });
     return json({ url: checkout.url, id: checkout.id });
@@ -59,17 +63,22 @@ export async function handleCheckout(request: Request, env: PolarEnv): Promise<R
 }
 
 /**
- * GET ?checkout_id=... -> { ok, edition }. Polar marks a checkout "confirmed"
- * while the payment is processed, then "succeeded": wait a few seconds for it.
+ * GET ?checkout_id=...&sha=... -> { ok, edition }. Polar marks a checkout
+ * "confirmed" while the payment is processed, then "succeeded": wait a few
+ * seconds for it. A purchase only unlocks the chat it was bought for: the
+ * fingerprint stored in the checkout metadata must match.
  */
 export async function handleVerify(request: Request, env: PolarEnv): Promise<Response> {
-  const id = new URL(request.url).searchParams.get('checkout_id') || '';
-  if (!/^[A-Za-z0-9_-]{8,80}$/.test(id)) return json({ ok: false }, 400);
+  const params = new URL(request.url).searchParams;
+  const id = params.get('checkout_id') || '';
+  const sha = params.get('sha') || '';
+  if (!/^[A-Za-z0-9_-]{8,80}$/.test(id) || !SHA.test(sha)) return json({ ok: false }, 400);
   const ids = productIds(env);
   try {
     for (let attempt = 0; attempt < 8; attempt++) {
       const c = await polar<any>(env, `/v1/checkouts/${encodeURIComponent(id)}`);
       if (c?.status === 'succeeded') {
+        if (c.metadata?.sha !== sha) return json({ ok: false, status: 'other_chat' }, 403);
         const pid = c.product_id || c.product?.id;
         const edition = (Object.keys(ids) as Edition[]).find((e) => ids[e] && ids[e] === pid);
         return edition ? json({ ok: true, edition }) : json({ ok: false }, 402);
