@@ -258,8 +258,19 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
     try {
       let granted = unlocked && RANK[unlocked] >= RANK[edition] ? unlocked : null;
       if (!granted) {
+        // A payment already made for this chat (e.g. confirmed late by Polar) must never be charged twice.
+        const known = readUnlocks()[chat.sha256];
+        const previous = known ? await verifyPurchase(known, chat.sha256).catch(() => null) : null;
+        if (previous) {
+          setUnlocked((u) => (u && RANK[u] >= RANK[previous] ? u : previous));
+          if (RANK[previous] >= RANK[edition]) granted = previous;
+        }
+      }
+      if (!granted) {
         const txn = await buyEdition(edition, locale, chat.sha256);
         if (!txn) return; // checkout closed
+        // Kept before the check: if Polar confirms late, reloading this chat unlocks it without paying again.
+        rememberUnlock(chat.sha256, txn);
         setPhase('working');
         setStatus(t.tool.generating);
         granted = await verifyPurchase(txn, chat.sha256);
@@ -269,7 +280,6 @@ export default function ConverterTool({ locale, preloaded }: { locale: Locale; p
           return;
         }
         setUnlocked(granted);
-        rememberUnlock(chat.sha256, txn);
       }
       setPhase('working');
       const images = await photos(granted);
