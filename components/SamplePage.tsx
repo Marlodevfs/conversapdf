@@ -56,6 +56,18 @@ const samples: Record<Locale, Sample> = {
     ],
     page: 'Page 4 sur 12',
   },
+  de: {
+    file: 'WhatsApp-Chat mit Thomas (Vermieter)',
+    day: 'Dienstag, 3. September 2026',
+    msgs: [
+      { who: 'Thomas', text: 'Hallo, ich habe die Wohnung abgenommen. Alles in Ordnung.', time: '18:02' },
+      { who: 'Thomas', text: 'Die Schlüssel liegen im Briefkasten.', time: '18:03', photo: true },
+      { who: 'Ich', text: 'Super, und die Kaution?', time: '18:05', me: true },
+      { who: 'Thomas', text: 'Die 900 € überweise ich dir am Freitag, versprochen.', time: '18:07', mark: true },
+      { who: 'Ich', text: 'Perfekt, danke 🙏', time: '18:08', me: true },
+    ],
+    page: 'Seite 4 von 12',
+  },
   en: {
     file: 'WhatsApp Chat with Daniel (landlord)',
     day: 'Tuesday, 3 September 2026',

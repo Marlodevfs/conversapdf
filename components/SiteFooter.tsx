@@ -10,6 +10,7 @@ const contact: Record<Locale, string> = {
   pt: 'Alguma dúvida? Escreva para:',
   it: 'Una domanda? Scrivici:',
   fr: 'Une question ? Écrivez-nous :',
+  de: 'Fragen? Schreib uns:',
   en: 'Questions? Email us:',
 };
 

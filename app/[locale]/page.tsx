@@ -17,6 +17,7 @@ const officialHelp: Record<Locale, string> = {
   pt: 'Guia oficial do WhatsApp: como exportar o histórico de conversas (em inglês)',
   it: 'Guida ufficiale di WhatsApp: come esportare la cronologia chat (in inglese)',
   fr: 'Aide officielle de WhatsApp : exporter l’historique d’une discussion (en anglais)',
+  de: 'Offizielle WhatsApp-Hilfe: Chatverlauf exportieren (auf Englisch)',
   en: 'Official WhatsApp help: how to export your chat history',
 };
 

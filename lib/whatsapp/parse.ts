@@ -62,7 +62,7 @@ const IOS_ATTACHMENT = /^<[^<>:]{1,40}:\s*([^<>]+?\.[A-Za-z0-9]{2,5})>$/;
 const ANDROID_ATTACHMENT = /^(\S+\.[A-Za-z0-9]{2,5})\s+\([^()]{3,40}\)$/;
 
 const OMITTED_WORDS =
-  /omitted|omitid[oa]s?|ocult[oa]|ocultad[oa]|omess[oi]|omis(es)?|weggelassen|ausgelassen|exclu[ií]d[oa]s?|non incluso|non inclus/i;
+  /omitted|omitid[oa]s?|ocult[oa]|ocultad[oa]|omess[oi]|omis(es)?|weggelassen|ausgelassen|ausgeschlossen|exclu[ií]d[oa]s?|non incluso|non inclus/i;
 const DELETED_WORDS =
   /^(this message was deleted|you deleted this message|se eliminó este mensaje|eliminaste este mensaje|esta mensagem foi apagada|você apagou esta mensagem|questo messaggio è stato eliminato|hai eliminato questo messaggio|ce message a été supprimé|vous avez supprimé ce message|diese nachricht wurde gelöscht|du hast diese nachricht gelöscht)\.?$/i;
 

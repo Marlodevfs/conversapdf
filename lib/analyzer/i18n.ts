@@ -212,6 +212,50 @@ const fr: AnalyzerStrings = {
   ],
 };
 
+const de: AnalyzerStrings = {
+  slug: 'whatsapp-chat-analysieren',
+  label: 'WhatsApp-Chat analysieren (kostenlos)',
+  metaTitle: 'WhatsApp-Chat kostenlos analysieren | ConversaPDF',
+  metaDescription: 'Wer schreibt am meisten, Lieblings-Emojis, aktivste Uhrzeiten, Antwortzeit: die Statistik deines WhatsApp-Chats. Kostenlos und privat.',
+  h1: 'Analysiere deinen WhatsApp-Chat',
+  intro: 'Lade den Export deines Chats hoch und finde heraus, wer am meisten schreibt, welche Emojis ihr am liebsten nutzt, wann ihr schreibt und wie schnell ihr antwortet. Kostenlos, und der Chat verlässt nicht dein Gerät.',
+  messages: 'Nachrichten',
+  words: 'Wörter',
+  days: 'Tage Chat',
+  since: (d) => `seit dem ${d}`,
+  perPerson: 'Wer schreibt am meisten',
+  wordsPerMessage: 'Wörter pro Nachricht',
+  starts: 'begonnene Gespräche',
+  reply: 'antwortet in',
+  noReply: 'keine Antwortzeit gemessen',
+  hours: 'Um wie viel Uhr ihr schreibt',
+  weekdays: 'Die aktivsten Wochentage',
+  emojis: 'Lieblings-Emojis',
+  noEmojis: 'Keine Emojis in diesem Chat.',
+  busiestDay: 'Der gesprächigste Tag',
+  messagesOn: (n) => `${n} Nachrichten`,
+  streak: 'Die längste Serie',
+  inARow: (n) => `${n} Tage am Stück`,
+  activeDays: (a, s) => `${a} Tage mit Nachrichten von ${s}`,
+  media: 'Fotos und Dateien',
+  deleted: 'Gelöschte Nachrichten',
+  ctaTitle: 'Bewahre diesen Chat für immer auf',
+  ctaText: 'Mach daraus ein sauberes PDF mit den Fotos an ihrer Stelle, zum Wiederlesen, Ausdrucken oder Verschenken.',
+  another: 'Einen weiteren Chat analysieren',
+  whatTitle: 'Was die Analyse zeigt',
+  what: [
+    'Die Anzahl der Nachrichten und Wörter jeder Person und ihren Anteil am Chat.',
+    'Wer das Gespräch am häufigsten beginnt und wie lange jeder zum Antworten braucht.',
+    'Die Uhrzeiten und Wochentage, an denen ihr am meisten schreibt.',
+    'Eure Lieblings-Emojis, den gesprächigsten Tag und die längste Serie an Tagen.',
+  ],
+  faqs: [
+    { q: 'Wird mein Chat irgendwohin geschickt?', a: 'Nein. Die Analyse läuft komplett in deinem Browser: Deine Nachrichten verlassen nicht dein Gerät und nichts wird gespeichert.' },
+    { q: 'Funktioniert es mit Gruppen?', a: 'Ja. Jeder Teilnehmer bekommt seine eigene Statistik: Nachrichten, Wörter pro Nachricht, begonnene Gespräche und Antwortzeit.' },
+    { q: 'Wie wird die Antwortzeit berechnet?', a: 'Für jede Person messen wir die Zeit zwischen der Nachricht eines anderen und ihrer Antwort, ohne Pausen von mehr als 12 Stunden, und zeigen den Median, damit eine einzelne langsame Antwort nicht alles verfälscht.' },
+  ],
+};
+
 const en: AnalyzerStrings = {
   slug: 'whatsapp-chat-analyzer',
   label: 'WhatsApp chat analyzer (free)',
@@ -256,5 +300,5 @@ const en: AnalyzerStrings = {
   ],
 };
 
-const all: Record<Locale, AnalyzerStrings> = { es, pt, it, fr, en };
+const all: Record<Locale, AnalyzerStrings> = { es, pt, it, fr, de, en };
 export const analyzer = (l: Locale) => all[l];

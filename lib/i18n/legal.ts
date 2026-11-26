@@ -163,6 +163,43 @@ const fr: Pages = {
   },
 };
 
+const de: Pages = {
+  privacy: {
+    title: 'Datenschutzerklärung',
+    sections: [
+      { h: 'Dein Chat verlässt nicht dein Gerät', p: ['Die aus WhatsApp exportierte Datei wird direkt in deinem Browser gelesen und das PDF dort erstellt. Wir laden deine Chats und Fotos weder hoch, noch speichern oder sehen wir sie.'] },
+      { h: 'Zahlungen', p: ['Zahlungen werden von Polar (polar.sh) abgewickelt, das als offizieller Verkäufer (Merchant of Record) auftritt. Polar verarbeitet deine Zahlungsdaten und deine E-Mail-Adresse gemäß seiner eigenen Datenschutzerklärung. Wir erhalten nur die Zahlungsbestätigung.'] },
+      { h: 'Technische Daten', p: ['Unser Hosting-Anbieter (Cloudflare) erfasst technische Daten wie die IP-Adresse für den Betrieb und die Sicherheit der Website. Besuche messen wir anonym und ohne Cookies mit GoatCounter.'] },
+      { h: 'Deine Rechte', p: [`Du kannst deine Rechte auf Auskunft, Berichtigung und Löschung per E-Mail an ${mail} ausüben.`] },
+    ],
+  },
+  terms: {
+    title: 'Allgemeine Geschäftsbedingungen',
+    sections: [
+      { h: 'Der Dienst', p: ['ConversaPDF wandelt aus WhatsApp exportierte Chats in PDF um. Die Vorschau ist kostenlos; das vollständige PDF wird einmalig pro Chat bezahlt.'] },
+      { h: 'Deine Verantwortung', p: ['Wandle nur Chats um, an denen du teilnimmst oder die du verwenden darfst, und achte die Privatsphäre der anderen Teilnehmer.'] },
+      { h: 'Verwendung als Beweis', p: ['ConversaPDF ist weder ein Beglaubigungsdienst noch eine Anwaltskanzlei. Über den Beweiswert eines Dokuments entscheidet das Gericht.'] },
+      { h: 'Kauf', p: ['Käufe erfolgen über Polar (polar.sh), den offiziellen Verkäufer, dessen Kaufbedingungen ebenfalls gelten.'] },
+    ],
+  },
+  refund: {
+    title: 'Erstattungsrichtlinie',
+    sections: [
+      { h: 'Erstattung', p: [`Wenn das PDF nicht erstellt wird oder ein Problem hat, das wir nicht lösen können, schreib uns innerhalb von 14 Tagen an ${mail} und wir erstatten dir den Betrag.`] },
+      { h: 'Digitale Inhalte', p: ['Das PDF ist ein digitaler Inhalt, der sofort geliefert wird. Mit dem Start des Downloads stimmst du dem Beginn der Ausführung zu, wodurch das Widerrufsrecht erlischt; die obige Garantie gilt trotzdem.'] },
+    ],
+  },
+  legal: {
+    title: 'Impressum',
+    sections: [
+      { h: 'Anbieter', p: publisher.length ? publisher : ['ConversaPDF'] },
+      { h: 'Kontakt', p: [mail] },
+      { h: 'Hosting', p: [`${l.host.name}, ${l.host.address}`] },
+      { h: 'Marken', p: ['WhatsApp ist eine Marke der WhatsApp LLC. ConversaPDF ist weder mit WhatsApp noch mit Meta verbunden.'] },
+    ],
+  },
+};
+
 const en: Pages = {
   privacy: {
     title: 'Privacy policy',
@@ -200,7 +237,7 @@ const en: Pages = {
   },
 };
 
-const all: Record<Locale, Pages> = { es, pt, it, fr, en };
+const all: Record<Locale, Pages> = { es, pt, it, fr, de, en };
 
 export function legalPage(locale: Locale, slug: LegalSlug): LegalPage {
   return all[locale][slug];

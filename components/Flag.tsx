@@ -10,6 +10,14 @@ export default function Flag({ code, className = 'h-3.5 w-5' }: { code: string; 
           <rect x="20" width="10" height="20" fill="#ce1126" />
         </svg>
       );
+    case 'de':
+      return (
+        <svg {...common}>
+          <rect width="30" height="7" fill="#000" />
+          <rect y="6.67" width="30" height="6.67" fill="#dd0000" />
+          <rect y="13.33" width="30" height="6.67" fill="#ffce00" />
+        </svg>
+      );
     case 'it':
       return (
         <svg {...common}>

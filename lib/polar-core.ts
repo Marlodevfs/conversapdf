@@ -93,11 +93,11 @@ export async function handleVerify(request: Request, env: PolarEnv): Promise<Res
   }
 }
 
-/** "/" -> browser language (es, pt, it, fr), English otherwise. */
+/** "/" -> browser language (es, pt, it, fr, de), English otherwise. */
 export function handleRoot(request: Request): Response {
   const url = new URL(request.url);
   const header = request.headers.get('accept-language') || '';
-  const supported = ['es', 'pt', 'it', 'fr', 'en'];
+  const supported = ['es', 'pt', 'it', 'fr', 'de', 'en'];
   const lang =
     header
       .split(',')

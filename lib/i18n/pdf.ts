@@ -106,6 +106,27 @@ const strings: Record<Locale, PdfStrings> = {
     previewEnd: "Fin de l'aperçu. Téléchargez le PDF complet sur conversapdf.com",
     notAffiliated: "ConversaPDF n'est affilié ni à WhatsApp, ni à Instagram, ni à Messenger, ni à Meta.",
   },
+  de: {
+    page: (n, t) => `Seite ${n} von ${t}`,
+    conversation: (a) => `${a}-Chat`,
+    participants: 'Teilnehmer',
+    period: 'Zeitraum',
+    messages: 'Nachrichten',
+    sourceFile: 'Originaldatei',
+    fileFingerprint: 'SHA-256-Fingerabdruck der exportierten Datei',
+    generatedOn: 'Dokument erstellt am',
+    proofTitle: 'Chatprotokoll',
+    proofNote:
+      (a) =>
+      `Dieses Dokument gibt die aus ${a} exportierte Datei originalgetreu wieder. Mit dem SHA-256-Fingerabdruck lässt sich prüfen, dass die Originaldatei nicht verändert wurde: Erneut über dieselbe Datei berechnet, ergibt er dasselbe Ergebnis. Dieses Dokument ist weder eine Beglaubigung noch eine Rechtsberatung; über seinen Beweiswert entscheidet das Gericht.`,
+    attachment: 'Anhang',
+    photoMissing: 'Foto nicht im Export enthalten',
+    mediaOmitted: 'Datei nicht im Export enthalten',
+    deleted: 'Nachricht gelöscht',
+    previewWatermark: 'VORSCHAU',
+    previewEnd: 'Ende der Vorschau. Lade das vollständige PDF auf conversapdf.com herunter',
+    notAffiliated: 'ConversaPDF ist weder mit WhatsApp noch mit Instagram, Messenger oder Meta verbunden.',
+  },
   en: {
     page: (n, t) => `Page ${n} of ${t}`,
     conversation: (a) => `${a} conversation`,
@@ -139,6 +160,7 @@ export const intlLocale: Record<Locale, string> = {
   pt: 'pt-BR',
   it: 'it-IT',
   fr: 'fr-FR',
+  de: 'de-DE',
   en: 'en-GB',
 };
 

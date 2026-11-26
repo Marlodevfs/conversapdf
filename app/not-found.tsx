@@ -8,6 +8,7 @@ const homes = [
   { href: '/es', label: 'Volver al inicio', lang: 'es' },
   { href: '/pt', label: 'Voltar ao início', lang: 'pt' },
   { href: '/it', label: 'Torna alla home', lang: 'it' },
+  { href: '/de', label: 'Zur Startseite', lang: 'de' },
 ];
 
 export default function NotFound() {

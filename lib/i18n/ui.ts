@@ -636,7 +636,122 @@ const en: UiStrings = {
   },
 };
 
-const all: Record<Locale, UiStrings> = { es, pt, it, fr, en };
+const de: UiStrings = {
+  langName: 'Deutsch',
+  meta: {
+    title: 'WhatsApp-Chat als PDF speichern | ConversaPDF',
+    description:
+      'Exportiere deinen WhatsApp-Chat als übersichtliches PDF, mit Fotos, Datum und Uhrzeit. Für den Anwalt, als Beweis oder als Erinnerung. Alles in deinem Browser.',
+  },
+  nav: { how: "So funktioniert's", pricing: 'Preise', faq: 'Fragen', convert: 'In PDF umwandeln', convertShort: 'Umwandeln', toPdf: 'Lieber den Chat als PDF?' },
+  hero: {
+    also: ['Funktioniert auch mit ', ' und ', '.'],
+    kicker: 'WhatsApp-Chat → PDF',
+    title: 'Wandle deinen WhatsApp-Chat in ein übersichtliches PDF um',
+    subtitle:
+      'Namen, Datum, Uhrzeit und Fotos bleiben an ihrem Platz, ohne dass etwas hochgeladen wird. Für den Anwalt, ein Verfahren, den Vermieter oder einfach zum Aufbewahren.',
+    privacy: 'Dein Chat verlässt nie dein Gerät: Alles wird in deinem Browser verarbeitet.',
+  },
+  tool: {
+    drop: 'Zieh den Export deines Chats hierher',
+    dropMobile: 'Wähle den Export deines Chats',
+    dropHint: 'Die .zip-Datei von WhatsApp oder der Instagram- bzw. Messenger-Export (JSON)',
+    choose: 'Datei auswählen',
+    loading: 'Chat wird gelesen…',
+    errors: {
+      'no-chat-file': 'Der Chat wurde in der .zip-Datei nicht gefunden. Exportiere ihn erneut aus WhatsApp.',
+      'bad-zip': 'Diese .zip-Datei lässt sich nicht öffnen. Exportiere den Chat bitte erneut.',
+      empty: 'Die Datei ist leer.',
+      'not-whatsapp': 'Diese Datei sieht nicht wie ein WhatsApp-, Instagram- oder Messenger-Export aus. Folge unseren Anleitungen, um den Chat richtig zu exportieren.',
+      generic: 'Etwas ist schiefgelaufen. Versuch es noch einmal.',
+      payment: 'Die Zahlung ist noch nicht bestätigt. Warte eine Minute und klicke dann erneut auf den Button: Du zahlst nicht doppelt. Wenn es weiter hakt, schreib uns.',
+      'too-big': 'Die Datei ist zu groß für diesen Browser. Versuch es am Computer oder exportiere den Chat ohne Medien.',
+    },
+    summary: 'Chat ist bereit',
+    participants: 'Teilnehmer',
+    messages: 'Nachrichten',
+    photos: 'Fotos',
+    period: 'Zeitraum',
+    me: 'Wer bist du? (deine Nachrichten stehen rechts)',
+    meNone: 'Niemand / möchte ich nicht sagen',
+    from: 'Von',
+    to: 'Bis',
+    preview: 'Kostenlose Vorschau ansehen',
+    previewing: 'Vorschau wird erstellt…',
+    choosePlan: 'Wähle dein PDF',
+    buy: 'Herunterladen',
+    generating: 'Dein PDF wird erstellt…',
+    preparingPhotos: (d, t) => `Fotos werden vorbereitet (${d}/${t})…`,
+    downloaded: 'Dein PDF ist fertig! Der Download hat begonnen.',
+    downloadAgain: 'Erneut herunterladen',
+    another: 'Einen weiteren Chat umwandeln',
+    paymentsOff: 'Kostenpflichtige Downloads sind bald verfügbar.',
+    paidReload: 'Zahlung erhalten. Wähle deinen Chat erneut aus, um dein PDF herunterzuladen.',
+    threadsTitle: 'Welchen Chat möchtest du umwandeln?',
+    threadsHint: (n) => `Dein Export enthält ${n} Chats. Wähle einen aus.`,
+    threadsSearch: 'Namen suchen',
+    threadsCount: (n) => (n === 1 ? '1 Nachricht' : `${n.toLocaleString('de')} Nachrichten`),
+    threadsCancel: 'Abbrechen',
+  },
+  plans: {
+    text: { name: 'Text', desc: 'Der ganze Chat, chronologisch und mit Seitenzahlen.', features: ['Namen, Datum und Uhrzeit', 'Seitenzahlen', 'Anhänge mit Dateinamen'] },
+    photos: { name: 'Mit Fotos', desc: 'Die Fotos erscheinen an ihrer Stelle im Chat.', features: ['Alles aus „Text“', 'Fotos im Chat', 'Ideal als Erinnerung'] },
+    proof: { name: 'Beweis', desc: 'Für den Anwalt, ein Verfahren oder eine Reklamation.', features: ['Alles aus „Mit Fotos“', 'Deckblatt mit Teilnehmern und Zeitraum', 'SHA-256-Fingerabdruck der Originaldatei', 'Uhrzeit mit Sekunden'] },
+  },
+  oneTime: 'Einmalzahlung pro Chat',
+  howTitle: 'So exportierst du deinen WhatsApp-Chat',
+  howIntro: 'In WhatsApp lässt sich jeder Chat exportieren. Wähle „Medien anhängen“, wenn die Fotos im PDF erscheinen sollen.',
+  iphone: {
+    title: 'Auf dem iPhone',
+    steps: ['Öffne den Chat in WhatsApp.', 'Tippe oben auf den Namen des Kontakts oder der Gruppe.', 'Scrolle nach unten und tippe auf „Chat exportieren“.', 'Wähle „Medien anhängen“ oder „Ohne Medien“.', 'Speichere die Datei in „Dateien“ oder schick sie dir per E-Mail.'],
+  },
+  android: {
+    title: 'Auf Android',
+    steps: ['Öffne den Chat in WhatsApp.', 'Tippe oben rechts auf die drei Punkte ⋮.', 'Tippe auf „Mehr“ und dann auf „Chat exportieren“.', 'Wähle „Medien einbeziehen“ oder „Ohne Medien“.', 'Speichere die Datei oder schick sie dir per E-Mail.'],
+  },
+  howTip: 'Lade danach die .zip- oder .txt-Datei auf ConversaPDF hoch, vom Handy oder vom Computer.',
+  usesTitle: 'Wofür?',
+  uses: [
+    { title: 'Gericht und Anwalt', text: 'Ein chronologisches PDF mit Seitenzahlen und dem Fingerabdruck der Originaldatei, viel klarer als ein Stapel Screenshots.' },
+    { title: 'Miete, Versicherung und Reklamationen', text: 'Zeig, was mit dem Vermieter, einer Firma oder der Versicherung vereinbart wurde, mit Datum und Uhrzeit.' },
+    { title: 'Erinnerungen', text: 'Bewahre Gespräche mit einem wichtigen Menschen auf, mit Fotos, zum Wiederlesen oder Ausdrucken.' },
+  ],
+  pricingTitle: 'Einfache Preise',
+  pricingIntro: 'Kostenlose Vorschau. Du zahlst nur für das PDF, das du brauchst, ohne Abo und ohne Konto.',
+  privacySection: {
+    title: 'Datenschutz und Sicherheit',
+    points: [
+      { title: 'Verarbeitung auf deinem Gerät', text: 'Die Datei wird in deinem Browser gelesen und das PDF dort erstellt. Dein Chat wird nie an unsere Server geschickt.' },
+      { title: 'Kein Konto, nichts gespeichert', text: 'Keine Anmeldung. Wir speichern weder deine Nachrichten noch deine Fotos: Schließ den Tab und es bleibt nichts zurück.' },
+      { title: 'Sichere Zahlung', text: 'Die Zahlung läuft über Polar, unseren autorisierten Wiederverkäufer. Wir sehen deine Bankdaten nie.' },
+    ],
+  },
+  faqTitle: 'Häufige Fragen',
+  faqs: [
+    { q: 'Funktioniert es mit Instagram oder Messenger?', a: 'Ja. Lade deine Instagram- oder Facebook-Nachrichten im JSON-Format herunter und lade die Datei hoch: Du wählst den Chat aus und bekommst dasselbe PDF. Unsere Anleitungen erklären, wie du sie exportierst.' },
+    { q: 'Wird mein Chat an einen Server geschickt?', a: 'Nein. Die Datei wird direkt in deinem Browser gelesen und das PDF dort erstellt. Dein Chat und deine Fotos verlassen nie dein Gerät.' },
+    { q: 'Wie exportiere ich einen WhatsApp-Chat auf iPhone oder Android?', a: 'Auf dem iPhone: Öffne den Chat, tippe auf den Namen des Kontakts und dann auf „Chat exportieren“. Auf Android: ⋮ > Mehr > „Chat exportieren“. Wähle mit Medien, damit die Fotos erhalten bleiben, und lade die Datei hier hoch.' },
+    { q: 'Sind die Fotos im PDF enthalten?', a: 'Ja, in den Versionen „Mit Fotos“ und „Beweis“, sofern du den Chat mit Medien exportiert hast. Jedes Foto erscheint an seiner Stelle im Chat.' },
+    { q: 'Merkt die andere Person, dass ich den Chat exportiere?', a: 'Nein. Beim Exportieren eines Chats in WhatsApp werden die anderen Teilnehmer nicht benachrichtigt.' },
+    { q: 'Ist das vor Gericht als Beweis gültig?', a: 'Ein übersichtliches, vollständiges PDF ist viel nützlicher als Screenshots, und die Version „Beweis“ enthält den SHA-256-Fingerabdruck der Originaldatei, um zu zeigen, dass sie nicht verändert wurde. Wie ein Beweis gewertet wird, entscheidet aber das Gericht: Frag immer deinen Anwalt um Rat.' },
+    { q: 'Funktioniert es mit Gruppen?', a: 'Ja. Jeder Teilnehmer erscheint mit seinem Namen und einer eigenen Farbe.' },
+    { q: 'Was ist mit Sprachnachrichten und Videos?', a: 'Ein PDF kann weder Ton noch Video abspielen: Sie werden an ihrer Stelle mit dem Dateinamen angezeigt.' },
+    { q: 'Funktioniert es auf dem Handy?', a: 'Ja, auf iPhone und Android. Bei sehr langen Chats mit vielen Fotos geht es am Computer schneller.' },
+    { q: 'Meine Datei wird nicht erkannt. Was tun?', a: 'Nutze die Funktion „Chat exportieren“ von WhatsApp und lade die .zip- oder .txt-Datei unverändert hoch. Wenn es immer noch nicht klappt, schreib uns.' },
+    { q: 'Bekomme ich mein Geld zurück?', a: 'Ja: Wenn das PDF nicht erstellt wird oder ein Problem hat, das wir nicht lösen können, erstatten wir dir den Betrag.' },
+  ],
+  footer: {
+    legal: 'Impressum',
+    privacy: 'Datenschutz',
+    terms: 'AGB',
+    refund: 'Erstattungen',
+    notAffiliated: 'ConversaPDF ist weder mit WhatsApp noch mit Instagram, Messenger oder Meta verbunden. Dies sind Marken von Meta Platforms, Inc.',
+    twemoji: 'Emojis: Twemoji (CC-BY 4.0).',
+    languages: 'Sprachen',
+  },
+};
+
+const all: Record<Locale, UiStrings> = { es, pt, it, fr, de, en };
 
 export function ui(locale: Locale): UiStrings {
   return all[locale];
